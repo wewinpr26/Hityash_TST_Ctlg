@@ -1,0 +1,2706 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קטלוג למידה ארגונית · Mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f7f9fc;
+  --paper-deep: #eef2f7;
+  --ink: #0d1421;
+  --ink-soft: #2d3748;
+  --ink-muted: #64748b;
+  --ink-faint: #a8b2c1;
+  --rule: #e3e9f0;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+  --accent-deep: #1d4ed8;
+  --cluster-1: #3a6ea5;
+  --cluster-2: #c97758;
+  --cluster-3: #7a9659;
+  --cluster-4: #9b6b9e;
+  --cluster-5: #d4a73e;
+  --cluster-6: #5a92a8;
+  --cluster-7: #9c4356;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-pill: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --font-serif: 'Frank Ruhl Libre', 'Noto Serif Hebrew', serif;
+  --font-sans: 'Heebo', sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===================================================
+   SCREENS (mobile-first)
+   =================================================== */
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.screen.active {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ===================================================
+   TOP BANNER (institutional title — appears on all inner screens)
+   =================================================== */
+.top-banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 14px 16px 8px;
+  background: var(--paper);
+  z-index: 5;
+}
+
+.top-banner-pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--rule);
+  padding: 6px 14px;
+  border-radius: 999px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* ===================================================
+   SCREEN 0: WELCOME
+   =================================================== */
+.welcome-screen {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 22px 36px;
+  background: linear-gradient(180deg, var(--paper) 0%, #ffffff 50%, var(--paper-deep) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-screen.active {
+  display: flex;
+}
+
+.welcome-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 280px at 10% 15%, rgba(58, 110, 165, 0.07), transparent 60%),
+    radial-gradient(circle 240px at 90% 25%, rgba(201, 119, 88, 0.06), transparent 60%),
+    radial-gradient(circle 200px at 85% 80%, rgba(122, 150, 89, 0.05), transparent 60%),
+    radial-gradient(circle 180px at 15% 75%, rgba(155, 107, 158, 0.05), transparent 60%);
+  pointer-events: none;
+}
+
+.welcome-top {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding-top: 8px;
+}
+
+.welcome-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--rule);
+  padding: 8px 16px;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+.welcome-center {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 32px 0;
+}
+
+.welcome-title {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.welcome-title-accent {
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cluster-1);
+  display: block;
+  font-size: 30px;
+  margin-top: 10px;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.welcome-title-year {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-style: normal;
+  color: var(--ink);
+  display: block;
+  font-size: 38px;
+  margin-top: 14px;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  position: relative;
+}
+
+.welcome-title-year::before,
+.welcome-title-year::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--cluster-1);
+  opacity: 0.5;
+  vertical-align: middle;
+  margin: 0 14px;
+}
+
+.welcome-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--cluster-1);
+  margin: 28px auto 24px;
+  opacity: 0.4;
+}
+
+.welcome-quote {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 460px;
+  margin: 36px auto 12px;
+  padding: 0 8px;
+}
+
+.welcome-quote-author {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--cluster-1);
+}
+
+.welcome-bottom {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding-top: 20px;
+}
+
+.welcome-enter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--cluster-1);
+  color: var(--cluster-1);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 28px 14px 24px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 16px rgba(58, 110, 165, 0.1);
+}
+
+.welcome-enter-btn:hover {
+  background: var(--cluster-1);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(58, 110, 165, 0.25);
+}
+
+.welcome-enter-btn:active {
+  transform: translateY(0);
+}
+
+.welcome-enter-btn .star-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  animation: starTwinkle 2.2s ease-in-out infinite;
+}
+
+.welcome-enter-btn .star-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    opacity: 0.5;
+    transform: scale(0.85) rotate(-8deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(0deg);
+  }
+  75% {
+    opacity: 0.7;
+    transform: scale(0.95) rotate(8deg);
+  }
+}
+
+/* ===================================================
+   QUOTE BLOCK (used on search screen)
+   =================================================== */
+.search-quote {
+  max-width: 600px;
+  margin: 0 auto 8px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.6);
+  border-right: 3px solid var(--cluster-2);
+  border-radius: 0 12px 12px 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  position: relative;
+  z-index: 1;
+}
+
+.search-quote-author {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--cluster-2);
+}
+
+/* ===================================================
+   SCREEN 5: SERENDIPITY
+   =================================================== */
+:root {
+  --serendip: #1f7a8c;
+  --serendip-soft: rgba(31, 122, 140, 0.10);
+  --serendip-mute: rgba(31, 122, 140, 0.04);
+}
+
+.serendip-screen {
+  padding: 0 0 40px;
+  position: relative;
+}
+
+.serendip-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(247, 249, 252, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 16px;
+}
+
+.serendip-body {
+  padding: 22px 16px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.serendip-quote {
+  padding: 18px 22px;
+  background: var(--serendip-mute);
+  border-right: 3px solid var(--serendip);
+  border-radius: 0 12px 12px 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+
+.serendip-quote-author {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--serendip);
+}
+
+.serendip-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.serendip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--serendip);
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 26px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 14px rgba(31, 122, 140, 0.25);
+}
+
+.serendip-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(31, 122, 140, 0.35);
+}
+
+.serendip-btn:active {
+  transform: translateY(0);
+  background: #1a6877;
+}
+
+.serendip-btn .icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+}
+
+.serendip-btn .icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+}
+
+.serendip-helper {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 320px;
+  padding: 0 8px;
+}
+
+.serendip-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.serendip-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  border-right: 4px solid var(--cluster-color, var(--serendip));
+  padding: 16px 18px 16px 14px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: serendipReveal 0.5s ease forwards;
+}
+
+.serendip-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.serendip-card:active {
+  transform: scale(0.98);
+}
+
+.serendip-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.serendip-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 8px;
+}
+
+.serendip-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+  line-height: 1.3;
+}
+
+.serendip-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cluster-color, var(--serendip));
+  flex-shrink: 0;
+}
+
+.serendip-tag.domain-tag {
+  color: var(--ink-muted);
+}
+
+.serendip-card-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.serendip-card-desc {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.serendip-card-arrow {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  color: var(--cluster-color, var(--serendip));
+  flex-shrink: 0;
+  line-height: 1;
+  font-weight: 300;
+}
+
+@keyframes serendipReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.serendip-card:nth-child(1) { animation-delay: 0ms; }
+.serendip-card:nth-child(2) { animation-delay: 80ms; }
+.serendip-card:nth-child(3) { animation-delay: 160ms; }
+.serendip-card:nth-child(4) { animation-delay: 240ms; }
+.serendip-card:nth-child(5) { animation-delay: 320ms; }
+
+/* search method 2 — Random search entry on home (blue, sparkle icon) */
+.search-method.random-method {
+  background: linear-gradient(180deg, white 0%, var(--accent-soft) 100%);
+}
+
+/* search method 3 — Browse-by-cluster with dropdown */
+.search-method.browse-method {
+  cursor: default;
+}
+
+.browse-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.browse-toggle:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.browse-toggle .chev {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+  font-weight: 300;
+}
+
+.browse-method.is-open .browse-toggle .chev {
+  transform: rotate(180deg);
+}
+
+.browse-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, margin-top 0.25s ease;
+  margin-top: 0;
+}
+
+.browse-method.is-open .browse-dropdown {
+  max-height: 4000px; /* large value to fit all clusters */
+  margin-top: 12px;
+}
+
+.browse-dropdown .cluster-card {
+  margin-bottom: 10px;
+}
+
+.browse-dropdown .cluster-card:last-child {
+  margin-bottom: 0;
+}
+
+.search-method-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.search-method-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.search-method-arrow {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--method-color, var(--accent));
+  font-family: var(--font-sans);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ===================================================
+   SCREEN 1: HOME
+   =================================================== */
+.home-header {
+  padding: 50px 20px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+  position: relative;
+}
+
+.home-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 200px at 15% 30%, rgba(58, 110, 165, 0.06), transparent),
+    radial-gradient(circle 180px at 85% 20%, rgba(201, 119, 88, 0.05), transparent),
+    radial-gradient(circle 160px at 75% 75%, rgba(122, 150, 89, 0.05), transparent);
+  pointer-events: none;
+}
+
+.home-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--rule);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent-deep);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-eyebrow::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.home-title {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 36px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin: 0 0 16px;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+}
+
+.home-intro {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 auto 8px;
+  max-width: 600px;
+  padding: 0 4px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================================
+   SEARCH SECTION
+   =================================================== */
+.search-section {
+  padding: 32px 16px 16px;
+  background: var(--paper);
+}
+
+.search-question {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--ink);
+  text-align: center;
+  margin: 0 0 22px;
+  letter-spacing: -0.015em;
+}
+
+/* Search method cards — match cluster-card width and styling */
+.search-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-method {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.search-method:active {
+  transform: scale(0.98);
+}
+
+.search-method::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--method-color, var(--accent));
+}
+
+.search-method-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.search-method-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--accent);
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.search-method-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.2;
+  flex: 1;
+}
+
+.search-method-subtitle {
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.search-method-divider {
+  height: 1px;
+  background: var(--rule);
+  margin: 0 0 14px;
+}
+
+/* The pill search bar */
+.search-pill {
+  position: relative;
+}
+
+.search-pill input {
+  width: 100%;
+  padding: 16px 52px 16px 24px;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: white;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: var(--shadow-pill);
+  transition: all 0.2s;
+}
+
+.search-pill input::placeholder {
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+.search-pill input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft), var(--shadow-pill);
+}
+
+.search-pill-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-pill-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.search-clear {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--paper-deep);
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.search-pill.has-text .search-clear {
+  display: flex;
+}
+
+.search-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 12px;
+}
+
+/* ===================================================
+   CLUSTERS LIST (Home)
+   =================================================== */
+.clusters-section {
+  padding: 0 16px 24px;
+}
+
+.cluster-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.cluster-card:active {
+  transform: scale(0.98);
+  border-color: var(--cluster-color);
+}
+
+.cluster-card::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--cluster-color);
+}
+
+.cluster-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.cluster-num {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 36px;
+  color: var(--cluster-color);
+  line-height: 1;
+  min-width: 40px;
+}
+
+.cluster-body { flex: 1; min-width: 0; }
+
+.cluster-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.cluster-arrow {
+  color: var(--ink-faint);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* Domain dots row — preview of domains inside cluster */
+.cluster-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding-inline-start: 54px;
+  line-height: 1.4;
+}
+
+.cluster-domain-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cluster-domain-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cluster-color);
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   SEARCH RESULTS SCREEN
+   =================================================== */
+.search-results-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 249, 252, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 16px;
+}
+
+.search-results-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 6px 14px 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.back-btn:active { transform: scale(0.96); }
+.back-btn .arrow { font-size: 14px; }
+
+.back-btns-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.back-btn-search {
+  background: var(--accent-soft);
+  border-color: rgba(58, 110, 165, 0.25);
+  color: var(--accent);
+}
+
+.back-btn-search:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.back-btn-search .arrow {
+  font-weight: 600;
+}
+
+/* Compact search bar in results header */
+.search-pill-compact {
+  flex: 1;
+  position: relative;
+}
+
+.search-pill-compact input {
+  width: 100%;
+  padding: 8px 36px 8px 16px;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: white;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink);
+  transition: all 0.2s;
+}
+
+.search-pill-compact input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.search-pill-compact .search-pill-icon {
+  left: 12px;
+}
+
+.search-pill-compact .search-pill-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.results-summary {
+  font-size: 12px;
+  color: var(--ink-muted);
+  padding: 4px 4px 0;
+}
+
+.results-summary strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* Results body */
+.search-results-body {
+  padding: 16px;
+}
+
+.results-group {
+  margin-bottom: 24px;
+}
+
+.results-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.results-group-title .count {
+  background: var(--paper-deep);
+  color: var(--ink-soft);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Result item */
+.result-item {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 14px 18px 14px 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-item:active {
+  transform: scale(0.99);
+  background: var(--paper-deep);
+}
+
+.result-item::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--cluster-color);
+}
+
+.result-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 15.5px;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.result-path {
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.result-path .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cluster-color);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.result-snippet {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* HIGHLIGHT - the most important part */
+mark {
+  background: color-mix(in srgb, var(--cluster-color) 18%, transparent);
+  color: var(--ink);
+  font-weight: 700;
+  padding: 1px 3px;
+  border-radius: 4px;
+  border-bottom: 2px solid var(--cluster-color);
+}
+
+/* Empty state */
+.no-results {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.no-results-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.no-results-hint {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ===================================================
+   CLUSTER SCREEN
+   =================================================== */
+.cluster-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 249, 252, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 16px;
+}
+
+.cluster-switcher {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.cluster-switcher::-webkit-scrollbar { display: none; }
+
+.cluster-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: white;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.cluster-pill .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cluster-color);
+  flex-shrink: 0;
+}
+
+/* Active state: keep transparent background, color the border + text */
+.cluster-pill.active {
+  background: white;
+  color: var(--cluster-color);
+  border-color: var(--cluster-color);
+  border-width: 1.5px;
+  font-weight: 700;
+}
+
+.cluster-title-block {
+  padding: 16px 16px 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cluster-title-num {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.cluster-title-text {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.cluster-subtitle {
+  font-size: 13px;
+  color: var(--ink-muted);
+  padding: 0 16px 16px;
+  line-height: 1.5;
+}
+
+.domains-list {
+  padding: 0 12px 24px;
+}
+
+.domain-block {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.domain-block::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--cluster-color);
+}
+
+.domain-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 18px 14px 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.domain-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  flex: 1;
+  line-height: 1.3;
+}
+
+.domain-meta {
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.domain-toggle {
+  font-size: 16px;
+  color: var(--ink-faint);
+  font-weight: 700;
+  width: 20px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.domain-block.expanded .domain-toggle {
+  transform: rotate(45deg);
+  color: var(--cluster-color);
+}
+
+.domain-desc {
+  padding: 0 18px 14px 14px;
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+.domain-challenges {
+  display: none;
+  border-top: 1px solid var(--rule);
+  background: var(--paper-deep);
+}
+
+.domain-block.expanded .domain-challenges {
+  display: block;
+}
+
+.challenge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px 14px 14px;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.challenge-item:last-child { border-bottom: none; }
+.challenge-item:active { background: white; }
+
+.challenge-num {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--cluster-color);
+  line-height: 1;
+  min-width: 30px;
+}
+
+.challenge-body { flex: 1; min-width: 0; }
+
+.challenge-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+
+.challenge-desc {
+  font-size: 12px;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+
+.challenge-arrow {
+  color: var(--ink-faint);
+  font-size: 14px;
+  align-self: center;
+}
+
+/* ===================================================
+   CHALLENGE DETAIL SCREEN
+   =================================================== */
+.challenge-screen-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 249, 252, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 16px;
+}
+
+.challenge-back-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.challenge-counter {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-inline-start: auto;
+}
+
+.challenge-breadcrumb {
+  font-size: 11px;
+  color: var(--ink-muted);
+  padding: 16px 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.challenge-breadcrumb .cluster-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  font-size: 10.5px;
+}
+
+.challenge-breadcrumb .cluster-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cluster-color);
+}
+
+.challenge-breadcrumb .arrow { color: var(--ink-faint); }
+.challenge-breadcrumb .domain { color: var(--cluster-color); font-weight: 600; }
+.challenge-breadcrumb .num { color: var(--ink-faint); font-weight: 600; }
+
+.challenge-title-main {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 16px 12px;
+  line-height: 1.2;
+}
+
+.challenge-description {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 16px 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Impact */
+.impact-section {
+  margin: 0 16px 24px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--cluster-color) 8%, white) 0%, color-mix(in srgb, var(--cluster-color) 3%, white) 100%);
+  border: 1px solid color-mix(in srgb, var(--cluster-color) 20%, transparent);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.impact-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cluster-color);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.impact-title::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cluster-color);
+}
+
+.impact-item {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  padding: 6px 0;
+  display: flex;
+  gap: 8px;
+}
+
+.impact-item::before {
+  content: '←';
+  color: var(--cluster-color);
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.impact-item + .impact-item {
+  border-top: 1px dashed color-mix(in srgb, var(--cluster-color) 25%, transparent);
+}
+
+.responses-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cluster-color);
+  margin: 0 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.responses-title::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cluster-color);
+}
+
+.response {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  margin: 0 16px 8px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.response::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  background: var(--cluster-color);
+  border-radius: 999px;
+}
+
+.response-type {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 10px;
+}
+
+.response-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+  gap: 0;
+}
+
+.response-meta .meta-item { display: inline-flex; align-items: center; }
+.response-meta .meta-item strong { color: var(--ink-soft); font-weight: 600; margin-inline-end: 3px; }
+.response-meta .meta-sep {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cluster-color);
+  margin: 0 8px;
+}
+
+.response-detail {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.challenge-nav-bar {
+  margin: 24px 16px 0;
+  display: flex;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
+.nav-btn {
+  flex: 1;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s;
+  min-width: 0;
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.nav-btn:not(:disabled):active {
+  transform: scale(0.98);
+  border-color: var(--cluster-color);
+}
+
+.nav-btn .arrow {
+  color: var(--cluster-color);
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.nav-btn .nav-content {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.nav-btn .label {
+  font-size: 10px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.nav-btn .title {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-btn.next {
+  flex-direction: row-reverse;
+}
+
+.nav-btn.next .nav-content {
+  text-align: left;
+}
+</style>
+</head>
+<body>
+
+<!-- ===================================================
+     SCREEN 1: HOME (search + clusters)
+     =================================================== -->
+<!-- ===================================================
+     SCREEN 0: WELCOME
+     =================================================== -->
+<div class="screen active welcome-screen" id="welcome">
+  <div class="welcome-top">
+    <div class="welcome-eyebrow">מינהל התיישבותי, פנימייתי ועליית הנוער</div>
+  </div>
+
+  <div class="welcome-center">
+    <h1 class="welcome-title">
+      קטלוג המענים המחוזיים
+      <span class="welcome-title-accent">ללמידה ארגונית</span>
+      <span class="welcome-title-year">תשפ״ז</span>
+    </h1>
+
+    <p class="welcome-quote">
+      ״למידה אינה מושגת במקרה, יש לחפש אותה בלהט ולטפח אותה בשקדנות.״
+      <span class="welcome-quote-author">— אביגיל אדמס</span>
+    </p>
+  </div>
+
+  <div class="welcome-bottom">
+    <button class="welcome-enter-btn" onclick="enterApp()">
+      <span class="star-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3 L13.5 9.5 L20 11 L13.5 12.5 L12 19 L10.5 12.5 L4 11 L10.5 9.5 Z"/>
+          <path d="M19 3 L19.7 5.3 L22 6 L19.7 6.7 L19 9 L18.3 6.7 L16 6 L18.3 5.3 Z"/>
+          <path d="M5 16 L5.6 17.4 L7 18 L5.6 18.6 L5 20 L4.4 18.6 L3 18 L4.4 17.4 Z"/>
+        </svg>
+      </span>
+      <span>כניסה לקטלוג</span>
+    </button>
+  </div>
+</div>
+
+<!-- ===================================================
+     SCREEN 1: HOME (search hub)
+     =================================================== -->
+<div class="screen" id="home">
+  <div class="top-banner">
+    <div class="top-banner-pill">מינהל התיישבותי, פנימייתי ועליית הנוער</div>
+  </div>
+  <div class="search-section" style="padding-top: 14px;">
+    <div class="search-quote">
+      ״התגליות הגדולות ביותר מתרחשות כאשר אנו מפסיקים לחפש את מה שאנו כבר יודעים, ומשאירים מקום לחיפוש האקראי ולבלתי צפוי״
+      <span class="search-quote-author">— נסים ניקולס טאלב</span>
+    </div>
+  </div>
+
+  <div class="search-section" style="padding-top: 8px; padding-bottom: 0;">
+    <h2 class="search-question">איך תרצו לחפש?</h2>
+  </div>
+
+  <div class="clusters-section" style="padding-bottom: 6px;">
+    <div class="search-methods">
+      <!-- Method 1: Free text search -->
+      <div class="search-method" style="--method-color: var(--accent)">
+        <div class="search-method-header">
+          <div class="search-method-num">1</div>
+          <div>
+            <div class="search-method-title">חיפוש חופשי</div>
+            <div class="search-method-subtitle">לפי מילות מפתח באתגרים, תחומים, ומענים</div>
+          </div>
+        </div>
+        <div class="search-method-divider"></div>
+        <div class="search-pill" id="home-search-pill">
+          <input type="text" id="home-search" placeholder="חפשו: אוריינות, מעבדה, חוסן..." />
+          <span class="search-pill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </span>
+          <button class="search-clear" onclick="clearSearch()">×</button>
+        </div>
+      </div>
+
+      <!-- Method 2: Random search (was Serendipity / גילוי אקראי) -->
+      <div class="search-method random-method" style="--method-color: var(--accent)" onclick="openSerendipity()">
+        <div class="search-method-header">
+          <div class="search-method-num">2</div>
+          <div>
+            <div class="search-method-title">
+              <span class="search-method-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3 L13.5 9.5 L20 11 L13.5 12.5 L12 19 L10.5 12.5 L4 11 L10.5 9.5 Z"/>
+                  <path d="M19 3 L19.7 5.3 L22 6 L19.7 6.7 L19 9 L18.3 6.7 L16 6 L18.3 5.3 Z"/>
+                  <path d="M5 16 L5.6 17.4 L7 18 L5.6 18.6 L5 20 L4.4 18.6 L3 18 L4.4 17.4 Z"/>
+                </svg>
+              </span>חיפוש אקראי
+            </div>
+            <div class="search-method-subtitle">5 אתגרים אקראיים מ-5 תחומים שונים ב-5 אשכולות שונים</div>
+          </div>
+        </div>
+        <div class="search-method-divider"></div>
+        <div style="font-size: 12px; color: var(--ink-muted); line-height: 1.5;">
+          תנו לאקראיות להוביל. מעת לעת התגליות הטובות ביותר באות ממה שלא חיפשתם.
+        </div>
+        <span class="search-method-arrow">›</span>
+      </div>
+
+      <!-- Method 3: Browse by cluster and domain (with dropdown) -->
+      <div class="search-method browse-method" id="browse-method-card" style="--method-color: var(--accent)">
+        <div class="search-method-header">
+          <div class="search-method-num">3</div>
+          <div>
+            <div class="search-method-title">חיפוש לפי אשכול ותחומים</div>
+            <div class="search-method-subtitle">בחרו אחד מ-7 האשכולות</div>
+          </div>
+        </div>
+        <div class="search-method-divider"></div>
+        <div style="font-size: 12px; color: var(--ink-muted); line-height: 1.5;">
+          כל אשכול מציג את התחומים שבו. לחיצה על אשכול תפתח את הרשימה המלאה של תחומים ואתגרים.
+        </div>
+        <div class="browse-toggle" onclick="toggleBrowseDropdown()">
+          <span id="browse-toggle-text">הציגו את האשכולות</span>
+          <span class="chev" aria-hidden="true">⌄</span>
+        </div>
+        <div class="browse-dropdown" id="browse-dropdown">
+          <div class="cluster-card" style="--cluster-color: var(--cluster-1)" onclick="openCluster(1)">
+            <div class="cluster-card-top">
+              <div class="cluster-num">01</div>
+              <div class="cluster-body">
+                <div class="cluster-name">מדעים מדויקים, טכנולוגיה ו-STEM</div>
+              </div>
+              <div class="cluster-arrow">›</div>
+            </div>
+            <div class="cluster-domains">
+              <span class="cluster-domain-tag"><span class="dot"></span>STEM</span><span class="cluster-domain-tag"><span class="dot"></span>מגמות טכנולוגיות</span><span class="cluster-domain-tag"><span class="dot"></span>מדו"ט - מדע וטכנולוגיה</span><span class="cluster-domain-tag"><span class="dot"></span>מפקח מערכות ימיות</span><span class="cluster-domain-tag"><span class="dot"></span>מתמטיקה</span><span class="cluster-domain-tag"><span class="dot"></span>תקשוב - אורינות דיגיטלית</span>
+            </div>
+          </div>
+
+          <div class="cluster-card" style="--cluster-color: var(--cluster-2)" onclick="openCluster(2)">
+            <div class="cluster-card-top">
+              <div class="cluster-num">02</div>
+              <div class="cluster-body">
+                <div class="cluster-name">אוריינות שפתית ותרבות</div>
+              </div>
+              <div class="cluster-arrow">›</div>
+            </div>
+            <div class="cluster-domains">
+              <span class="cluster-domain-tag"><span class="dot"></span>אנגלית</span><span class="cluster-domain-tag"><span class="dot"></span>הכלה- אל"ה</span><span class="cluster-domain-tag"><span class="dot"></span>זהירות ובטיחות בדרכים</span><span class="cluster-domain-tag"><span class="dot"></span>עבודות גמר</span><span class="cluster-domain-tag"><span class="dot"></span>עברית</span><span class="cluster-domain-tag"><span class="dot"></span>עברית לחברה הערבית ותכנית דוקאטי</span><span class="cluster-domain-tag"><span class="dot"></span>קליטת עולים</span><span class="cluster-domain-tag"><span class="dot"></span>תרבות יהודית-ישראלית</span>
+            </div>
+          </div>
+
+          <div class="cluster-card" style="--cluster-color: var(--cluster-3)" onclick="openCluster(3)">
+            <div class="cluster-card-top">
+              <div class="cluster-num">03</div>
+              <div class="cluster-body">
+                <div class="cluster-name">בעלי תפקידים</div>
+              </div>
+              <div class="cluster-arrow">›</div>
+            </div>
+            <div class="cluster-domains">
+              <span class="cluster-domain-tag"><span class="dot"></span>הערכה ומדידה</span><span class="cluster-domain-tag"><span class="dot"></span>התאמות</span><span class="cluster-domain-tag"><span class="dot"></span>חינוך כיתה</span><span class="cluster-domain-tag"><span class="dot"></span>מחנכים בחמ"ד</span><span class="cluster-domain-tag"><span class="dot"></span>סגני מנהלים</span><span class="cluster-domain-tag"><span class="dot"></span>ריכוז מיומנויות</span><span class="cluster-domain-tag"><span class="dot"></span>ריכוז מקצוע</span><span class="cluster-domain-tag"><span class="dot"></span>ריכוז פדגוגי</span><span class="cluster-domain-tag"><span class="dot"></span>ריכוז שכבה</span>
+            </div>
+          </div>
+
+          <div class="cluster-card" style="--cluster-color: var(--cluster-4)" onclick="openCluster(4)">
+            <div class="cluster-card-top">
+              <div class="cluster-num">04</div>
+              <div class="cluster-body">
+                <div class="cluster-name">תוכניות בית ספריות</div>
+              </div>
+              <div class="cluster-arrow">›</div>
+            </div>
+            <div class="cluster-domains">
+              <span class="cluster-domain-tag"><span class="dot"></span>השקפה</span><span class="cluster-domain-tag"><span class="dot"></span>חטיבת הנעורים</span><span class="cluster-domain-tag"><span class="dot"></span>ייעוץ וליווי של פיתוח מקצועי לבתי ספר</span><span class="cluster-domain-tag"><span class="dot"></span>מרום ריסטארט ותכנית הבית</span><span class="cluster-domain-tag"><span class="dot"></span>פיתוח מקצועי ערכי-חינוכי-פדגוגי</span><span class="cluster-domain-tag"><span class="dot"></span>קידום לימודי במרכזי למידה</span>
+            </div>
+          </div>
+
+          <div class="cluster-card" style="--cluster-color: var(--cluster-5)" onclick="openCluster(5)">
+            <div class="cluster-card-top">
+              <div class="cluster-num">05</div>
+              <div class="cluster-body">
+                <div class="cluster-name">טיפול בהון האנושי</div>
+              </div>
+              <div class="cluster-arrow">›</div>
+            </div>
+            <div class="cluster-domains">
+              <span class="cluster-domain-tag"><span class="dot"></span>זכויות המורים בפיתוח המקצועי</span><span class="cluster-domain-tag"><span class="dot"></span>קליטת מורים מיטבית</span><span class="cluster-domain-tag"><span class="dot"></span>תומכי הוראה</span>
+            </div>
+          </div>
+
+          <div class="cluster-card" style="--cluster-color: var(--cluster-6)" onclick="openCluster(6)">
+            <div class="cluster-card-top">
+              <div class="cluster-num">06</div>
+              <div class="cluster-body">
+                <div class="cluster-name">פרט, חברה וחוסן חברתי-רגשי</div>
+              </div>
+              <div class="cluster-arrow">›</div>
+            </div>
+            <div class="cluster-domains">
+              <span class="cluster-domain-tag"><span class="dot"></span>חינוך חברתי קהילתי ערכי - מנהל חברה ונוער</span><span class="cluster-domain-tag"><span class="dot"></span>חינוך ילדים ונוער בסיכון</span><span class="cluster-domain-tag"><span class="dot"></span>חינוך מיוחד</span><span class="cluster-domain-tag"><span class="dot"></span>ייעוץ חינוכי</span>
+            </div>
+          </div>
+
+          <div class="cluster-card" style="--cluster-color: var(--cluster-7)" onclick="openCluster(7)">
+            <div class="cluster-card-top">
+              <div class="cluster-num">07</div>
+              <div class="cluster-body">
+                <div class="cluster-name">מנהלים</div>
+              </div>
+              <div class="cluster-arrow">›</div>
+            </div>
+            <div class="cluster-domains">
+              <span class="cluster-domain-tag"><span class="dot"></span>ניהול ההון האנושי</span><span class="cluster-domain-tag"><span class="dot"></span>פיתוח מקצועי- מנהלים</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================================================
+     SCREEN 2: SEARCH RESULTS
+     =================================================== -->
+<div class="screen" id="search-results">
+  <div class="top-banner">
+    <div class="top-banner-pill">מינהל התיישבותי, פנימייתי ועליית הנוער</div>
+  </div>
+  <div class="search-results-header">
+    <div class="search-results-row">
+      <button class="back-btn" onclick="goHome()">
+        <span class="arrow">‹</span>
+        <span>חזרה</span>
+      </button>
+      <div class="search-pill-compact">
+        <input type="text" id="results-search" placeholder="חפשו לפי מילות מפתח..." />
+        <span class="search-pill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </span>
+      </div>
+    </div>
+    <div class="results-summary" id="results-summary"></div>
+  </div>
+  <div class="search-results-body" id="results-body"></div>
+</div>
+
+<!-- ===================================================
+     SCREEN 3: CLUSTER
+     =================================================== -->
+<div class="screen" id="cluster">
+  <div class="top-banner">
+    <div class="top-banner-pill">מינהל התיישבותי, פנימייתי ועליית הנוער</div>
+  </div>
+  <div class="cluster-header">
+    <div class="search-results-row">
+      <div class="back-btns-group">
+        <button class="back-btn" onclick="goBackFromCluster()">
+          <span class="arrow">‹</span>
+          <span>חזרה</span>
+        </button>
+        <button class="back-btn back-btn-search" onclick="goHome()">
+          <span class="arrow">‹</span>
+          <span>חזרה לחיפוש</span>
+        </button>
+      </div>
+    </div>
+    <div class="cluster-switcher" id="cluster-switcher"></div>
+  </div>
+  <div class="cluster-title-block">
+    <div class="cluster-title-num" id="cluster-num">01</div>
+    <h2 class="cluster-title-text" id="cluster-title"></h2>
+  </div>
+  <p class="cluster-subtitle" id="cluster-subtitle"></p>
+  <div class="domains-list" id="domains-list"></div>
+</div>
+
+<!-- ===================================================
+     SCREEN 4: CHALLENGE DETAIL
+     =================================================== -->
+<div class="screen" id="challenge">
+  <div class="top-banner">
+    <div class="top-banner-pill">מינהל התיישבותי, פנימייתי ועליית הנוער</div>
+  </div>
+  <div class="challenge-screen-header">
+    <div class="challenge-back-row">
+      <div class="back-btns-group">
+        <button class="back-btn" onclick="goBackToCluster()">
+          <span class="arrow">‹</span>
+          <span>חזרה</span>
+        </button>
+        <button class="back-btn back-btn-search" onclick="goHome()">
+          <span class="arrow">‹</span>
+          <span>חזרה לחיפוש</span>
+        </button>
+      </div>
+      <div class="challenge-counter" id="challenge-counter">1 / 1</div>
+    </div>
+  </div>
+  <div id="challenge-content"></div>
+</div>
+
+<!-- ===================================================
+     SCREEN 5: SERENDIPITY (random discovery)
+     =================================================== -->
+<div class="screen serendip-screen" id="serendipity">
+  <div class="top-banner">
+    <div class="top-banner-pill">מינהל התיישבותי, פנימייתי ועליית הנוער</div>
+  </div>
+  <div class="serendip-header">
+    <button class="back-btn" onclick="goHome()">
+      <span class="arrow">‹</span>
+      <span>חזרה</span>
+    </button>
+  </div>
+  <div class="serendip-body">
+    <div class="serendip-quote">
+      ״סרנדיפיטי היא היכולת לעשות תגליות, על ידי שילוב של מקריות ותבונה, של דברים שלא חיפשת אחריהם מלכתחילה״
+      <span class="serendip-quote-author">— הוראס וולפול</span>
+    </div>
+
+    <div class="serendip-action">
+      <button class="serendip-btn" id="serendip-btn" onclick="rollSerendipity()">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3 L13.5 9.5 L20 11 L13.5 12.5 L12 19 L10.5 12.5 L4 11 L10.5 9.5 Z"/>
+            <path d="M19 3 L19.7 5.3 L22 6 L19.7 6.7 L19 9 L18.3 6.7 L16 6 L18.3 5.3 Z"/>
+            <path d="M5 16 L5.6 17.4 L7 18 L5.6 18.6 L5 20 L4.4 18.6 L3 18 L4.4 17.4 Z"/>
+          </svg>
+        </span>
+        <span id="serendip-btn-text">גלו 5 אתגרים אקראיים</span>
+      </button>
+      <div class="serendip-helper">
+        5 אתגרים אקראיים מ-5 תחומים שונים ב-5 אשכולות שונים. סבב חדש בכל לחיצה.
+      </div>
+    </div>
+
+    <div class="serendip-results" id="serendip-results"></div>
+  </div>
+</div>
+
+<script>
+// ===================================================
+// DATA
+// ===================================================
+const clusters = {"1":{"name":"מדעים מדויקים, טכנולוגיה ו-STEM","short":"STEM","subtitle":"6 תחומי דעת · 18 אתגרים","domainsCount":6,"challengesCount":18,"domains":[{"name":"STEM","description":"","challenges":[{"num":"01","title":"חטיבת נעורים: הטמעת תוכניות לימודים חדשות במדעים ומתמטיקה.","desc":"עדכון תפיסת STEM החדשה, בקרב מורי בית הספר.","impacts":["עלייה במעורבות ומסוגלות מורים ללמד את תוכניות הלימודים החדשות"],"responses":{"development":{"scope":"30 ש\"א","days":"","audience":"מורי מדע וטכנולוגיה ומתמטיקה כיתה ז' - ח'","detail":"פיתוח נפרד מורי מתמטיקה. פיתוח נפרד למורי מדעים, שיעסוק בתוכניות הלימודים החדשות."}}},{"num":"02","title":"חטיבת נעורים: פיתוח תפיסות ומנגנוני עבודה, פרקטיקות להטמעת למידה בינתחומית","desc":"הטמעת למידה בינתחומית דורשת מעבר ממקצועות נפרדים לשיתוף פעולה, שפה פדגוגית אחידה, התמודדות עם עומס וחיזוק צוותים, בהובלת הנהלה ופיתוח מקצועי.","impacts":["קיום פרוייקטים אינטרדיסציפלינאריים חדשניים ורלוונטים בתוך בית ספר"],"responses":{"unique":{"detail":"STEM קאמפ- שלושה ימי בית יציב לצוות בינתחומי."}}},{"num":"03","title":"העלאת ומיצוי פוטנציאל בית ספר לבגרות הייטק- אתגר שש שנתי","desc":"הגדלת שיעור התלמידים והתלמידות בבגרות הייטק היא אתגר מערכתי, הדורש הרחבת תפיסה ותוכניות מצוינות מחטיבת הביניים ועד י״ב, ולא פעולה נקודתית בתיכון בלבד.","impacts":["הגדלת שיעור מסיימי בגרות הייטק ומיצוי פוטנציאל בית ספרי"],"responses":{"development":{"scope":"30 ש\"א","days":"","audience":"מורי מדמ''ח - פיזיקה - מתמטיקה","detail":"פיתוח מקצועי דיסציפלינארי וגם בינתחומי"},"community":{"scope":"30 שעות","days":"","audience":"","detail":"תפיסת מובילי בגרות הייטק שש שנתי"},"unique":{"detail":"ימי עיון, סמינרים למורים"}}}]},{"name":"מגמות טכנולוגיות","description":"","challenges":[{"num":"01","title":"הרחבת המענים הטכנולוגיים באמצעות פתיחת מגמות מותאמות לצורכי בית הספר","desc":"בחירת מגמה טכנולוגית חדשה דורשת התאמה בין צורכי התלמידים, משאבי בית הספר, כוח האדם ודרישות ההפעלה הפדגוגיות והארגוניות.","impacts":["פתיחת מגמות טכנולוגיות חדשות בהתאם לצורכי בית הספר ואוכלוסיית הלומדים.","גידול במספר התלמידים המשתלבים במסלולים טכנולוגיים בבית הספר."],"responses":{"unique":{"detail":"יעוץ לבחירת מגמה חדשה פיצוח אתגרים בפתיחת המגמה"}}},{"num":"02","title":"שיפור שיעורי ההסמכה וההתמדה במסלולים טכנולוגיים","desc":"פערים בהישגי תלמידים ובהתמדה במגמות הטכנולוגיות מקשים על הגדלת שיעורי ההסמכה ועל מיצוי הפוטנציאל של הלומדים.","impacts":["עלייה בשיעורי הזכאות להסמכה טכנולוגית בקרב תלמידי המגמות.","שיפור בהתמדה ובהשלמת מסלול הלימודים הטכנולוגי."],"responses":{"unique":{"detail":"הדרכה ובניית אסטרטגיה להעלאת אחוזי הסמכה"}}}]},{"name":"מדו\"ט - מדע וטכנולוגיה","description":"","challenges":[{"num":"01","title":"פיתוח מענים פדגוגיים למחסור במורי מדו\"ט","desc":"נדרש מענה למודלים של הוראה בהיעדר מורים, לצד חיזוק שיתופי פעולה עם גורמי חוץ ליצירת אקו־סיסטם לימודי.","impacts":["הרחבת שיתופי הפעולה עם גופי מדע וטכנולוגיה","הגדלת מספר המורים המשתתפים בליווי מקצועי"],"responses":{"development":{"scope":"30-60 שעות השתלמות","days":"משתנה","audience":"מורים חדשים","detail":"קהילת מורים חדשים: הדרכה ייעודית למורים חדשים."},"unique":{"detail":"חיבור לאקוסיסטם (מכוני מחקר, חוות חקלאיות, מרכזי מדע וטכנולגיה ועוד)"}}},{"num":"02","title":"חיזוק מיומנויות הוראה מותאמות במדו\"ט","desc":"מורי מדו\"ט נדרשים להטמיע הוראת STEM, למידה מבוססת חקר ואוריינות דיגיטלית בהתאמה לשונות לומדים.","impacts":["הרחבת השימוש בלמידת חקר ומשימות STEM בכיתות","שילוב כלי AI ואוריינות דיגיטלית בתהליכי הוראה ולמידה"],"responses":{"training":{"scope":"1/4-1/2 יום הדרכה שבועי","days":"שלישי","audience":"רכזי ומורי מדו\"ט","detail":"ליווי הרכז והדרכת צוות מדוט בהטמעת תפיסת הלמידה המתחדשת בתוכנית העבודה ותמיכה בתהליכי חקר מדעי."},"development":{"scope":"30-60 שעות השתלמות","days":"משתנה","audience":"מורים למדו\"ט","detail":"- קהילת \"ישראל ריאלית\": הטמעת תפיסת ה-STEM וביצוע משימות אוריינות דיגיטלית. - בינה חקרנית (AI): פיתוח מקצועי בנושא בינה חקלאית/מלאכותית לליווי חקר מדעי. - מובילי מרכזי מייקרס: הכשרה ללמידה מבוססת פתרון בעיות (PBL)"}}},{"num":"03","title":"חיזוק תשתיות ללמידת חקר מדעי","desc":"מחסור במעבדות ובכוח אדם תומך (לבורנטיות) מקשה על קיום תהליכי חקר מדעי ולמידה יישומית בחטיבת הביניים.","impacts":["הרחבת נגישות בתי הספר לתשתיות חקר מדעי","הגדלת היקף הלמידה ההתנסותית במדעים וטכנולוגיה"],"responses":{"unique":{"detail":"קולות קוראים מחוזיים"}}}]},{"name":"מפקח מערכות ימיות","description":"","challenges":[{"num":"01","title":"עדכון כשירויות מקצועיות של צוותי ההוראה במערכות ימיות מתקדמות","desc":"השינויים הטכנולוגיים בתחום השייט מחייבים הכשרה מתמשכת של צוותי ההוראה בהפעלת מערכות ניווט וכלי שייט מתקדמים.","impacts":["צוותי ההוראה משלבים שימוש במערכות ניווט וטכנולוגיות עדכניות בהוראה ובהדרכה.","עלייה ברמת המיומנות המקצועית של מדריכי ומורי הימאות בהפעלת ציוד מתקדם."],"responses":{"training":{"scope":"הדרכה מקצועית של הצוות מטעם הצוות וכן מדריכים חיצונים בתחום","days":"פעם בחודש","audience":"מורים ומדריכי ימאות","detail":"השתלמויות, וסיורים מקצועיים בנושאים: מערכות ניווט מתקדמות, טכנולוגיות שייט, הכשרה מקצועית ימית"},"development":{"scope":"30 שעות שנתיות","days":"פעם בחודש","audience":"מורים ומדריכים","detail":"מפגשים מקצועיים וסיורים מקצועיים והיכרות עם טכנולוגיות חדשות"}}}]},{"name":"מתמטיקה","description":"","challenges":[{"num":"01","title":"הטמעת תכנית לימודים חדשה בחטיבת הנעורים (חט\"ב)","desc":"לקראת שנת הלימודים תשפ\"ז צפוי להיכנס עדכון לתוכנית הלימודים (תכ\"ל) במתמטיקה לכיתות ז–ח. עדכון זה מביא עמו תפיסה פדגוגית רחבה הכוללת כישרויות…","impacts":["נקיטת עמדה חיובית על התכנית"],"responses":{"training":{"scope":"רבע יום הדרכה ( כ- 10 ימים בשנה)","days":"יום שלישי, ימים נוספים בתיאום מראש","audience":"רכזי ומורי חטב, רכזי ומורי תיכון","detail":"הטמעת התכנית אצל צוות ההוראה, הבנת הכשירויות, מיומנויות וגישות להוראה אורינות ומידול מתמטי, פתרון בעיות מורכבות פתרון בעיות STEM, הוראה מבוססת הבנה, לימוד ופיתוח רמות חשיבה שונות"},"development":{"scope":"30 שעות (מודולות לבחירה)","days":"כל השבוע בשעות אחה\"צ/ ערב","audience":"רכזים ומורים למתמטיקה","detail":"עידכון תכ\"ל לשכבת ז' עידכון תכ\"ל לשכבת ח' STEM תכנית מאו\"ר שילוב דיגיטל (מודל וAI)"},"community":{"scope":"מפגש אחד - קהילה איזורית","days":"כל השבוע","audience":"רכזים ומורים למתמטיקה","detail":"קהילות איזוריות על הרצף השש שנתי, שיח עמיתים משתף בין בתי ספר שונים"},"unique":{"detail":"כנס - אפריל, מאי בית יציב - אחרי החגים"}}},{"num":"02","title":"קידום בגרות הייטק בבתי הספר","desc":"יותר תלמידים שיסיימו 5 יח\"ל מתמטיקה (וגם פיזיקה או מדמ\"ח) פתיחת כיתות יהלום מורים שמלמדים תלמידים חלשים יותר אל מרימים תלמיד מנטאלי ומעלים מוטיבציה","impacts":["מספר כיתות מצוינות/ 5 יהלום שנפתחו בבית הספר/ מספר תלמידים שלומדים ברמה…"],"responses":{"training":{"scope":"רבע יום הדרכה ( כ- 10 ימים בשנה)","days":"יום שלישי, ימים נוספים בתיאום מראש","audience":"מוביל בגרות הייטק, רכזים, מורים","detail":"הובלת שינוי התמודדות עם התנגדויות מוטיבציה התמודדויות עם תלמידים מתקשים שיח מנטלי"},"community":{"scope":"60 שעות","days":"כל השבוע בשעות אחה\"צ/ ערב","audience":"מובילי בגרות הייטק, מורים שמלמדים כיתות 5 יהלום בחט\"ב ובתיכון","detail":"קהילות ב 3 ימים מרוכזים"},"unique":{"detail":"ימי עיון, כנסים"}}},{"num":"03","title":"קידום אורינות טכנולוגית והטמעת כלים דיגיטליים בלמידת המקצוע","desc":"עבודה עם מערכת המוודל, אתר הקמפוס ו AI כחלק מתהליך הלמידה לקידום למידה חדשנית ולומד עצמאי","impacts":["אחוז התלמידים שמבצעים משימות הוא 80%"],"responses":{"training":{"scope":"רבע יום הדרכה ( כ- 10 ימים בשנה)","days":"יום שלישי, ימים נוספים בתיאום מראש","audience":"כלל הרכזים והמורים למתמטיקה","detail":"הטמעת מודל, קמפוס, AI גאוגברה, דסמוס למידה דיפרנציאלית ולמידה אישית"},"development":{"scope":"30 שעות (מודולות לבחירה)","days":"כל השבוע בשעות אחה\"צ/ ערב","audience":"רכזים ומורים למתמטיקה","detail":"מתן מסגרת טכנית ופדגוגית לשימוש במערכת המודל ובאתר הקמפוס. AI - שילוב ושימוש למינוף הלמידה בכיתה"}}},{"num":"04","title":"הגדלת מספר כיתות של 4,5 יח\"ל בבתי הספר באמצעות תכנית יהלום","desc":"פתיחת כיתות נוספות של 4,5 יח\"ל (\"חלשות\") כדי לקדם שיותר תלמידים יסיימו ביחידות הגבוהות","impacts":["יותר כיתות 4 יח\"ל"],"responses":{"training":{"scope":"רבע יום הדרכה ( כ- 10 ימים בשנה)","days":"יום שלישי, ימים נוספים בתיאום מראש","audience":"כלל הרכזים והמורים למתמטיקה","detail":"מוטיבציה, ציר מנטאלי, דגשים בהוראת הרמה, פיתוח מצוינות"},"development":{"scope":"30 שעות (מודולות לבחירה)","days":"כל השבוע בשעות אחה\"צ/ ערב","audience":"רכזים ומורים למתמטיקה","detail":"מודולות יהלום"}}},{"num":"05","title":"הטמעת תכנית הלימודים החדשה בתיכון","desc":"ליווי ויישום של התוכנית שנכנסה לפני שלוש שנים ברמות השונות 3,4,5 יח\"ל","impacts":["נקיטת עמדה חיובית על התכנית (ע\"י סקר/ שאלון), יותר תלמידים מסיימים 3,4,5…"],"responses":{"training":{"scope":"רבע יום הדרכה ( כ- 10 ימים בשנה)","days":"יום שלישי, ימים נוספים בתיאום מראש","audience":"כלל הרכזים והמורים למתמטיקה","detail":"תכ\"ל, מטיבציה, נושאים חדשים לפי רמות, קידום מורים חדשים וותיקים יותר"},"development":{"scope":"30 שעות (מודולות לבחירה)","days":"כל השבוע בשעות אחה\"צ/ ערב","audience":"רכזים ומורים למתמטיקה","detail":"כלל התכנים בתכ\"ל החדשה לפי רמות"}}}]},{"name":"תקשוב - אורינות דיגיטלית","description":"","challenges":[{"num":"01","title":"פיתוח כשירויות רכז התקשוב כמוביל טכנו-פדגוגי בית ספרי","desc":"פער בין דרישות התפקיד לבין יכולות ההובלה הטכנו-פדגוגית של רכז התקשוב מקשה על הטמעת למידה דיגיטלית ועל הובלת תהליכים בית ספריים.","impacts":["רכזי תקשוב מובילים תהליכים טכנו-פדגוגיים באופן עצמאי.","לייה בשימוש סדור בכלים דיגיטליים ברמת בית הספר"],"responses":{"training":{"scope":"1/4 יום הדרכה שבועי","days":"שלישי (ייתכנו שינויים לפי הצורך)","audience":"רכזי תקשוב","detail":"- ליווי והדרכת רכז התקשוב"},"development":{"scope":"30 שעות השתלמות","days":"משתנה","audience":"רכזי תקשוב","detail":"קהילת מובילי תקשוב: פורום רכזים מחוזי ללמידת עמיתים ועדכונים מקצועיים."},"community":{"scope":"30 שעות השתלמות","days":"משתנה","audience":"רכזי תקשוב","detail":"קהילת מובילי תקשוב: פורום רכזים מחוזי ללמידת עמיתים ועדכונים מקצועיים."},"unique":{"detail":"קבוצת ווצאפ של רכזי התקשוב המהווה קהילה לשיתוף והתיעצות. ייעוץ על פי צורך ממומחי תוכן מחוזיים בנושאי תשתיות, בינה מלאכותית, אורינות דיגיטלית"}}},{"num":"02","title":"חיזוק כשירויות דיגיטליות של מורים להוראה חדשנית","desc":"פערים בשימוש בכלים ובפרקטיקות דיגיטליות מקשים על הטמעת פדגוגיה חדשנית ועל קידום מיומנויות למידה עדכניות בקרב תלמידים.","impacts":["מורים משלבים פרקטיקות הוראה דיגיטליות באופן עקבי.","תלמידים מבצעים משימות למידה והערכה מתוקשבות."],"responses":{"training":{"scope":"1/4-1/2 יום הדרכה שבועי (בהתאם לגודל בי\"ס)","days":"שלישי (ייתכנו שינויים לפי הצורך)","audience":"רכז התקשוב + כלל המורים","detail":"- הכשרת צוות מורים מוביל ו/או ליווי פרטני למורים נבחרים."},"development":{"scope":"30 שעות השתלמות","days":"משתנה","audience":"מורים מובילים בתחום האוריינות הדיגיטלית - סוכני שינוי","detail":"הכשרת מורים מטמיעי אורינות דיגיטלית: הכשרת מורים מובילים שישמשו כסוכני שינוי בחדר המורים."},"community":{"scope":"30 שעות השתלמות","days":"משתנה","audience":"מורים מובילים בתחום האוריינות הדיגיטלית - סוכני שינוי","detail":"הכשרת מורים מטמיעי אורינות דיגיטלית: הכשרת מורים מובילים שישמשו כסוכני שינוי בחדר המורים."},"unique":{"detail":"יעוץ להשתלמות בית ספרית להעצמת הצוות: השתלמויות בטכנו-פדגוגיה, שילוב בינה מלאכותית (AI) ופיתוח תכני הערכה דיגיטליים. השתלמויות כלי גוגל (פסיפס)"}}},{"num":"03","title":"ביסוס שגרות למידה דיגיטליות לשמירה על רציפות פדגוגית ומוכנות לחירום","desc":"הטמעת שגרות עבודה דיגיטליות קבועות נדרשת לצורך מעבר רציף ואיכותי בין למידה בשגרה ללמידה מרחוק בעת חירום.","impacts":["מעבר רציף בין למידה בשגרה ללמידה מרחוק.","צוותי ההוראה פועלים לפי שגרות דיגיטליות מוסכמות."],"responses":{"training":{"scope":"1/4-1/2 יום הדרכה שבועי (בהתאם לגודל בי\"ס)","days":"שלישי (ייתכנו שינויים לפי הצורך)","audience":"רכז התקשוב וצוות ההנהלה","detail":"מתן ייעוץ להנהלת בית הספר לביסוס רציפות תפקודית ופדגוגית באמצעות הטמעת שגרות דיגיטליות ביומיום; יצירת תשתית שבה הלמידה מרחוק אינה 'פתרון חירום' אלא שפת עבודה שגורה המאפשרת מעבר מיידי ואיכותי בכל עת. (ההדרכה תכלול מיפוי…"},"unique":{"detail":"הכנה לתרגיל חירום יעוץ על פי צורך ממומחי תוכן מחוזיים בנושאי תשתיות, בינה מלאכותית, אורינות דיגיטלית ועוד."}}},{"num":"04","title":"צמצום פערי תשתיות לצורך יישום פדגוגיה דיגיטלית","desc":"פערים בציוד קצה ובתשתיות תקשורת מקשים על יישום רציף ואפקטיבי של הוראה ולמידה דיגיטלית בבית הספר.","impacts":["שיפור בזמינות ציוד ותשתיות דיגיטליות.","הרחבת הגישה הרציפה של מורים ותלמידים לכלים דיגיטליים."],"responses":{"development":{"scope":"חלק מהשתלמות הרכזים","days":"משתנה","audience":"רכזי תקשוב, מתאמי מחשוב, הנהלת ביה\"ס","detail":"- חלק מהמפגשים בפיתוח המקצועי של רכזי התקשוב עוסק בנושאי תשתיות וציוד. -וובינרים בנושאים אלו (אינטרנט, תוכן דיגיטלי, מחשב לכל תלמיד ועוד)"},"unique":{"detail":"ייעוץ מומחי תוכן מחוזיים התקופה בשנה: על פי צורך ליווי בנושאי תשתיות, מחשב לכל תלמיד והצטיידות דיגיטלית."}}}]}]},"2":{"name":"אוריינות שפתית ותרבות","short":"אוריינות","subtitle":"8 תחומי דעת · 29 אתגרים","domainsCount":8,"challengesCount":29,"domains":[{"name":"אנגלית","description":"","challenges":[{"num":"01","title":"קידום תלמידים ל4-5 יח\"ל בבגרות לאורך הרצף השש-שנתי","desc":"עבודה שש־שנתית לקידום אישי, חזרה לכיתות אם ותכנית תלת־שנתית מותאמת. שימוש ב-AI ואפליקציות דיפרנציאליות לקידום כל תלמיד מ־N ל־N+1.","impacts":["הבנת המוסד שאנגלית זו שפה ולא מקצוע בכיתה","קידום מצויינות ושימוש בשפה בכל מיני דרכים"],"responses":{"training":{"scope":"רבע יום הדרכה","days":"שלישי","audience":"רכזים וצוותי מורים שש שנתיים","detail":"עבודה בחט\"ב: הוראה דיפרנציאלית ב-MTSS, קביעת יעדים ומיפוי נתונים בכלי ראמ\"ה. ראייה שש-שנתית וחיבור בין חטיבות. תוכנית RESTART לצמצום פערים ומעקב רציף. חיבור שפתי בין אנגלית ללשון, והערכה מותאמת אישית לכל תלמיד."},"development":{"scope":"קורסים מקוונים, וובינרים","days":"על פי תוכנית הפיקוח בתחילת השנה","audience":"רכזי מקצוע וצוותי מורים","detail":"REED מציע כ-20 קורסים מקוונים לפיתוח מקצועי, קידום המורה בכיתה, מתודות חדשניות והתלמיד במרכז. קורסים לשימוש בחומרים דיפרנציאלים ועבודה מבוססת נתונים ויעדים מדידים. כל מורה אנגלית צריך להתשלם כל שנה 30 שעות."},"unique":{"detail":"תכנית צמצום פערים RESTART תכנית מצטיינים תכנית WRITING PORTFOLIOS תכנית אנגלית דבורה ייחודית תכנית שגרירים צעירים תכנית GARDEN TO TABLE תכנית SWAP SHOP -שח''ק ירוק תכנית BOOKS -BRIDGES -בין יסודי לחט\"ב כתיבת ספרים"}}},{"num":"02","title":"יישום מיטבי של תכנית הלימודים החדשה תוך התאמת פרקטיקות הוראה, הערכה ולמידה","desc":"תכנית לימודים וספרי לימוד חדשים בונה ידע - התלמידה במרכז, הערכה דיפרנציאלית ומעצבת, מיומנויות, ולמידה אקטיבית. מקצועיות חובה כדי לקדם את התלמידים.","impacts":["הכשרה בתכנית הלימודים החדשה","יישום תכני התכנית החדשה"],"responses":{"training":{"scope":"רבע יום הדרכה","days":"שלישי","audience":"רכזי מקצוע וצוותי אנגלית (+ צוותי הנהלה)","detail":"הדרכת בית הספר למטודות ליישום התכנית החדשה על כל פניה."},"development":{"scope":"30 שעות מקוונות","days":"משתנה","audience":"כל רכז או מורה שטרם הוכשר","detail":"תפיסת התלמידה במרכז, למידה אקטיבית ודיפרנציאלית בכיתה, דגש על יצירת שפה כתובה ודבורה, לומדים עצמאים. מיפויים ועבודה עם נתונים, תפיסת הערכה מחודשת ומותאמת תלמידים. שילוב דיגיטל AI בלמידה של התלמידים"},"unique":{"detail":"שגרירים צעירים, משדר חדשות שינוי אקלים, תכנית WRITING PORTFOLIOS, תכנית אנגלית דבורה, שגרירים צעירים בחט\"ב, GARDEN TO TABLE לקיימות , SWAP SHOP SUSTAIN - שח\"ק ירוק, BOOKS AS BRIDGES בין יסודי לחט\"ב - כתיבת ספרים תחרויות שונות"}}},{"num":"03","title":"קידום אנגלית בקרב אוכלוסיות שונות עם צרכים שונים","desc":"התמודדות עם \"הקצוות\" -תלמידים בסיכון ועד למחוננים/מצטיינים – בתוך מרחב כיתתי אחד. תוכניות מחוזיות והדרכות לצוותים ולמורים בהתמודדות עם אתגרים אלו.","impacts":["ראיית כל התלמידים והצרכים שלהם","מיפויים של תלמידם עם צרכים שונים"],"responses":{"training":{"scope":"רבע יום הדרכה","days":"שלישי","audience":"צוותי מורים (+מנהל רכז פדגוגי חט''ב)","detail":"מיפוי צרכים, הצבת יעדים ובניית תכנית רב שנתית להתאמת הלמידה לתלמידים שוני צרכים, ממחוננים לתלמידים עם קשיי לימוד. ליווי צוות ומורים במערכות שונות עם חומרי למידה שונים ותכניות אחרות."},"development":{"scope":"30 שעות","days":"","audience":"מורים בתהליך","detail":"הצגת פרדיגמות חדשניות, בניית כלים , ליווי צוותים ומורים, תמיכה מתמשכת, קייס סטדיז לפיתוח מודעות ופתרון בעיות, הכנת חומרים, ובניית עבודת צוות מועילה ובריאה"},"community":{"scope":"פעם בשבוע","days":"ימי חמישי","audience":"רכזי אנגלית בשינוי","detail":"3-4 מפגשים בשנה עם מומחה חט''ב בזום או במוסד"},"unique":{"detail":"פיתוח מקצועי: קורסים בנושאים שונים לפי הצורך של בית הספר: הערכה מעצבתו דיפרנציאלית, יצירת שפה וצמצום פערים בחט\"ב, תלמידי שח\"ר והצרכים השונים, חינוך מיוחד, קהילת מורי מחוננים ומצטיינים, וREED UNIVERSITY לכלל המורים."}}},{"num":"04","title":"שימור והעצמת הון אנושי באנגלית","desc":"בשל מחסור במורי אנגלית, יש לחזק שימור מורים, תמיכה פדגוגית ורגשית, וכלים ניהוליים וקהילה תומכת לרכזים ולמורים חדשים. להובלת צוות אנגלית מקצועי ומאושר","impacts":["שימור מורים חדשים","העצמת מורים כמנחות ומלוות מורים אחרים"],"responses":{"training":{"scope":"רבע יום הדרכה","days":"שלישי","audience":"רכזי מקצוע חדשים וצוותים עם כמה מורים חדשים","detail":"ליווי ותמיכה לאורך השנה, צפיות ומפגשי תכנון ומעקב. ליווי להעצמת הרכז כמנהיג פדגוגי ומוביל צוות"},"development":{"scope":"30 שעות","days":"יום א בערב סינכרוני בזום","audience":"כל רכז אנגלית חדש","detail":"כלים , ליווי, תמיכה, קייס סטאדי, חומרים"},"community":{"scope":"כל השנה","days":"כל יום","audience":"רכזים חדשים שנה ראשונה","detail":"קבוצת ווטסאפ פעילה מלווה קורס כדי לתת מענה לשאלות בזמן אמת"},"unique":{"detail":"למורים החדשים יש מדריכה מחוזית שמלווה אותם כקהילה וגם פרטנית. צריך לפנות לג'ודי על מנת לקבל עזרה למורים חדשים בבית הספר."}}}]},{"name":"הכלה- אל\"ה","description":"","challenges":[{"num":"01","title":"הוראה מותאמת בכיתות הטרוגניות מבחינה לימודית, רגשית וחברתית","desc":"בשל פיחות בתלמידים השולטים במיומנויות אורייניות בסיסיות נדרשת תוכנית מערכתית לחיזוק מיומנויות שפה ואוריינות לצד פיתוח אסטרטגיות למידה ומודלים להוראה…","impacts":[],"responses":{"training":{"scope":"רבע יום הדרכה- כ-10 מפגשים בשנה","days":"גמיש","audience":"רכזת הכלה ובעלי תפקידים רלוונטיים לפי נושא","detail":"בניית תוכנית עבודה מבוססת מיפוי, פיתוח שפת הכלה בית־ספרית תוך הרחבת סל המענים הבית-ספריים לצד הכשרת צוות להוראה בכיתה הטרוגנית."},"development":{"scope":"30 שעות","days":"לרוב רביעי 17:00-19:00","audience":"רכזות הכלה שנה רביעית ומעלה","detail":"פיתוח מקצועי מחוזי לרכזות הכלה, בדגש על למידת עמיתים וניתוח מקרים מהשטח."},"unique":{"detail":"סוג המענה: כנס שנתי לבעלות תפקידים התקופה בשנה: אפריל–מאי נושא: כנס מקצועי סביב סוגיות ליבה בתחום ההכלה."}}},{"num":"02","title":"קידום מיומנויות שפה ואוריינות באמצעות תוכנית בית־ספרית רב־תחומית","desc":"פלח הכיתה ששולט במיומנויות הבסיסיות בתחום השפה הולך ומצטמצם. מענים אלה יעסקו הן בהקניית אסטרטגיות למידה והן בפיתוח מודלים להוראה סביב מיומנויות.","impacts":[],"responses":{"training":{"scope":"רבע יום הדרכה- כ-10 מפגשים בשנה","days":"גמיש","audience":"מת\"לית (ניתן גם לרכזת פדגוגית/רכזות רבי מלל/רכזת עברית)","detail":"בניית תוכנית התערבות מבוססת מיפוי אורייני ופיתוח מומחיות בהוראת אסטרטגיות למידה."},"development":{"scope":"30 שעות","days":"לרוב רביעי 17:00-19:00","audience":"מת\"ליות בעלות הכשרה","detail":"פיתוח מקצועי בתחום האוריינות ובניית מהלכים בית־ספריים לקידום שפה."},"community":{"scope":"30 שעות","days":"","audience":"מורים המלמדים בקבוצות אל\"ה","detail":"למידה בנושא לקויות למידה, עבודה בקבוצות קטנות ואסטרטגיות למידה."},"unique":{"detail":"סוג המענה: כנס שנתי לבעלות תפקידים התקופה בשנה: אפריל–מאי נושא: כנס מקצועי בתחום האוריינות וההכלה."}}},{"num":"03","title":"פיתוח מנהיגות מקצועית של המת\"לית ורכזת ההכלה","desc":"בעלות התפקידים נדרשות להוביל צוותים, לקדם תהליכים מערכתיים ולבנות תוכניות עבודה ארוכות טווח.","impacts":[],"responses":{"training":{"scope":"רבע יום הדרכה, כ-10 מפגשים בשנה","days":"גמיש","audience":"רכזת הכלה ומת\"לית","detail":"פיתוח מיומנויות הובלה, חשיבה אסטרטגית ובניית תוכניות עבודה מערכתיות."},"development":{"scope":"30 שעות","days":"גמיש","audience":"רכזות הכלה ומת\"ליות","detail":"פיתוח מיומנויות ניהול והובלת צוות באמצעות למידת עמיתים ומפגש עם מומחים."}}}]},{"name":"זהירות ובטיחות בדרכים","description":"","challenges":[{"num":"01","title":"צוות הוראה- פיתוח מקצועי לבעל תפקיד רכז זה\"ב","desc":"תפקיד רכז זה\"ב מחייב גישה רב מערכתית- קשר עם קהילת בית הספר, הרשות המקומית, גופים חיצוניים ועם הרלב\"ד. יש צורך בהעשרה ומתן כלים לרכז שיסייעו בעבודתו.","impacts":["הרחבת יוזמות ושיתופי פעולה בית־ספריים בתחום הבטיחות בדרכים","עלייה במודעות תלמידים להתנהגות בטוחה ואחראית בדרכים"],"responses":{"training":{"scope":"1-3 מפגשי הדרכה בשנה לבית ספר על ידי מדריך/ מטמיע","days":"ימי שלישי","audience":"רכזי זה\"ב ומנהלי בתי הספר","detail":"קידום פעילות בית ספרית שש שנתית. מפגש בית ספרי בנוכחות מנהל ביה\"ס, רכז זה\"ב, מורה לחינוך תעבורתי, ושותפים נוספים בהתאם לצורך. סיור בביה\"ס, וצפייה בשיעורים ובימי שיא"},"development":{"scope":"30 שעות מוכר לגמול עם ציון","days":"ימי שלישי שעות 16:00-19:00","audience":"רכזי זה\"ב ותיקים","detail":"השתלמות לרכזי זה\"ב ותיקים לחיזוק ההובלה הבית־ספרית באמצעות יוזמות, בינה מלאכותית, חיבורים עם קהילה וגורמי מקצוע, ושילוב בטיחות בדרכים בהוראה רב־תחומית ליצירת שינוי בקרב בני נוער"},"community":{"scope":"מפגש רכזי זהב אזוריים","days":"ימי שלישי אחר הצהריים","audience":"רכזי זה\"ב בחלוקה לאזור דרום, מרכז וצפון","detail":"מפגש שולחנות עגולים של רכזי זה\"ב עם ראשי מטות הבטיחות במועצות האיזוריות וראשי אזור רלב\"ד"}}},{"num":"02","title":"העלאת המודעות לחשיבות החינוך לבטיחות בדרכים במסגרת בית הספר","desc":"חיזוק תרבות בטיחות בדרכים ומתן מענה חינוכי לנהיגה ורכיבה לא חוקית ומסכנת בקרב תלמידי חט\"ע וחט\"נ, תוך התייחסות למאפיינים הייחודיים מרחב ההתיישבותי.","impacts":["חיזוק מודעות תלמידים לסכנות בנהיגה ורכיבה לא חוקית"],"responses":{"training":{"scope":"1-3 מפגשי הדרכה בשנה לבית ספר על ידי מדריך מטמיע","days":"ימי שלישי, שעות הבוקר","audience":"צוות ניהולי, צוות בית הספר ורכזי זה\"ב","detail":"הדרכת המנהל וחדר מורים בנושא בטיחות בדרכים בדגש על אתגרי המחוז"},"unique":{"detail":"כנסים ומפגשים ייעודיים לבתי ספר עפי תוכנית הלימודים וובינר הדרכה לקראת שבוע בטיחות ארצי"}}},{"num":"03","title":"טיוב הפדגוגיה של הוראת החינוך התעבורתי בכיתות י לכדי הוראה חדשנית ומגוונת","desc":"חיזוק איכות ההוראה בחינוך תעבורתי בכיתה י' באמצעות העשרת דרכי הוראה, כלים פדגוגיים וידע מקצועי לקראת בחינת התיאוריה של משרד התחבורה","impacts":["עלייה באחוז ניגשים ואחוז עוברים במבחן תיאוריה. משוב תלמידים"],"responses":{"unique":{"detail":"הכשרת מורים חינוך תעבורתי בבית יציב"}}}]},{"name":"עבודות גמר","description":"","challenges":[{"num":"01","title":"הקמה והטמעה של מגמת עבודות גמר כמסגרת פדגוגית מובנית","desc":"בניית תשתית ארגונית ופדגוגית להקמה וליווי של מגמת עבודות גמר מותאמת לרוח בית הספר, תלמידיו וערכיו, תכנון שנתי וליווי תהליכי חקר כחלק משגרת בית הספר.","impacts":["רכישת מיומנויות חקר על ידי התלמידים","שיפור ביכולת התלמידים להתמודד עם פרויקט ארוך ומורכב של כתיבת עבודה"],"responses":{"training":{"scope":"כ-10 מפגשים של 1/4 יום הדרכה","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מורים במגמה, רכזות פדגוגיות, רכזי שכבות ט-י\"ב על פי הצורך.","detail":"איתור תלמידים, בניית תשתית פדגוגית, תכנון שנתי, ליווי חקר, התאמות ללומדים, הוראת חקר, תפקיד הרכז"},"development":{"scope":"מספר השתלמויות של 30 שעות","days":"כל ימות השבוע","audience":"רכזי עבודות גמר ומנחי עבודות גמר","detail":"השתלמות רכזים מתחילים. השתלמות רכזים מובילי מגמה השתלמות בנושאים ספציפיים - פרזנטציות, עבודות בתחום המים, השתלמויות עבודות גמר בתחומי דעת שונים."},"community":{"scope":"30 ש\"א, כ-8 מפגשים","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מנחי עבודות גמר, רכזים פדגוגיים, מורים במגמת עבודות גמר","detail":"קהילה מקצועית לומדת בדגש \"פדגוגיה מוטת עתיד\", פיתוח משותף של חומרי הוראה ויישום מושכל של בינה מלאכותית."},"unique":{"detail":"כנס רכזי עבודות גמר תחרות פרס גור אריה לעבודות גמר מצטיינות של המינהל. תחרויות ארציות ובינלאומיות נוספות (פרס המים, ואן ליר, מדענים צעירים, יד ושם ועוד)."}}},{"num":"02","title":"התאמת מסלולי עבודות גמר ללומדים בעלי מאפיינים ייחודיים","desc":"התאמה פדגוגית וארגונית ללומדים מגוונים (מחוננים, נעדרים מסיבות שונות, על הרצף האוטיסטי ועוד) תוך בניית מסלולים אישיים וליווי מותאם לאורך תהליך החקר.","impacts":["הרחבת מעגל התלמידים כותבי עבודות גמר","מתן פיתרון לתלמידים בעלי מאפיינים ייחודיים"],"responses":{"training":{"scope":"כ-10 מפגשים של 1/4 יום הדרכה","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מורים במגמה, רכזות פדגוגיות, רכזי שכבות ט-י\"ב על פי הצורך.","detail":"בניית תוכנית אישית ולו\"ז מתאים על פי צרכי התלמידים, סיוע באיתור מנחים ותוכניות חוץ בית ספריות מתאימות."},"development":{"scope":"מספר השתלמויות של 30 שעות","days":"כל ימות השבוע","audience":"רכזי עבודות גמר ומנחי עבודות גמר","detail":"השתלמות רכזים מתחילים השתלמות רכזים מובילי מגמה השתלמות בנושאים ספציפיים - פרזנטציות, עבודות בתחום המים, השתלמויות עבודות גמר בתחומי דעת שונים."},"community":{"scope":"30 ש\"א, כ-8 מפגשים","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מנחי עבודות גמר, רכזים פדגוגיים, מורים במגמת עבודות גמר","detail":"קהילה מקצועית לומדת בדגש \"פדגוגיה מוטת עתיד\", פיתוח משותף של חומרי הוראה ויישום מושכל של בינה מלאכותית."},"unique":{"detail":"כנס רכזי עבודות גמר תחרות פרס גור אריה לעבודות גמר מצטיינות של המינהל. תחרויות ארציות ובינלאומיות נוספות (פרס המים, ואן ליר, מדענים צעירים, יד ושם ועוד)."}}},{"num":"03","title":"הטמעת הוראת חקר המפתחת מיומנויות למידה עצמאית ואוריינות אקדמית","desc":"צוותי הוראה נדרשים להוביל תהליכי חקר הכוללים שאילת שאלות, עיבוד מידע, ניהול תהליך ולמידה מבוססת תוצרים.","impacts":["רכישת מיומנויות חקר על ידי התלמידים","שיפור בהתמדת התלמידים כותבי העבודות"],"responses":{"training":{"scope":"כ-10 מפגשים של 1/4 יום הדרכה","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מורים במגמה, רכזות פדגוגיות, רכזי שכבות ט-י\"ב על פי הצורך.","detail":"הדרכה להטמעת הוראת חקר ולמידת חקר, חשיבה נראית, בינה מלאכותית ופרזנטציה."},"development":{"scope":"מספר השתלמויות של 30 שעות","days":"כל ימות השבוע","audience":"רכזי עבודות גמר ומנחי עבודות גמר","detail":"השתלמות רכזים מתחילים. השתלמות רכזים מובילי מגמה השתלמות בנושאים ספציפיים - פרזנטציות, עבודות בתחום המים, השתלמויות עבודות גמר בתחומי דעת שונים."},"community":{"scope":"30 ש\"א, כ-8 מפגשים","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מנחי עבודות גמר, רכזים פדגוגיים, מורים במגמת עבודות גמר","detail":"קהילה מקצועית לומדת בדגש \"פדגוגיה מוטת עתיד\", פיתוח משותף של חומרי הוראה ויישום מושכל של בינה מלאכותית."},"unique":{"detail":"כנס רכזי עבודות גמר תחרות פרס גור אריה לעבודות גמר מצטיינות של המינהל. תחרויות ארציות ובינלאומיות נוספות (פרס המים, ואן ליר, מדענים צעירים, יד ושם ועוד)."}}},{"num":"04","title":"ביסוס תפקיד רכז עבודות הגמר כמוביל פדגוגי ומנהל תהליכי חקר","desc":"רכז עבודות הגמר מוביל תהליכים מערכתיים תוך שימוש בכלים פדגוגיים וטכנולוגיים, מתמודד עם הנחייה פרטנית, מגוון תחומי דעת, בינה המלאכותית ואיתור מנחים.","impacts":["הובלת התלמידים הכותבים בצורה מקצועית ואיכותית","שיפור הקשר בין בית הספר לבין הפיקוח"],"responses":{"training":{"scope":"10 מפגשים של 1/4 יום הדרכה","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מורים במגמה, רכזות פדגוגיות, רכזי שכבות ט-י\"ב על פי הצורך.","detail":"מעטפת פדגוגית, ארגונית וניהולית לרכז עבודות הגמר, קשר רציף עם הנחיות הפיקוח."},"development":{"scope":"מספר השתלמויות של 30 שעות","days":"עדיין לא נקבע","audience":"רכזי עבודות גמר ומנחי עבודות גמר","detail":"השתלמות רכזים מתחילים. השתלמות רכזים מובילי מגמה השתלמות בנושאים ספציפיים - פרזנטציות, עבודות בתחום המים, השתלמויות עבודות גמר בתחומי דעת שונים."},"community":{"scope":"30 ש\"א, כ-8 מפגשים","days":"כל ימות השבוע","audience":"רכזי עבודות גמר, מנחי עבודות גמר, רכזים פדגוגיים, מורים במגמת עבודות גמר","detail":"קהילה מקצועית לומדת בדגש \"פדגוגיה מוטת עתיד\", פיתוח משותף של חומרי הוראה ויישום מושכל של בינה מלאכותית."},"unique":{"detail":"כנס רכזי עבודות גמר תחרות פרס גור אריה לעבודות גמר מצטיינות של המינהל. תחרויות ארציות ובינלאומיות נוספות (פרס המים, ואן ליר, מדענים צעירים, יד ושם ועוד)."}}}]},{"name":"עברית","description":"","challenges":[{"num":"01","title":"צמצום פערים באוריינות השפתית והלשונית בכניסה לחטיבת הביניים","desc":"תלמידים מגיעים עם פערים בקריאה, כתיבה וידע לשוני, ונדרש מענה מבוסס אבחון, הוראה מותאמת ומעקב שיטתי","impacts":["80% מהתלמידים מציגים שיפור של 5%–10% בציון במדדים בין מבדק פתיחה לסיום."],"responses":{"training":{"scope":"גפ\"ן- 1/4 (רבע) יום הדרכה","days":"יום רביעי","audience":"צוות מורי עברית ז' , רכזת עברית , תומכי הוראה (מת\"ליות, מורות שילוב וכו')","detail":"מהלך הדרכה שנתי לצמצום פערים באוריינות, הכולל: שלב אינטנסיבי תחום בזמן (5 חודשים) של אבחון פתיחה וסיום, הוראה מדורגת, מבדקי ביניים ומעקב להתאמת מענים מדויקים לתלמידים מתקשים, ולאחר מכן המשך ליווי מותאם."},"development":{"scope":"30 שעות אקדמיות (7-8 מפגשים)","days":"שלישי בין 19.00-16.00","audience":"מורי עברית בחט\"ב, רכזות עברית, מורי תחומי הדעת","detail":"פיתוח כשירויות להוראה מדורגת מבוססת נתונים לצמצום פערים באוריינות, הכולל זיהוי פערים, בניית משימות מדורגות, פיתוח יחידות הוראה (כולל שימוש בבינה מלאכותית) ושימוש בנתוני מבדקים להתאמת מענים לתלמידים מתקשים"},"community":{"scope":"30 שעת","days":"רביעי אחה\"צ","audience":"מורי עברית ומורי תחומי הדעת בחט\"ב","detail":"קהילת למידה להעמקה והטמעה של הוראה מדורגת מבוססת נתונים, הכוללת דיון באתגרי הוראה מהשטח, ניתוח נתוני תלמידים, למידת עמיתים וחשיבה משותפת על התאמת המענים לצורך הטמעה מתמשכת"},"unique":{"detail":"וובינר התנעה (נובמבר): מורי עברית ורכזים וובינר מיקוד: לאחר המבדק הראשון. יום עיון יישומי (דצמבר): מורי עברית כנס שיתוף תוצרים (פברואר): רכזי עברית – הצגת שיפור (בין מבדק ראשון למבדק סיום), שיתוף פרקטיקות ולמידת עמיתים"}}},{"num":"02","title":"ביסוס הוראה שיטתית של הבעה בעל פה כחלק מרצף מיומנויות השפה","desc":"נדרש חיבור שיטתי בין הוראת השפה לתחומי הדעת לצורך יישום מיומנויות בהקשרים אותנטיים (יכולת הצגה, קריאה בקול, דיבור מול קהל)","impacts":["לפחות 70% מהתלמידים משפרים את יכולתם בהבעה בעל פה בהתאם למחוון מובנה."],"responses":{"training":{"scope":"גפ\"ן רבע (1/4) יום הדרכה","days":"יום רביעי","audience":"רכזת + צוות עברית לחט\"ב- ז-ט, תומכי הוראה (מת\"ליות, מורות שילוב וכו')","detail":"פיתוח כשירויות להוראת הבעה בעל פה באופן שיטתי, כולל תכנון משימות, שימוש במחוונים וניתוח ביצועי תלמידים לדיוק ההוראה."},"development":{"scope":"30 שעות אקדמיות (7-8 מפגשים)","days":"שלישי בין 19.00-16.00","audience":"מורי חט\"ב לעברית","detail":"השתלמות למורי שפה להטמעת הוראת הבעה בעל פה, הכוללת ניתוח ביצועי תלמידים, שיתוף פרקטיקות, פיתוח משימות ומחוונים ולמידת עמיתים לדיוק מתמשך של ההוראה."},"community":{"scope":"30 שעות","days":"שלישי או רביעי אחה\"צ בשעו 19.00-16.00","audience":"רכזי עברית ומורי עברית של כיתה ז המשתתפים בהדרכה.","detail":"קהילת למידה למורי שפה להטמעת הוראת הבעה בעל פה, עם ניתוח ביצועים, שיתוף פרקטיקות ולמידת עמיתים."},"unique":{"detail":"שיעור “במה” בית-ספרי: במסגרת ההדרכה ייבנה ויוטמע מודל לתרגול הבעה בעל פה (קריאה בקול ופרזנטציות), הכולל מחוונים, יישום בכיתה ומשוב מבוסס ביצוע."}}},{"num":"03","title":"הטמעת הוראה בין-תחומית לפיתוח מיומנויות שפה בהקשרים אותנטיים","desc":"הוראת שפה מנותקת מצמצמת יישום, ולכן נדרש חיבור שיטתי בין שפה לתוכן דיסציפלינרי","impacts":["70% מהתלמידים משפרים יכולת שימוש במיומנות אורייניות בתחום הדעת ע\"פ מחוון"],"responses":{"training":{"scope":"גפ\"ן- רבע יום הדרכה","days":"יום רביעי","audience":"רכזת + צוות עברית בחטיבת הביניים ז-ט , מורי תחוםרית דעת שביה\"ס בחר","detail":"המורים יגדירו מיומנויות שפה נדרשות, יבחרו טקסטים אותנטיים מתחום הדעת ויבנו משימות והערכה מותאמות."},"development":{"scope":"30 שעות (משולב עם השתלמות מיומנויות הבעה בע\"פ)","days":"שלישי אחה\"צ","audience":"מורי עברית בחט\"ב, רכזות עברית, מורי תחום דעת נבחר","detail":"פיתוח מקצועי לקידום הוראה בין-תחומית, שבמסגרתו יוגדרו מיומנויות השפה הנדרשות בתחום הדעת, ייבחרו טקסטים אותנטיים וייבנו משימות והערכות משולבות."},"community":{"scope":"30 שעות","days":"רביעי אחה\"צ","audience":"מורי עברית ומורי תחומי הדעת בחט\"ב","detail":"הקמת קהילת למידה משותפת למורי שפה ומורי תחום דעת, לפיתוח וניתוח יחידות הוראה בין-תחומיות המבוססות על טקסטים אותנטיים ובהלימה לתכניות הלימוד, תוך בניית שפה מקצועית משותפת ולמידת עמיתים."},"unique":{"detail":"וובינר (נובמבר): מורי עברית ותחום דעת – הצגת מודל להוראה בין-תחומית. יום מרוכז (דצמבר): מורי עברית ותחום דעת – פיתוח יחידות הוראה משולבות. כנס בית-ספרי (פברואר): רכזים ומורים מובילים – הצגת יישום, שיתוף תובנות ובניית המשך."}}},{"num":"04","title":"יישור קו בין דרישות קריאה וכתיבה עיונית לבין כשירויות תלמידים בחט\"ע","desc":"נדרש רצף הוראה לפיתוח קריאה מורכבת וכתיבה עיונית מותאמת לדרישות הבגרות","impacts":["70% מהתלמידים מציגים שיפור בכתיבה עיונית בהתאם למחוון במשימות במהלך השנה."],"responses":{"training":{"scope":"גפן- רבע יום הדרכה","days":"רביעי","audience":"מורי חט\"ע","detail":"בניית מהלך הוראה לשיפור הבנת טקסטים עיוניים לצד פיתוח כתיבה."},"development":{"scope":"30 שעות, 6-7 מפגשים","days":"ימי שלישי או רביעי אחה\"צ","audience":"מורי חט\"ע","detail":"השתלמות לפיתוח כשירויות בהוראת קריאה עיונית וכתיבה ממזגת, תוך תכנון רצף הוראה והערכת תהליכי כתיבה."},"community":{"scope":"30 שעות","days":"שלישי או רביעי","audience":"רכזי עברית","detail":"פורום רכזי עברית כקהילת למידה להעמקה בהוראת לשון, קריאה וכתיבה עיונית, שיתוף תוצרים ודיוק ההוראה, תוך בניית שפה מקצועית משותפת."},"unique":{"detail":"סדנת AI לשימוש מושכל בתהליכי כתיבה: פיתוח חשיבה, מיזוג מקורות ושמירה על אותנטיות וקול אישי."}}}]},{"name":"עברית לחברה הערבית ותכנית דוקאטי","description":"","challenges":[{"num":"01","title":"קידום השפה העברית בבתי ספר ההערבים","desc":"","impacts":[],"responses":{"training":{"scope":"20 מפגשים בשנה","days":"ימי ראשון, שלישי, רביעי, חמישי","audience":"מורים לעברית שפה שנייה בבתי ספר ערבים.","detail":"*ליווי ודיוק של תוכניות לימוד בית־ספריות. *פיתוח שגרות עבודה צוותיות, סדורות ומתמשכות. *הטמעת רפורמת תכנית המפמ\"ר בעברית בחברה הערבית (CEFR). *הנחיה בקידום פרקטיקות הוראה מתקדמות, אינטראקטיביות ומותאמות לכיתות הטרוגניות.…"}}},{"num":"02","title":"ליווי בפועל של תכנית דוקאטי בבתי ספר הערבים","desc":"","impacts":[],"responses":{"training":{"scope":"10 מפגשים בשנה","days":"ימי ראשון, שלישי, רביעי, חמישי","audience":"מנהלים וצוות הנהלה","detail":"שיפור בתהליכים האירגוניים. מתן מענה על פי מודל הדפרנציאלי בניית תכנית עבודה מותאמת ומקושרת נתונים. מתן מענה לתקשורת שוטפת מטה- שטח חיזוק שפה עברית דבורה- מתווה סדור"}}},{"num":"03","title":"תמיכה למורים המלמדים תלמידים ערבים בבתי ספר יהודיים","desc":"","impacts":[],"responses":{"training":{"scope":"לפי צרכי בתי הספר","days":"ימי ראשון, שלישי, רביעי, חמישי","audience":"מורים המלמדים תלמידים ערבים בבתי ספר יהודיים","detail":"חשיפה לכלים מתודות הוראה ומותאמות לפרופילים של התלמידים. מתן תמיכה שוטפת לצרכים העולים מהשטח הכוונה, ודיוק תכניות הלימוד והחומרים הנלווים"}}}]},{"name":"קליטת עולים","description":"","challenges":[{"num":"01","title":"התלמיד העולה בכיתתו","desc":"צוותי הוראה נדרשים להתאים את דרכי ההוראה והערכה לפערים שפתיים, תרבותיים ולימודיים בתוך כיתה רב־גונית. שילוב התלמיד בבי\"ס זו משימה של כלל הצוות החינוכי","impacts":["חיזוק תחושת השייכות והמסוגלות של התלמידים העולים","הבנת האתגרים העומדים בפני העולים וגיבוש פרקטיקות עבודה מתאימות"],"responses":{"training":{"scope":"1/8 - 1/4 יום הדרכה (כ- 5-10 ימי הדרכה בשנה)","days":"שלישי, רביעי או חמישי","audience":"מורים המלמדים עולים בכיתותיהם במגוון תחומי הדעת","detail":"מתן כלים פדגוגיים קהילה לומדת תכנית התערבות בית ספרית יצירת חיבורים עם גורמים מחוץ לביה\"ס. יצירת תכנים רלוונטים להכשרה מוסדית"},"development":{"scope":"30 ש\"א (10 - 15 מפגשים)","days":"בשעות אחה\"צ באחד מימי השבוע","audience":"מורים המלמדים עולים בכיתותיהם (אפשרות לפיתוח מקצועי בית ספרי)","detail":"הוראה דיפרנציאלית מענה חברתי-רגשי פרקטיקות הוראה והערכה חדשנות ו-AI היכרות עם אתגרי אוכלוסיית העולים"},"unique":{"detail":"וובינרים למורים, יועצות ומנהלים. ניתן לשלב מפגשים בודדים עפ\"י צרכי ביה\"ס במגוון תחומים מתוך ההכשרה."}}},{"num":"02","title":"הוראת עברית כשפה שנייה","desc":"נדרשת הכשרה שיטתית לבניית ידע, פרקטיקות הוראה והערכה מותאמות עבור תלמידים הלומדים עברית כשפה שנייה.","impacts":["שיפור וחיזוק השפה העברית והגברת השימוש בה.","שיפור השילוב הלימודי והחברתי של העולים בכיתה ובביה\"ס."],"responses":{"training":{"scope":"1/8 - 1/4 יום הדרכה (כ- 5-10 ימי הדרכה בשנה)","days":"שלישי, רביעי או חמישי","audience":"מורים המלמדים עברית כשפה שנייה","detail":"ליווי הצוות בהוראת עברית כשפה שנייה. העמקת ההכרות ויישום של הגישה התפקודית. הצבת יעדים להתקדמות בתכנית. בניית דגם של שיעור מיטבי. פיתוח חומרי הוראה ושילוב חדשנות בהוראה. מדידה והערכה (מבחנים משווים / הספק / מיפוי)"},"development":{"scope":"30 ש\"ש (10 - 15 מפגשים)","days":"ימים מרוכזים / אחה\"צ באחד מימי השבוע","audience":"מורים המלמדים עברית כשפה שנייה","detail":"עקרונות הוראת עברית כשפה שנייה עקרונות הגישה התפקודית הוראה דיפרנציאלית מענה חברתי-רגשי פרקטיקות הוראה והערכה חדשנות ו-AI היכרות עם אתגרי אוכלוסיית העולים"},"community":{"scope":"10 - 30 ש\"ש (5 - 15 מפגשים)","days":"טרם נקבע. שעות אחה\"צ","audience":"מורים המלמדים עברית כשפה שנייה","detail":"למידת עמיתים היוועצות משותפת שיתוף חומרים"},"unique":{"detail":"וובינרים ומודולות משלימות. ניתן לשלב מפגשים בודדים עפ\"י צרכי ביה\"ס במגוון תחומים מתוך ההכשרה."}}},{"num":"03","title":"תלמידים שעברית אינה שפת ביתם","desc":"מתן מענה פדגוגי-חברתי לאורך רצף הלמידה, תלמידים אלו מתמודדים עם פערים שפתיים ואתגרי שייכות, המחייבים מענה משולב לימודי, רגשי וחברתי.","impacts":["שיפור האורינות השפתית של תלמידים ששפת ביתם אינה עברית","חיזוק תחושת השייכות של התלמידים והעצמת הזהות הישראלית"],"responses":{"training":{"scope":"1/8 - 1/4 יום הדרכה (כ 5-10 ימי הדרכה בשנה)","days":"שלישי, רביעי או חמישי","audience":"מורים המלמדים בכיתותיהם תלמידים שעברית אינה שפת ביתם.","detail":"בניית תכנית עבודה בית ספרית הדרכה של הצוות החינוכי יצירת מודל עבודה הוליסטי לשילוב מיטבי."},"development":{"scope":"30 ש\"ש (10 - 15 מפגשים)","days":"בשעות אחה\"צ באחד מימי השבוע","audience":"מורים המלמדים בכיתותיהם תלמידים שעברית אינה שפת ביתם.","detail":"רכישת מיומנויות הוראה לטיפוח חוסן אורייני ועקרונות פדגוגיים בהוראת עברית. הקניית עקרונות לבניית יחידות לימוד לרכישת עברית ברמת הכתיבה וברמת השיח. חשיפה לתרבות ומורשת ישראלית. כלים להתאמת תכניות הלימודים ולהוראה דיפרנציאלית."},"unique":{"detail":"וובינרים, הרצאות"}}},{"num":"04","title":"שילוב עולים ותיקים בחטיבת הביניים.","desc":"נדרש מענה מותאם לשיפור הישגים ותחושת השייכות בקרב תלמידים עולים ותיקים לאחר תקופת הזכאות. הטמעה של תוכניות ייעודיות והכשרת צוותים להמשך קידומם בבי\"ס.","impacts":["שילוב חברתי ולימודי מיטבי של התלמידים העולים בכיתת האם","שיפור בהישגים הלימודיים של התלמידים העולים"],"responses":{"training":{"scope":"1/8 - 1/4 יום הדרכה (כ 5-10 ימי הדרכה בשנה)","days":"שלישי, רביעי או חמישי","audience":"מורים המלמדים עברית כשפה שנייה, יועצות ומורים לרבי מלל בחט\"ב.","detail":"מיפוי ובחינת הזכאות להפעלת התכניות בביה\"ס. יצירת הקבוצות כתיבת תכנית העבודה. העכה ומדידה"},"development":{"scope":"10 - 30 ש\"ש (עד 15 מפגשים)","days":"בשעות אחה\"צ באחד מימי השבוע","audience":"מורים המלמדים עברית כשפה שנייה, יועצות ומורים לרבי מלל בחט\"ב.","detail":"שע\"ל (שיפור עברית לעולים) סיוע לתלמידים שעלו לישראל ב 10 שנים האחרונות. חיזוק וביסוס העברית. קידום הישגים ושילובם בכיתה. עוגן - חיזוק התלמידים העולים ויצירת תחושת שייכות. תכנית חברתית - רגשית מניעת נשירה בשל קשיי השתלבות."}}}]},{"name":"תרבות יהודית-ישראלית","description":"","challenges":[{"num":"01","title":"ביסוס חקר שורשים כתהליך זהותי מתמשך המחבר בין הסיפור המשפחתי לבין המורשת…","desc":"תהליך חקר מדורג של בירור זהות המחבר בין הסיפור האישי, המשפחתי והמורשת היהודית-הישראלי, המשלב מקורות, מתודות חקר, כלים דיגיטליים ובינה מלאכותית. ,","impacts":["הובלת תהליכי זהות חדשניים ורלוונטיים של חקר השורשים של 100% המורים.","הובלת בתי מדרש בין-דוריים (תלמידים ומבוגרים) של כלל המורים."],"responses":{"training":{"scope":"רבע יום הדרכה בגפ\"ן, 8 מפגשים לאורך השנה","days":"ימי ג'","audience":"מחנכי שכבת ז' ומובילי חקר שורשים.","detail":"התוכנית: סיפור מורשת ועבודת שורשים בשילוב בינה מלאכותית (תוכנית מס' 58140) - הליווי יתמקד ב-13 תחנות זהות, מקורות, חקר משפחתי בשילוב מתודות שונות, AI. . התכנית: לימוד בית מדרשי בן-דורי (תוכנית מס'- 58116) - הובלת בתי מדרש…"},"development":{"scope":"30 ש\"א, מפגש חודשי","days":"ימי ג' 16:00-19:00","audience":"למחנכי שכבת ז' ומובילי את חקר שורשים.","detail":"למידה טקסטואלית וזהותית, מתודות חקר, כלים דיגיטליים והתנסות אישית בבניית תוצר חקר משפחתי."},"community":{"scope":"30 ש\"א","days":"בימי שלישי/רביעי אחה\"צ","audience":"מורים מובילים בתרבות יהודית-ישראלית (עם שעות תו\"מ משולמים)","detail":"למידת עמיתים, שיתוף תוצרים, דילמות, שיתוף מקורות, מתודות חקר והעמקה ביצירה היהודית."},"unique":{"detail":"וובינר פתיחה, יום עיון אמצע שנה ויום עיון סוף שנה, 3 ימי בית-יציב וחומרים עדכניים ללוח השנה. המענים מחזקים זהות, שורשים, חקר משפחתי וחיבור למקורות."}}},{"num":"02","title":"מלימוד למעשה: חיבור הלמידה ביצירה היהודית-הישראלית לעשייה חברתית (בשכבת…","desc":"למידה המחברת בין המקורות של היצירה היהודית - תיקון עולם וחברת מופת - לעיצובה ולתיקונה של החברה.","impacts":["100% מהמורים יודעים לחבר וליישם בין היצירה היהודית לתיקון עולם וחברת מופת","100% מהתלמידים מיישמים את מקורות הלימוד של חברת מופת ותיקון עולם."],"responses":{"training":{"scope":"רבע יום הדרכה בגפ\"ן ובהתאם למס' התוכניות הנבחרות, 8 מפגשים לאורך השנה","days":"ימי ג'","audience":"מחנכי שכבת ח' ולמורי רוח וחברה","detail":"הליווי יתמקד בתוכניות של שתרבות יהודית-ישראלית המוצעות בגפ\"ן: 'גינת שבעת המינים', 'עם הקשר' ועמיות יהודית, 'לימוד בית מדרשי' ומובילי חברותא, בית מדרש בין-דורי (כיתת ותיקים)."},"development":{"scope":"30 ש\"א","days":"ימי ג' 16:00-19:00","audience":"מחנכי שכבת ח' ולמורי רוח וחברה","detail":"למידה על חברת מופת, תיקון עולם, הובלת חברותא ולמידה בית מדרשית, עמיות יהודית ועם הקשר, קיימות, אדמה ושבעת המינים - חיבור היצירה היהודית לעשייה חברתית-יישומית."},"community":{"scope":"30 ש\"א","days":"ימי שלישי, אחר הצהריים.","audience":"מורים מובילים (עם שעות תו\"מ)","detail":"העלאת אתגרים, דילמות, תוצרים ומרחב לשיתוף ולהחלפת רעיונות, העמקה במקורות סביב עשייה ערכית וחברתית."},"unique":{"detail":"וובינר פתיחה, יום עיון אמצע שנה ויום עיון סוף שנה, 3 ימי בית-יציב וחומרים עדכניים. המענים תומכים בחיבור בין מקורות ליישום של חברת מופת, תיקון עולם ועם הקשר."}}},{"num":"03","title":"חיזוק היצירה היהודית-ישראלית כמרחב של משמעות ושייכות פעילה בגיל ההתבגרות.","desc":"היצירה היהודית כמקור השראה לשאלות הקיומיות-זהותיות של גיל ההתבגרות, תוך אקטיביות פרשנית, עכשווית ורלוונטית. - חטיבה ז-ט.","impacts":[],"responses":{"training":{"scope":"6 חודשים - רבע יום הדרכה, 8 מפגשים לאורך השנה.","days":"ימי ג'","audience":"מחנכים, מורי תרבות יהודית-ישראלית/הומניסטיקה/רוח וחברה","detail":"חדר בית מדרש ימי שיא בתרבות יהודית ישראלית בית ספר טקסי מפגש סביב טקסט"}}},{"num":"04","title":"פיתוח מסוגלות מורים להוראת תרבות יהודית-ישראלית ללא רקע דיציפלינארי.","desc":"פיתוח נתיבי הכשרה ייעודיים וליווי מנטורינג מחזקים ביטחון מקצועי והוראה משמעותית בתחום.","impacts":["פתיחת ערוץ מיטבי להכשרת מורים להוראת המקצוע באופן יישומי.","אפשרויות להוראה בינתחומית מיטבית כחלק מהרחבת דיציפלינות ההוראה (מיצוי כ\"א…"],"responses":{"training":{"scope":"6 מפגשים בחלוקה לקבוצות מחנכים","days":"יום ג'","audience":"מחנכי כיתות ז-ח-ט","detail":"ליווי היברידי: שילוב בין למידה קבוצתית מעשירה לבין חניכה אישית לחיזוק הביטחון המקצועי של המורה בכיתה. ליווי אישי (מנטורינג): הדרכה צמודה לפני קיום השיעור בכיתה, במהלכו ובסיומו. בניית חומרי לימוד נגישים ומותאמים לאנשי חינוך…"},"development":{"scope":"30 שעות, 6 מפגשים","days":"יום ג'","audience":"מחנכים, מורי מקצועות הרוח ורכזי שכבות","detail":"פיתוח מקצועי והעמקת הלימוד בתחומים: זהות ושורשים, חברת מופת ותיקון עולם, חגים ומועדים. הכשרה תתמקד בתכנית הלימודים: שורשים, שיח זהותי, דילמות ובירור ערכי. תיקון עולם וחברת מופת. חגים ומועדים לימוד והכרות עם היצירה היהודית…"},"community":{"scope":"30 שעות","days":"ימי שלישי אחה\"צ, בדרך כלל.","audience":"מורים מובילים בתרבות יהודית-ישראלית (עם שעות תו\"מ משולמים)","detail":"קהילת למידה להעמקת הלימוד והכרות עם היצירה היהודית-ישראלית: דיון ולמידה של מגוון מתודות, למידה מהצלחות ודוגמאות מהשטח. למידת עמיתים והעלאות סוגיות לדילמה. העמקה במקורות וביצירה היהודית לדורותיה. העלאת אתגרים, דוגמאות,…"},"unique":{"detail":"יום עיון/וובינר בתחילת שנה (מקוון) - חיבור בין חגים, זהותיום עיון/וובינר בתחילת שנה (מקוון) - חיבור בין המקורות היהודיים לבין מגוון התוכניות. מפגש התנעה, הכרות והעלאת המוטיבציה להשתייך לקהילת המורים. יום עיון באמצע השנה…"}}}]}]},"3":{"name":"בעלי תפקידים","short":"בעלי תפקידים","subtitle":"9 תחומי דעת · 22 אתגרים","domainsCount":9,"challengesCount":22,"domains":[{"name":"הערכה ומדידה","description":"","challenges":[{"num":"01","title":"ליווי חודשי בגפ\"ן; מיקוד בחשוב על פני הדחוף; ביסוס סדירויות ורכזים","desc":"הליווי מבסס רכזי מד\"ה כשותפים אסטרטגיים המטמיעים שפה ותרבות בניהול ובתוכניות עבודה מבוססי נתונים, ומזמן סדירות של ניהול כך שיהיה שיטתי ולא תגובתי.","impacts":["הנתונים שלך הם בסיס לקבלת החלטות! משאבים קיימים הם הזדמנות חינוכית וניהולית"],"responses":{"training":{"scope":"1/4-1/2 ימים בשבוע","days":"בתיאום בין מדריך ובית הספר","audience":"רכזי הערכה מאושרים וצוותי ניהול","detail":"הליווי החודשי במסגרת תוכנית \"גפן\" מהווה עבור מנהלים מנוף קריטי ליצירת סדירויות ניהוליות, המאפשרות להעביר את כובד המשקל מעבודה תגובתית לניהול שיטתי, מתוכנן ומדיד של היעדים הבית-ספריים."}}},{"num":"02","title":"הכשרת רכזי מד\"ה מותאמת לעל-יסודי מותאמת למינהל, בעלויות נמוכות.","desc":"הכשרות \"פסגות\" באישור ראמ\"ה הן הזדמנות לגשר על הפער בין הכשרה גנרית להכשרה למערכות נתונים ייחודיות בעל-יסודי. לצייד רכזים בכלים מתאימים לצרכי המינהל.","impacts":["פרקטיקות עדכניות ישירות לשטח! ידע מקצועי הופך לכלי המותאם לצרכי בית הספר"],"responses":{"development":{"scope":"90","days":"חמישי","audience":"רכזים מאושרים ללא הכשרה","detail":"עיצוב \"חליפה מותאמת\" אישית: פיתוח תוכנית הכשרה מדויקת, יישומית ומקצועית, שתעניק לרכזים במינהל את ארגז הכלים הדרוש להובלת תהליכי מדידה והערכה בסביבה העל-יסודית הייחודית למינהל."}}},{"num":"03","title":"למידת עמיתים והתחדשות עם הכלים החדשים בתחום של מדידה והערכה בקהילה לרכזי…","desc":"האתגר המרכזי של רכזי המדידה וההערכה הוותיקים הוא לגשר על הפער המקצועי המתרחב עם כניסת כלי ה-AI והשינויים המתודולוגיים שחלו מאז 2022, תוך פריצת…","impacts":["רכז המד\"ה — לא לבד! רשת עמיתים מקצועית מחזקת ומעצימה, כי אתגרים פותרים ביחד"],"responses":{"community":{"scope":"30","days":"חמישי","audience":"רכזי מדידה והערכה; רכזים פדגוגים","detail":"מרחב המוסיף לניסיון המקצועי העשיר חדשנות דיגיטלית, ומעגן פרקטיקות מיטביות כסטנדרט ארגוני שמבטל את הבידוד המקצועי."}}}]},{"name":"התאמות","description":"","challenges":[{"num":"01","title":"ביסוס הידע המקצועי והיישומי של רכזי ההתאמות לניהול מיטבי של תיקי התאמות","desc":"כל שנה מתחלפים כ-30 רכזים. רכז התאמות טוב הוא רכז שיש לו את כל הידע המקצועי לבניית תיק התאמות, וכן הכשרה סדורה הכוללת את כל התהליכים התוכניים…","impacts":["1. תיקי התאמות מוגשים בזמן וכוללים את כלל המסמכים הנדרשים.","2. יותר תלמידים יקבלו את ההתאמות שלהם בזמן"],"responses":{"training":{"scope":"ימי הדרכה מחוזיים לרכזי ההתאמות בית ספריים,הממוקדים בחיזוק הידע התאורטי והמעשי בבניית תיקי התאמות בזיהוי מוקדי קושי בתהליך ההגשה ובשיפור ההתמודדות עם ההגשה המקוונת.","days":"ימים ב-ד","audience":"רכזי התאמות בית ספריים","detail":"זיהוי רכזים שיש להם בעיות בהגשת תיקי ההתאמות , חוסר בהבנת הידע התאורטי והמעשי וקושי מתמשך בהגשת תיק התאמות והתמודדות עם העלאת תיק מקוון"},"development":{"scope":"השתלמות מקוונת של 30 שעות","days":"ימי שלישי בשעות 19:00-20:30","audience":"רכזי התאמות חדשים","detail":"השתלמות מקוונת לרכזי התאמות חדשים בשנתם הראשונה, בהיקף של כ- 30 שעות וב-8 מפגשים המיועדת לבסס ידע מקצועי בבניית תיקי התאמות וללוות את הרכזים עד להתנסות בהגשת תיק לבדיקה ובהגשת תיקי ההתאמות הבית ספריים"},"community":{"scope":"זמינות 24/7 במהלך שעות העבודה","days":"כל הזמן","audience":"רכזים וותיקים","detail":"מעטפת מענה מקצועית שוטפת לרכזים וותיקים,הנשענת על קהילות מדריכים וערוצי ליווי נוספים , במטרה לאפשר מענה זמין במצבי קושי העולים במהלך העבודה"},"unique":{"detail":"כנס שנתי בתחילת השנה ,חודש ספטמבר לרוב – כנס השנתי מחייב לכלל הרכזים בו מועברת הדרכה חשובה וכן הודעות חשובות והנהלים שהשתנו . הכניסה לכנס היא חובה לכלל הרכזים. לאחר מכן כל מדריך נשאר עם קבוצת הרכזים שלו להמשך ההודעות ושיטת…"}}}]},{"name":"חינוך כיתה","description":"","challenges":[{"num":"01","title":"פיתוח כשירויות ניהול מתקדמות לשדרת מנהיגות הביניים","desc":"הפיתוח המקצועי החיצוני מייצר עבור בעלי התפקידים בבית הספר קידום רוחבי (אופקי). הוא נותן להם אופק התפתחותי, מעמד, משמעות ומקצועיות בתוך בית הספר.…","impacts":["שימור בעלי תפקידים איכותיים במערכת"],"responses":{"community":{"scope":"30 שעות פיתוח מקצועי היברידי","days":"ימי שני/שלישי/רביעי","audience":"בעלי תפקידים בפועל (מעל שנתיים בתפקיד)-רכזים פדגוגיים, סגני מנהלים, רכזי שכבות, רכזי מקצוע, רכזי מיומנויות, רכזות ייעוץ, מחנכים, מובילת הון אנושי","detail":"פיתוח מקצועי היברידי המשלב בין 2-3 מפגשים פנים אל פנים ללמידה מרחוק בקהילות אזוריות על פי התפקידים- סגני מנהלים- ימי שלישי 13:00-17:00 ובזום 16:00-17:30 רכזים פדגוגיים ימי שלישי 13:00-17:00 ובזום 16:00-17:30 רכזי שכבות ,ימי…"},"unique":{"detail":"ימי עיון ייחודיים פעמיים בשנה פנים אל פנים 2-3 וובינרים מקצועיים לאור צרכים שעולים"}}},{"num":"02","title":"הכשרה בכניסה לתפקיד בשדרת מנהיגות הביניים","desc":"שינוי DNA: מ\"מורה עמית\" ל\"מנהל ביניים\" לבעלי תפקידים בשנים הראשונות לתפקיד . הקושי הגדול ביותר של רכזים חדשים הוא המעבר מתפקיד של חבר בחדר המורים…","impacts":["יציבות ומקצועיות של שדרת מנהיגות הבינים, וחיזוק החוסן הבית ספר"],"responses":{"development":{"scope":"30 שעות פיתוח מקצועי להכשרה לכניסה לתפקיד בהתאם לתפקיד","days":"מפורט בהמשך","audience":"בעלי תפקידים במנהיגות הביניים בתחילת דרכם- רכזים פדגוגיים, סגני מנהלים, רכזי שכבות, מחנכים, רכזי מיומנויות","detail":"תהליכי פיתוח מקצועי היברידיים המשלבים בין 2-3 מפגשים פנים אל פנים, למידה מרחוק, במידת האפשר, וכתלות במספר הנרשמים יפתחו תהליכים אזוריים. מפגשים פנים אל פנים יתקיימו בין 13:00-17:30, מפגשים בזום יתקיימו אחה\"צ. סגני מנהלים…"}}},{"num":"03","title":"ניהול ההון האנושי כאסטרטגיה לצוות הניהול","desc":"מעבדת מחקר ופיתוח לניהול ההון האנושי העוסקת בתשע זירות ארגוניות מרכזיות. המעבדה כוללת זיהוי אתגרי ליבה מערכתיים, מפגשי למידה עם מנהלות הון האנושי…","impacts":["גאנט בית ספרי תומך ניהול הון אנושי","שיפור במדדי שייכות ארגונית"],"responses":{"development":{"scope":"30 שעות, 6 מפגשים, היברידי (זום ופנים אל פנים)","days":"שלישי/רביעי/חמישי. ייפתח במחצית א' תשפ\"ז.","audience":"מנהל/ת שש/ארבע שנתי וצוות נבחר","detail":"תהליך למידה ממוקד של חודשיים וחצי הכולל: 3 חצאי ימי למידה 2 מפגשי ייעוץ לכל בית ספר מפגש סיכום בזום"},"unique":{"detail":"אפשרות למסלול המשך להכשרת מובילת הון אנושי בצוות הניהול (ייפתח במחצית ב' תשפ\"ז)."}}}]},{"name":"מחנכים בחמ\"ד","description":"","challenges":[{"num":"01","title":"גיבוש מקצועיות המחנך בחמ\"ד כמוביל חינוכי־ערכי","desc":"מחנכי החמ\"ד נדרשים להוביל במקביל תהליכים ערכיים, רגשיים ופדגוגיים, תוך בניית שותפויות עם תלמידים, הורים וצוותים. בהיעדר שפה מקצועית ותשתית סדורה…","impacts":["עבודת חינוך מקצועית","מניעת שחיקה בתפקיד המחנכים"],"responses":{"development":{"scope":"30 ש\"א היברידי 3 מפגשים פנים אל פנים והשאר בזום","days":"ימי שני אחר הצהרים.","audience":"מחנכים בחמ\"ד. יפתחו תהליכים אזוריים כתלות במספר הנרשמים","detail":"ניהול שיח רגשי וחינוכי בכיתה הנחיית קבוצה ובניית אקלים כיתתי חיזוק תפקיד המחנך כמוביל תהליך אישי וקבוצתי כלי אימון אישי בעבודת המחנך מתודולוגיית הלמידה שילוב בין רקע תאורטי, התנסות סדנאית, סימולציות, למידת עמיתים"}}}]},{"name":"סגני מנהלים","description":"","challenges":[{"num":"01","title":"פיתוח כשירויות ניהול מתקדמות לסגני מנהלים","desc":"הרחבת תפיסת התפקיד הניהולי, הסגן כ\"מנהיג חינוכי ושותף אסטרטגי\" ולא רק כגורם תפעולי ובניית זהות ניהולית מגובשת","impacts":["עידוד המשתתפים לפתח \"יכולת השפעה ארגונית\" וצמיחה בתוך התפקיד,"],"responses":{"development":{"scope":"40 ש\"א","days":"ימי ג' אחה\"צ. 3 מפגשים פנים אל פנים 13:00-17:00, מפגשי זום ומפגשים א-סינכרוניים","audience":"סגני מנהלים מכהנים","detail":"הקורס מעניק לסגנים כלים לתכנון תהליכים מתוך ראייה מערכתית, למידה דרך עשייה וניתוח מקרה המבטיחים שהפיתוח המקצועי יהיה רלוונטי . הקניית כלים לניהול צוותים והאצלת סמכויות, המפחיתים את העומס הישיר על בעל התפקיד"}}},{"num":"02","title":"\"הלם המעבר\" והשינוי בזהות המקצועית","desc":"מעבר מתפקיד של חבר בחדר המורים למישהו שצריך לנהל, הוא שינוי פסיכולוגי ומקצועי עמוק שקשה מאוד לעשות לבד בתוך בית הספר.","impacts":["יציבות ומקצועיות של שדרת מנהיגות הבינים, וחיזוק החוסן הבית ספרי"],"responses":{"development":{"scope":"40 ש\"א","days":"ימי ג' אחה\"צ. 3 מפגשים פנים אל פנים 13:00-17:00, מפגשי זום אחהצ ומפגשים א-סינכרוניים","audience":"סגני מנהלים בשנה הראשונה לתפקיד","detail":"הקורס מעניק לסגנים כלים לתכנון תהליכים מתוך ראייה מערכתית, למידה דרך עשייה וניתוח מקרה המבטיחים שהפיתוח המקצועי יהיה רלוונטי . הקניית כלים לניהול צוותים והאצלת סמכויות, המפחיתים את העומס הישיר על בעל התפקיד"}}},{"num":"03","title":"ניהול ההון האנושי בבתי הספר","desc":"התמודדות עם שחיקת מורים, עזיבת כוחות איכותיים וקליטה לא יעילה של מורים חדשים, המייצרים חוסר יציבות פדגוגית. מהו ההזדמנות לסגנים סביב סוגייה זו.","impacts":["בניית חוסן ארגוני, צמצום נשירה ויצירת אופק קריירה למורים בתוך בית הספר"],"responses":{"development":{"scope":"40 ש\"א","days":"ימי ג' אחה\"צ. 3 מפגשים פנים אל פנים 13:00-17:00, מפגשי זום אחהצ ומפגשים א-סינכרוניים","audience":"סגני מנהלים מכהנים","detail":"הקורס מעניק לסגנים כלים לתכנון תהליכים מתוך ראייה מערכתית, למידה דרך עשייה וניתוח מקרה המבטיחים שהפיתוח המקצועי יהיה רלוונטי . הקניית כלים לניהול צוותים והאצלת סמכויות, המפחיתים את העומס הישיר על בעל התפקיד"},"unique":{"detail":"יום עיון בנושא ניהול ההון האנושי בחודש נובמבר"}}}]},{"name":"ריכוז מיומנויות","description":"","challenges":[{"num":"01","title":"בניית תפקיד רכז המיומנויות","desc":"במיסוד ופיתוח מקצועי של תפקיד \"רכז המיומנויות הבית-ספרי\", שידע להוביל את השינוי ולבנות תשתית מיומנויות רחבה בכלל מקצועות הלימוד, באופן יישומי ויעיל .","impacts":["מיומנויות כשפה בית-ספרית מוכרת, המוערכות בתעודה בדומה לידע ותוכן."],"responses":{"training":{"scope":"עד שישה מפגשים שנתיים","days":"שני רביעי","audience":"רכז המיומנויות הבית ספרי","detail":"פגישה אישית עם הרכז, בניית תכנית מיומנויות בית ספרית, ליווי צוותים בית ספריים, עזרה בהטמעה והכנת יחידות הוראה"},"development":{"scope":"30 ש'א (10מפגשים)","days":"שני 16:00","audience":"רכזי מיומנויות חדשים","detail":"השתלמות מקצועית להבנה ובניית התפקיד, הטמעת כלים ניהוליים הנדרשים לרכז החדש."},"community":{"scope":"30 שעות פיתוח מקצועי","days":"שלישי דו חודשי אחה\"צ בזום","audience":"רכזי מיומנויות שסיימו השתלמות רכזים","detail":"דגש על תפקיד הניהול, עדכונים, חיזוקים מענה לתקלות רוחביות, שאלות ותשובות"},"unique":{"detail":"התוכנית כוללת שלושה ימי עיון בזום (אוקטובר, פברואר, מאי), קבוצת וואטסאפ לתמיכת עמיתים שוטפת, ומנגנון \"הזרקת ידע\" המצייד את רכז המיומנויות בכלים פרקטיים להעברה והטמעה מהירה בישיבות הצוות של רכזי המקצוע."}}},{"num":"02","title":"שליטה במיומנויות המאה 21 לרכזי מקצוע רבי מלל","desc":"הרכז ילמד להכיר טוב את מיומנויות המאה 21 ויוכל להנחיל ולתמוך בצוות המקצועי בבניית מערכי שיעור, בשימוש מושכל ומותאם לתלמידי הכיתה.","impacts":["מיומנויות כשפה בית-ספרית מוכרת, המוערכות בתעודה בדומה לידע ותוכן."],"responses":{"training":{"scope":"","days":"שני רביעי","audience":"רכזי מקצוע","detail":"פגישה אישית למתן מענה לרכזי המקצוע בנושא המיומנויות, וליווי הרכז"},"development":{"scope":"30 ש'א (10מפגשים)","days":"רביעי 16:00","audience":"רכזי מקצועות הומניסטים חט\"ן חט\"ע","detail":"השתלמות מקצועית להקניית 13 המיומנויות הנדרשות לבגרות הגמישה, הערכה ונראות בית הספר. ידע הבנה ושליטה במיומנויות המאה 21 הרלוונטיות לכל מקצוע."},"unique":{"detail":"שני ימי עיון בזום על מנת להגיע לכלל בתי הספר"}}}]},{"name":"ריכוז מקצוע","description":"","challenges":[{"num":"01","title":"הובלת צוות מקצועי ותכלול תהליכים פדגוגיים בית־ספריים","desc":"רכזי המקצוע נדרשים להוביל צוותי הוראה, לבנות שפה מקצועית אחידה ולקדם תהליכי עבודה מבוססי נתונים לצד הטמעת תכניות וכלים פדגוגיים חדשים.","impacts":["ביסוס שיטות עבודה יעילות לקידום הפדגוגיה ועבודת הצוות המקצועי"],"responses":{"development":{"scope":"30 ש\"א","days":"ימי ראשון או ימי רביעי בשעות אחר הצהריים. מפגשים אחת לשבועיים בזום.","audience":"רכזי מקצוע","detail":"הובלת צוות מקצועי ובניית שגרות עבודה ניהול תהליכים פדגוגיים מבוססי נתונים בניית תכנית עבודה שנתית ומעקב אחר ביצוע ניהול ישיבות צוות וחלוקת אחריות קבלת החלטות ותעדוף משימות ניהול זמן וארגון מידע יצירת שפה מקצועית אחידה בצוות"}}},{"num":"02","title":"ביסוס סמכות מקצועית והובלה ניהולית בתפקיד הריכוז","desc":"רכזי מקצוע נדרשים לפתח זהות ניהולית ברורה, לנהל ממשקי עבודה אפקטיביים מול הנהלה וצוות, ולבסס הובלה מקצועית בתוך מערכת מרובת משימות ובעלי תפקידים.","impacts":["חיזוק הביטחון המקצועי והזהות הניהולית של רכז המקצוע"],"responses":{"development":{"scope":"30 ש\"א","days":"ימי ראשון או ימי רביעי בשעות אחר הצהריים. מפגשים אחת לשבועיים בזום.","audience":"רכזי מקצוע","detail":"הובלת צוות מקצועי ובניית שגרות עבודה ניהול תהליכים פדגוגיים מבוססי נתונים בניית תכנית עבודה שנתית ומעקב אחר ביצוע ניהול ישיבות צוות וחלוקת אחריות קבלת החלטות ותעדוף משימות ניהול זמן וארגון מידע יצירת שפה מקצועית אחידה בצוות"}}},{"num":"03","title":"ניהול ותעדוף משימות בתפקיד ריכוז מרובה ממשקים","desc":"רכזי מקצוע מתמודדים עם ריבוי משימות, אחריות צוותית ועומסים מערכתיים, ונדרשים לבנות מנגנוני תכנון, תעדוף ובקרה התומכים בהתנהלות מקצועית רציפה.","impacts":["חיזוק החוסן והיכולת להישאר בתפקיד לאורך זמן"],"responses":{"development":{"scope":"30 ש\"א","days":"ימי ראשון או ימי רביעי בשעות אחר הצהריים. מפגשים אחת לשבועיים בזום.","audience":"רכזי מקצוע","detail":"הובלת צוות מקצועי ובניית שגרות עבודה ניהול תהליכים פדגוגיים מבוססי נתונים בניית תכנית עבודה שנתית ומעקב אחר ביצוע ניהול ישיבות צוות וחלוקת אחריות קבלת החלטות ותעדוף משימות ניהול זמן וארגון מידע יצירת שפה מקצועית אחידה בצוות"}}}]},{"name":"ריכוז פדגוגי","description":"","challenges":[{"num":"01","title":"הובלת תהליכי הוראה ולמידה מבוססי נתונים לצד ביסוס ידע ארגוני מתמשך","desc":"הצורך של רכזים פדגוגיים לנהל תהליכי למידה באופן שיטתי, הנשען על נתונים, תיעוד ולמידה ארגונית, לצד התמודדות עם עומסי תפקיד ושימור רצף מקצועי בית־ספרי.","impacts":["קבלת החלטות פדגוגיות מתבססת על נתוני למידה סדורים","מתקיימים מנגנוני תיעוד ושימור ידע מקצועי בית־ספרי"],"responses":{"training":{"scope":"גמיש","days":"ימי שלישי אחה\"צ","audience":"כלל הרכזים והרכזות הפדגוגיים במחוז","detail":"המדריכה המחוזית זמינה להתייעצות ושיח מקצועי"},"development":{"scope":"30 ש\"א היברידי (3 פא\"פ, 4 זום)","days":"ימי ג'. פא\"פ בין 13:00-17:00, זום בין 16:00-18:30","audience":"רכזים בשנה הראשונה לתפקיד או טרום כניסה לתפקיד","detail":"גיבוש זהות מקצועית ותפיסת תפקיד כלים פרקטיים כמו ניהול ישיבות צוותים, בניית קהילה מקצועית תומכת, ניהול קונפליקטים מול עמיתים"},"community":{"scope":"30 ש\"א היברידי (3 פא\"פ, 4 זום)","days":"ימי ג'. פא\"פ בין 13:00-17:00, זום בין 16:00-18:30","audience":"רכזים/רכזות 3 שנים ומעלה בתפקיד","detail":"קהילות אזוריות (בהתאם למספר נרשמים). עבודת צוות באמצעות מיפוי והובלה, מנהיגות שיתופית, למידת עמיתים, עקרונות בניהול של שיח פדגוגי ותצפית, תכון והובלת חדשנות, הובלת תהליכי הפיתוח המקצועי עבודה מושכלת עם נתונים"},"unique":{"detail":"2 ימי עיון- בנובמבר ובמרץ קבוצת הוואטסאפ המחוזית כקהילת עמיתים תומכת ועדכנית"}}},{"num":"02","title":"ניהול רצף פדגוגי במצבי מעבר בין שגרה לחירום וחרום לשגרה","desc":"בניית מענה פדגוגי גמיש המאפשר שמירה על רצף הוראה ולמידה, התאמה מהירה למצבי שינוי ושימוש מושכל בכלים דיגיטליים ובינה מלאכותית לתמיכה בהוראה מרחוק","impacts":["נשמר רצף הוראה ולמידה גם במעברים בין שגרה לחירום","צוותי ההוראה משתמשים באופן עקבי בכלים דיגיטליים"],"responses":{"development":{"scope":"30 ש\"א היברידי (3 פא\"פ, 7 זום)","days":"ימי ג'. פא\"פ בין 13:00-17:00, זום בין 16:00-18:30","audience":"קהילות אזוריות (צפון, דרום, מרכז) לרכזים פדגוגים מעל שנה בתפקיד","detail":"גיבוש זהות מקצועית ותפיסת תפקיד כלים פרקטיים כמו ניהול ישיבות צוותים, בניית קהילה מקצועית תומכת, ניהול קונפליקטים מול עמיתים"},"unique":{"detail":"2 ימי עיון בנובמבר ובמרץ קבוצת הוואטסאפ המחוזית כקהילת עמיתים תומכת ועדכנית"}}},{"num":"03","title":"הובלת עמיתים ללא סמכות פורמלית מלאה","desc":"הצורך של רכזים פדגוגיים להוביל תהליכים מקצועיים, לרתום עמיתים ולבסס תרבות של למידת צוות גם ללא סמכות ניהולית ישירה","impacts":["רכזים מובילים שיח מקצועי ותהליכי עבודה צוותיים","רכזים מובילים שיח מקצועי ותהליכי עבודה צוותיים"],"responses":{"development":{"scope":"30 ש\"א היברידי (3 פא\"פ, 4 זום)","days":"ימי ג'. פא\"פ בין 13:00-17:00, זום בין 16:00-18:30","audience":"רכזים בשנה הראשונה לתפקיד או טרום כניסה לתפקיד","detail":"גיבוש זהות מקצועית ותפיסת תפקיד כלים פרקטיים כמו ניהול ישיבות צוותים, בניית קהילה מקצועית תומכת, ניהול קונפליקטים מול עמיתים"},"unique":{"detail":"2 ימי עיון בנובמבר ובמרץ קבוצת הוואטסאפ המחוזית כקהילת עמיתים תומכת ועדכנית"}}}]},{"name":"ריכוז שכבה","description":"","challenges":[{"num":"01","title":"עמימות בזהות של תפקיד רכז/ת השכבה","desc":"רכזי שכבות נכנסים לתפקיד במציאות בה ברוב בתי הספר התפקיד אינו מוגדר באופן סדור. רכזי השכבה מוצפים בעומס של משימות שוטפות, ומכיוון שהתפקיד אינו…","impacts":["ליווי תהליך התמקצעות הרכז/ת בתפקיד","העלאת הכשירות להובלת תהליכים בבית הספר"],"responses":{"development":{"scope":"30 ש\"א היברידי (3 מפגשים פנים אל פנים, ולמידת עמיתים)","days":"30 ש\"א היברידי (3 מפגשים פנים אל פנים, ולמידת עמיתים)","audience":"רכזי שכבות - רצוי יותר מרכז/ת מכל בית ספר","detail":"במהלך ההכשרה נבנית יחד ההגדרה של תפקיד רכז/ת שכבה, עיסוק בזהות התפקידית. התהליך מתבסס על מקורות ידע ובעיקר על הבניית ידע משותפת של המשתתפים. מתוך הגדרת התפקיד נבחרים הנושאים בהם להעמיק. בהתליך משולבת למדת עמיתים, ביקורים…"}}},{"num":"02","title":"ניהול שותפויות וממשקי עבודה מורכבים ללא סמכות פורמלית","desc":"רכז השכבה נדרש לנהל מערכת ענפה של יחסי גומלין עם שותפים שונים – ייעוץ, מנהלים, מורים, הורים ותלמידים. , להניע ולהוביל עמיתים, שעד לא מזמן היו…","impacts":["העלאת הכשירות לתפקיד ריכוז שכבה"],"responses":{"development":{"scope":"30 ש\"א היברידי (3 מפגשים פנים אל פנים, ולמידת עמיתים)","days":"30 ש\"א היברידי (3 מפגשים פנים אל פנים, ולמידת עמיתים)","audience":"רכזי שכבות - רצוי יותר מרכז/ת מכל בית ספר","detail":"במהלך ההכשרה נבנית יחד ההגדרה של תפקיד רכז/ת שכבה, עיסוק בזהות התפקידית. התהליך מתבסס על מקורות ידע ובעיקר על הבניית ידע משותפת של המשתתפים. מתוך הגדרת התפקיד נבחרים הנושאים בהם להעמיק. בהתליך משולבת למדת עמיתים, ביקורים…"}}},{"num":"03","title":"להיכנס לנעליים ניהוליות","desc":"תפקיד רכז/ת השכבה יש משמעויות ניהוליות כמו קבלת החלטות, הכרעות בדידות, אחריות על תהליכים ופיתוח מנהיגות תוך כדי התפקיד.","impacts":["מתן אופק התפתחות מקצועית","מניעת שחיקה בתפקיד ונכונות להמשיך בתפקיד לאורך זמן"],"responses":{"community":{"scope":"30 ש\"א היברידי (3 מפגשים פנים אל פנים, ולמידת עמיתים)","days":"ימי ראשון אחהצ","audience":"רכזי שכבה שעברו את תהליך ההכשרה במחוז","detail":"לפורום הזה מגיעים רכזים ורכזות בעלי נסיון בריכוז שכבה, הן תאורטי והן מעשי. הקהילה מעמיקה בסוגיות בוערות העולות מהשטח. הקהילה נותנת מרחב בטוח לשיתוף, למידה ןהתלבטות ונותנת מענה לתחושת הבדידות שמלווה את תפקיד ריכוז השכבה"}}}]}]},"4":{"name":"תוכניות בית ספריות","short":"תוכניות","subtitle":"6 תחומי דעת · 21 אתגרים","domainsCount":6,"challengesCount":21,"domains":[{"name":"השקפה","description":"","challenges":[{"num":"01","title":"פיתוח מורים מובילים","desc":"פיתוח מורים מובילים המסוגלים להנחות קהילות מקצועיות, להוביל שיח פדגוגי מבוסס פרקטיקה ולתמוך בהטמעת תהליכי למידה צוותיים בבית הספר.","impacts":[],"responses":{"training":{"scope":"הרכישה בגפן כוללת: 1/2 יום הדרכה לכל מורה מוביל 1/8 יום הדרכה לליויי בית ספרי (לכל 3 מורים מובילים)","days":"יום שלישי","audience":"מנהל/ רכז פדגוגי","detail":"מסלול הדגל של השקפה- על מנת שהקהילות ישקפו את צרכי בית הספר, המנהל יקבל סקירה על המתרחש בקהילות. ומחשבה משותפת על ההתקדמות."},"development":{"scope":"פעם בחודש, ארבע שעות באשכול איזורי היברידי","days":"יום ג' 12:00-15:30","audience":"המורים המובילים","detail":"המורים המובילים יקבלו השתלמות המכוונת את עבודתם כמנחי קבוצה ואת מקצועיותם בנושא חקר פרקטיקה."},"community":{"scope":"פעם בחודש, שעתיים","days":"בתיאום עם הלו\"ז הבית ספרי","audience":"מורי הקהילה בבית הספר","detail":"מפגש חודשי, בית ספרי של מורי הקהילה, בהנחיית מורה מוביל מבית הספר."},"unique":{"detail":"מסלולים נוספים של השקפה: 1. מסלול בית ספרי- מודל גמיש להטמעת למידה צוותית כתרבות ארגונית מסלול מתאים לבתי ספר בעלי ניסיון קודם בעבודה בקהילות השקפה, ולבתי ספר חדשים המעוניינים לבנות תשתית ארגונית ללמידה צוותית, תוך שימוש…"}}},{"num":"02","title":"הטמעת תרבות הוראה מבוססת חקר פרקטיקה ונתונים","desc":"חיזוק היכולת של צוותי ההוראה לנתח פרקטיקות הוראה, להתבסס על עדויות מהכיתה ולקבל החלטות פדגוגיות מושכלות.","impacts":[],"responses":{}},{"num":"03","title":"חיזוק החוסן הצוותי ובניית קהילת למידה משמעותית","desc":"פיתוח תרבות ארגונית המבוססת על שייכות, אמון ושיח מקצועי פתוח, במטרה לחזק את עבודת הצוות ואת תחושת המסוגלות של המורים.","impacts":[],"responses":{}},{"num":"04","title":"גיבוש שפה פדגוגית אחידה בארגון הלומד","desc":"בניית תהליכי עבודה ושיח מקצועי משותפים, המאפשרים רצף פדגוגי ותפיסה חינוכית עקבית בכלל צוות בית הספר.","impacts":[],"responses":{}}]},{"name":"חטיבת הנעורים","description":"","challenges":[{"num":"01","title":"התאמת דרכי ההוראה ותכני ההוראה לתלמידים הבאים בשערי חטיבת הנעורים אחרי…","desc":"התלמידים הבאים בשערי חטיבת הנעורים עברו שנים קשות והם מגיעים לביה\"ס לאחר שעברו תהפוכות רבות. הם זקוקים למענה מותאם שיחזק את תחושת המשמעות, החוסן…","impacts":["גיוון דרכי ההוראה","שילוב הקניית מיומנויות בתוך מקצועות הלימוד"],"responses":{"training":{"scope":"הדרכה מחוזית","days":"גמישים","audience":"מנהלי חט\"ב, מנהל שש שנתי, חברי הנהלה, צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"development":{"scope":"30 שעות","days":"במסגרת קהילות למידה, הימים יקבעו בהמשך","audience":"מנהלי חט\"ב, רכזים פדגוגים, ראש צוות חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"community":{"scope":"30 שעות יתקיימו כחלק מהפיתוח המקצועי","days":"משתנה","audience":"צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"unique":{"detail":"כנס מנהלי חט\"ב, הדרכה מחוזית"}}},{"num":"02","title":"חיזוק תחושת השייכות של התלמידים לביה\"ס","desc":"התלמידים זקוקים למבוגר משמעותי שיהווה דמות שהם יכולים לפנות אליה ולהרגיש אהוב ושייך. יש צורך הולך וגדל בראיית הפרט על כל מורכבויותיו ואתגריו וזאת…","impacts":["ארגון למידה בית ספרי המקדם תחושת חיברות ושייכות","שביעות רצון של הצוות וחיזוק תחושת השייכות של הצוות"],"responses":{"training":{"scope":"הדרכה מחוזית","days":"גמישים","audience":"מנהלי חט\"ב, מנהל שש שנתי, חברי הנהלה, צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים"},"development":{"scope":"30 שעות","days":"במסגרת קהילות למידה, הימים יקבעו בהמשך","audience":"מנהלי חט\"ב, רכזים פדגוגים, ראש צוות חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"community":{"scope":"30 שעות יתקיימו כחלק מהפיתוח המקצועי","days":"משתנה","audience":"צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"unique":{"detail":"כנס מנהלי חט\"ב, הדרכה מחוזית"}}},{"num":"03","title":"מתן מענה פרסונאלי מותאם לצורכי התלמיד","desc":"השנים האחרונות יצרו מורכבות רבה המחייבת דפרנציאליות בתהליכי ההוראה וראיית הפרט בתוך הקבוצה. דבר זה דורש מיומנות רבה שלא תמיד מתקיימת בשיעורים.","impacts":["שיפור בהישגי התלמידים בכלל המקצועות","ירידה בשיעור השוטטות"],"responses":{"training":{"scope":"הדרכה מחוזית","days":"גמישים","audience":"מנהלי חט\"ב, מנהל שש שנתי, חברי הנהלה, צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים"},"development":{"scope":"30 שעות","days":"במסגרת קהילות למידה, הימים יקבעו בהמשך","audience":"מנהלי חט\"ב, רכזים פדגוגים, ראש צוות חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"community":{"scope":"30 שעות יתקיימו כחלק מהפיתוח המקצועי","days":"משתנה","audience":"צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"unique":{"detail":"כנס מנהלי חט\"ב, הדרכה מחוזית"}}},{"num":"04","title":"יצירת אקלים מיטבי המקדם שלומות ורווחת התלמיד והצוות","desc":"יש צורך ביצירת אקלים המקדם שיח מכבד, ראיית האחר, אמפטיה , יזמות וצמצום האלימות המילולית, הפיזית והדיגיטלית","impacts":["צמצום במעורבות תלמידים באירועי משמעת","חיזוק הקשר עם ההורים והקהילה"],"responses":{"training":{"scope":"הדרכה מחוזית","days":"גמישים","audience":"מנהלי חט\"ב, מנהל שש שנתי, חברי הנהלה, צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים"},"development":{"scope":"30 שעות","days":"","audience":"במסגרת קהילות למידה, הימים יקבעו בהמשך","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"community":{"scope":"30 שעות יתקיימו כחלק מהפיתוח המקצועי","days":"משתנה","audience":"צוות מוביל חט\"ב","detail":"ליווי המנהלים בקידום חטיבת הבייניים והטמעת עקרונות של חטיבת הנעורים בסדר היום הבית ספרי ובאורחות החיים הבית ספריים. הכרת תפיסת חטיבת הנעורים ודרכי הפעולה מיפוי דרכי הפעולה בבית הספר סיוע למנהל בבחירת העקרון ודרך הפעולה…"},"unique":{"detail":"כנס מנהלי חט\"ב, הדרכה מחוזית"}}}]},{"name":"ייעוץ וליווי של פיתוח מקצועי לבתי ספר","description":"","challenges":[{"num":"01","title":"תהליך הפיתוח המקצועי הבית ספרי כמנוע לשינוי וקידום יעדי בית הספר","desc":"בניית תהליך פיתוח מקצועי בית ספרי המחובר לצורכי הצוות וליעדי בית הספר, תוך יצירת סדירויות הטמעה, בקרה ובחינת השפעה על העשייה הפדגוגית והארגונית.","impacts":[],"responses":{"training":{"scope":"מספר המפגשים לאורך השנה תלוי במסלול אליו בית הספר שייך","days":"","audience":"מנהל/ת ובעלי תפקידים המובילים את הפיתוח המקצועי בבית הספר","detail":"* ליווי משולב של פיתוח מקצועי והדרכה * יצירת קהילת מובילות למידה ארגונית (אזורי/מחוזי) * הדרכה בית ספרית לצורך הטמעה ויישום תהליכי מישוב ובחינת ההשפעה"},"unique":{"detail":"צועדים יחד- ליווי והדרכה אינטנסיביים. ליווי ארגוני ורעיוני של תהליך הפיתוח המקצועי תכנון, משוב ובחינת השפעה על המסלול- ליווי ממוקד מדידה וחיבורים ארגוניים. מדידה והערכה חיבור בין פיתוח מקצועי, למידה ארגונית ושימור ידע מטיבי…"}}},{"num":"02","title":"ניהול ארגוני ומנהלתי של תהליכי הפיתוח המקצועי דרך המצפן","desc":"סיוע וליווי ניהול תהליכי הפיתוח המקצועי במערכת המצפן","impacts":[],"responses":{"unique":{"detail":"ליווי וסיוע של המדריכה הבית ספרית ומומחית מצפן מחוזית וובינר בתחילת שנה: הדרכה למנהלים חדשים ומנהלי פת\"מ + רענון למנהלים וובינר באמצע שנה: המשך ליווי לקראת סגירה ליווי שוטף: תמיכה לבתי ספר במהלך תהליכי פתיחה ותפעול במצפן"}}},{"num":"03","title":"סנכרון כלל ערוצי הלמידה של המורים בבית הספר לקידום \"אקו סיסטם\" אחד תומך","desc":"ליווי משולב של פיתוח מקצועי והדרכה לקידום וביסוס תהליכי ניהול הלמידה הארגונית בבית הספר בראייה ארוכת טווח","impacts":[],"responses":{"training":{"scope":"מספר המפגשים לאורך השנה תלוי במסלול אליו בית הספר שייך","days":"","audience":"מנהל/ת ובעלי תפקידים המובילים את הפיתוח המקצועי בבית הספר","detail":"ליווי משולב של פיתוח מקצועי והדרכה לביסוס ניהול למידה ארגונית בבית הספר, הכולל פיתוח ראייה מערכתית, מיפוי משאבים ועומסים, בניית תוכנית עבודה ויצירת קהילת מובילות למידה ארגונית"}}}]},{"name":"מרום ריסטארט ותכנית הבית","description":"","challenges":[{"num":"01","title":"מחלום פדגוגי ליישום וביצוע","desc":"תכנית מרום ריסטארט מסייעת למנהל במציאות ניהולית מורכבת לקדם וליישם חלומות פדגוגיים ותהליכים עמוקים בית ספריים בזירות השונות. התכנית מאפשרת כלים…","impacts":["יצירת מנגנון המאפשר התמקדות המנהל בליבת העשיה","השפעה על איכות ההוראה, המענים לתלמידים והישגים"],"responses":{"training":{"scope":"יום הדרכה או חצי יום הדרכה","days":"על פי צרכי המערכת יום קבוע","audience":"מנהלים","detail":"1. ליווי אישי למנהל בתקופה מאתגרת ומורכבת 2. בניית תשתיות ניהוליות המאפשרות ניהול יוזם 3. מעטפת ליווי הוליסטית מתמשכת המבטיחה הטמעה ויישום בפועל 4.ליווי ממוקד בהטמעת יעד פדגוגי"},"development":{"scope":"15-30 שעות","days":"בהתאם למערכת השעות של בית הספר","audience":"מנהלים וצוותי הנהלה","detail":"בית הספר יכול לנצל את מומחה התוכן שמלווה צוותים או כחלק מפיתוח מקצועי בית ספרי בתאום עם ההדרכה הפדגוגית"},"unique":{"detail":"1. ייעוץ אירגוני 2. מדריך פדגוגי השותף בהובלת תהליך פדגוגי 3. שילוב בין ליווי אישי לבניית שגרות אירגוניות 4. מומחה בחשיבה אסטרטגית"}}},{"num":"02","title":"חיזוק מנהיגות פדגוגית-אירגונית","desc":"התכנית מסייעת למנהל וצוותו לחזק את המנגנונים הניהוליים -אירגוניים בבית הספר ולייצר סדר יום פדגוגי מיטבי עבור הבאים בשערי בית הספר","impacts":["חיזוק וביסוס שגרות וסדירויות בניהול בית הספר","חיזוק ופיתוח עבודת הצוות"],"responses":{"training":{"scope":"יום הדרכה או חצי יום הדרכה","days":"על פי צרכי המערכת יום קבוע","audience":"צוותי הנהלה, רכזים ומורים,","detail":"1. ליווי בהטמעת היעדים פדגוגים 2. מתן כלים לניהול איכות ההוראה בבית הספר 3. יצירת ממשקים בין חברי ההנהלה בקידום היעדים הפדגוגיים"},"development":{"scope":"15-30 שעות","days":"בהתאם למערכת השעות של בית הספר","audience":"מורים רכזים וצוותי הנהלה","detail":"בית הספר יכול לנצל את מומחה התוכן שמלווה צוותים או כחלק מפיתוח מקצועי בית ספרי בתאום עם ההדרכה הפדגוגית"},"unique":{"detail":"1.מדריכה פדגוגית עם ניסיון מערכתי וידע פדגוגי נרחב 2. יועץ אירגוני המלווה את התהליכים הבית ספריים ומסייע בהטמעתם יחד עם המדריכה הפדגוגית 3. הכשרה מעשית בשיטות ופרקטיקות ניהול מתקדמות 4.מומחי תוכן- ליווי וייעוץ אישי או…"}}},{"num":"03","title":"הטמעת פדגוגיה איכותית","desc":"מעבר מהוראה פרונטלית להוראה המתבססת על תהליכי הוראה ממוקדים פרט, והמשלבת מומחיות בפיתוח מיומנויות והמטפחות את התיפקודים הניהוליים והחוסן האורייני…","impacts":["שיפור ההשגים","בית הספר יפתח מומחיות במתן מענים דיפרנציאליים לצרכי התלמידים"],"responses":{"training":{"scope":"יום הדרכה","days":"על פי צרכי המערכת יום קבוע","audience":"מורים, רכזים, צוות ההנהלה והמנהלים","detail":"1. מיפוי עומק של מצב הלמידה וניתוח פערים 2. שיפור איכות ההוראה וחיזוק תהליכי הוראה דיפרנציאלים 3. ליווי לבעלי התפקידים, וחיזוק עבודת הצוות. 4. תמיכה וליווי של יוזמות אימפקט 5. יצירת סטנדרטים שגרות וסדירויות להערכה ומדידה של…"},"development":{"scope":"15-30 שעות","days":"בהתאם למערכת השעות של בית הספר","audience":"מורים רכזים וצוותי הנהלה","detail":"בית הספר יכול לנצל את מומחה התוכן שמלווה צוותים או כחלק מפיתוח מקצועי בית ספרי בתאום עם ההדרכה הפדגוגית."},"unique":{"detail":"1.מדריכה פדגוגית עם ניסיון מערכתי וידע פדגוגי נרחב 2. יועץ אירגוני המלווה את התהליכים הבית ספריים ומסייע בהטמעתם יחד עם המדריכה הפדגוגית 3.מומחי תוכן- ליווי וייעוץ אישי או קבוצתי של מומחי תוכן במגוון תחומים. בבחירה עצמית…"}}},{"num":"04","title":"ניהול יעיל של המשאבים , הטמעה ויישום היעדים הבית ספריים","desc":"ליווי המנהל וצוותו במעבר מתקצוב תפעולי לתקצוב פדגוגי, המבטיח שכל משאב (זמן, כסף וכוח אדם) מושקע ישירות ביעדי בית הספר. האתגר המרכזי הוא שימור הרצף…","impacts":["מעבר מניהול משאבים תפעולי לניהול אסטרטגי-פדגוגי שיצור שינוי עמוק","מניעת \"בזבוז\" משאבים על פרויקטים שאינם בליבת העשייה של ביה\"ס"],"responses":{"training":{"scope":"יום הדרכה או חצי יום","days":"על פי צרכי המערכת","audience":"מנהלים, צוותי ניהול רכזים ומורים","detail":"1. ליווי בתקצוב פדגוגי מבוסס יעדים 2. יצירת מנגנון סדירויות של הערכה ומדידה לאורך כל השנה. 3. הקמת צוותי משימה"},"development":{"scope":"15-30 שעות","days":"בהתאם למערכת השעות של בית הספר","audience":"הנהלה, רכזים ומורים","detail":"בית הספר יכול לנצל את מומחה התוכן שמלווה צוותים או כחלק מפיתוח מקצועי בית ספרי בתאום עם ההדרכה הפדגוגית."},"unique":{"detail":"1. יועץ כלכלי 2. חיבור בין יישום תכנית העבודה לבין תוצאות התלמידים 3. מומחה תוכן שנותן כלים למנהל בחשיבה אסטרטגית 4. ליווי וייעוץ מקיף בבחירת המענים ובחינת האפקטיביות שלהם"}}}]},{"name":"פיתוח מקצועי ערכי-חינוכי-פדגוגי","description":"","challenges":[{"num":"01","title":"העצמת ההוראה באמצעות ישומים טכנו פדגוגים","desc":"האתגר הוא לרתום את הטכנולוגיה כמנוע לקידום פדגוגיה איכותית. העצמת המורה ויכולתו לייצר למידה רלוונטית ומשמעותית, תוך שימוש ביישומים טכנולוגיים ככלים…","impacts":["תחושת רלוונטיות ובטחון מקצועי למורה","ניהול הוראה ולמידה היברידית ומותאמת מרחב, בצורה דינמית ומותאמת טכנולוגית."],"responses":{"development":{"scope":"30 ש\"ש לכל קורס בלמידה מרחוק","days":"מגוון בשעות אחה\"צ-ערב","audience":"מורים בכל שלבי הקריירה במינהל לחינוך התיישבותי","detail":"קול הלמידה- הפודקאסט ככלי לימודי בינה בשירות הפדגוגיה הוראה ויזואלית: עיצוב חומרי הוראה מותאמים למידה מחוללת בינה- עיצוב והעמקת הלמידה והחשיבה באמצעות בינה מלאכותית."},"unique":{"detail":"מענים מותאמים למורים בכל שלבי ההתפתחות הטכנו-פדגוגית"}}},{"num":"02","title":"ניהול כיתה במציאות מרובת משתנים","desc":"אנחנו מעניקות למורים ארגז כלים לניהול המרחב האנושי בכיתה ההטרוגנית של ימינו. מענה מקיף המאפשר למורה בכיתה לבנות חוסן אישי וכיתתי, ולייצר דיאלוג…","impacts":["ביסוס הוראה איכותית המייצרת מורה/לומד עצמאי ומעורב בעידן משתנה","חיזוק החוסן של המורה וצמצום שחיקה"],"responses":{"development":{"scope":"30 ש\"ש לכל קורס בלמידה מרחוק","days":"ימים א׳-ה׳ בשעות אחה\"צ-ערב","audience":"מורים בכל שלבי הקריירה במינהל לחינוך התיישבותי","detail":"חינוך למיניות חיובית ניהול כיתה בביסוס חוסן במציאות משנה דיאלוג דיגיטלי- גישור פדגוגי וחברתי בין עולם הרשת למרחב הכיתתי פיתוח מיומנויות ככלי לבניית אוטונומיה ומסוגלות סיפור הנפש - העמקת ההכרות עם מורכבויות נפשיות בכיתה"},"unique":{"detail":"השתלמות ייעודית למורים חדשים בנושא ניהול כיתה, שת״פ עם צוותי ההדרכה של טכנופדגוגיה, אגף שח״ר והחנ״מ לתכנים ומנחים ייעודיים."}}}]},{"name":"קידום לימודי במרכזי למידה","description":"","challenges":[{"num":"01","title":"העלאת שיעור הזכאות לבגרות בקרב תלמידי הפנימייה","desc":"תלמידי הפנימייה מגיעים עם פערים לימודיים משמעותיים וזמן הלמידה בביה\"ס אינו מספיק להם","impacts":["שיפור בשיעור הזכאות לבגרות של תלמידי הפנימיה","שיפור בזכאות לבגרות אקדמאית בקרב תלמידי הפםנימייה"],"responses":{"training":{"scope":"צוות הדרכה מחוזי ילווה את מנהלי מרכזי הלמידה ואת צוות הנהלת הכפר בדרך לקידום תלמיד הפנימייה","days":"על פני כל השבוע לפי תאום מראש","audience":"מנהלי מרכזי למידה, מנהלי בית הספר, מנהלי הפנימייה, מנהל הכפר","detail":"יצירת שגרות וסדירויות הכפר הנוער ליווי אישי של מנהל המרכז והקניית מיומנויות ניהול העמקת ההיכרות עם תוכנית הלימוד הבית ספרית הקניית מיומנויות ניהול צוות ושיתוף פעולה"},"development":{"scope":"30 שעות פיתוח מקצועי חובה למנהלים חדשים (שנה ראשונה ושניה) ורשות למנהלים ותיקים","days":"גמיש, לפי סילבוס","audience":"מנהלי מרכזי הלמידה","detail":"מיומנויות ניהול, ניהול צוות, היכרות עם תוכנית הלימודים, הוראה פרסונאלית, חדשנות החינוך, ניהול שותפויות"},"unique":{"detail":"כנס ארצי חובה לכלל מנהלי מרכזי הלמידה"}}},{"num":"02","title":"העלאת שיעור תלמידי הפנימייה הלומדים 4-5 יח\"ל מתמטיקה ואנגלית","desc":"תלמידי הפנימייה מגיעים לכפרים עם פערי ידע במתמטיקה ובאנגלית וחלקם אף ברמת NON READERS","impacts":["שיפור בשיעור הזכאות לבגרות של תלמידי הפנימיה","שיפור בזכאות לבגרות אקדמאית בקרב תלמידי הפםנימייה"],"responses":{"training":{"scope":"צוות הדרכה מחוזי ילווה את מנהלי מרכזי הלמידה ואת צוות הנהלת הכפר בדרך לקידום תלמיד הפנימייה","days":"על פני כל השבוע לפי תאום מראש","audience":"מנהלי מרכזי למידה, מנהלי בית הספר, מנהלי הפנימייה, מנהל הכפר","detail":"יצירת שגרות וסדירויות הכפר הנוער ליווי אישי של מנהל המרכז והקניית מיומנויות ניהול העמקת ההיכרות עם תוכנית הלימוד הבית ספרית הקניית מיומנויות ניהול צוות ושיתוף פעולה"},"development":{"scope":"30 שעות פיתוח מקצועי חובה למנהלים חדשים (שנה ראשונה שנייה) ורשות למנהלים ותיקים","days":"גמיש, לפי סילבוס","audience":"מנהלי מרכזי הלמידה","detail":"מיומנויות ניהול, ניהול צוות, היכרות עם תוכנית הלימודים, הוראה פרסונאלית, חדשנות החינוך, ניהול שותפויות, היכרות עם תוכנית הלימודים במתמטיקה ואנגלית ומתן כלים להגברת המצויינות"},"community":{"scope":"10 שעות, 3 מפגשים על פני השנה","days":"על פני השבוע","audience":"מנהלי מרכזי הלמידה","detail":"3 מפגשים על פני השנה (חובה). המפגשים הם אזוריים ויתקיימו באחד מכפרי הנוער. מטרת המפגשים הם: הוועצות, למידת עמיתיחם, העמקרה בסוגיות ליבה פדגוגיות"},"unique":{"detail":"כנס ארצי חובה לכלל מנהלי מרכזי הלמידה"}}},{"num":"03","title":"חיזוק מיומנויות הלומד והתפקודים הניהוליים של תלמידי הפנימייה","desc":"תלמידי הפנימייה מתקדים לנהל את עצמם ולגייס מוטיבציה פנימית ללמידה","impacts":["שיעור ההתמדה של תלמידי הפנימיה בנושא לימודים יעלה","שיפור בשיעור הזכאות לבגרות בקרב תלמידי הפנימייה"],"responses":{"training":{"scope":"צוות הדרכה מחוזי ילווה את מנהלי מרכזי הלמידה ואת צוות הנהלת הכפר בדרך לקידום תלמיד הפנימייה","days":"על פני כל השבוע לפי תאום מראש","audience":"מנהלי מרכזי למידה, מנהלי בית הספר, מנהלי הפנימייה, מנהל הכפר","detail":"יצירת שגרות וסדירויות הכפר הנוער ליווי אישי של מנהל המרכז והקניית מיומנויות ניהול העמקת ההיכרות עם תוכנית הלימוד הבית ספרית הקניית מיומנויות ניהול צוות ושיתוף פעולה"},"development":{"scope":"30 שעות פיתוח מקצועי חובה למנהלים חדשים (שנה ראשונה שנייה) ורשות למנהלים ותיקים","days":"גמיש, לפי סילבוס","audience":"מנהלי מרכזי הלמידה","detail":"מיומנויות ניהול, ניהול צוות, היכרות עם תוכנית הלימודים, הוראה פרסונאלית, חדשנות החינוך, ניהול שותפויות, היכרות עם תוכנית הלימודים במתמטיקה ואנגלית ומתן כלים להגברת המצויינות"},"community":{"scope":"10 שעות, 3 מפגשים על פני השנה","days":"על פני השבוע","audience":"מנהלי מרכזי הלמידה","detail":"3 מפגשים על פני השנה (חובה). המפגשים הם אזוריים ויתקיימו באחד מכפרי הנוער. מטרת המפגשים הם: הוועצות, למידת עמיתיחם, העמקרה בסוגיות ליבה פדגוגיות"},"unique":{"detail":"כנס ארצי חובה לכלל מנהלי מרכזי הלמידה"}}},{"num":"04","title":"חיזוק קשרי העבודה, השגרות והסדירויות בין ביה\"ס, הפנימייה ומרכז הלמידה","desc":"לצורך קידום התלמיד המשותף נדרש שיתוף פעולה ותאום הדוק בין ביה\"ס והפנימייה מתוך הצורך לייצר תמונה הוליסטית על התלמיד וצרכיו","impacts":["קיום מפגשים קבועים בין ביה\"ס, הפנימיה ומנהל מרכז למידה","לכל תלמיד פנימיה תהייה תוכנית עבודה אישית ומותאמת"],"responses":{"training":{"scope":"צוות הדרכה מחוזי ילווה את מנהלי מרכזי הלמידה ואת צוות הנהלת הכפר בדרך לקידום תלמיד הפנימייה","days":"על פני כל השבוע לפי תאום מראש","audience":"מנהלי מרכזי למידה, מנהלי בית הספר, מנהלי הפנימייה, מנהל הכפר","detail":"יצירת שגרות וסדירויות הכפר הנוער ליווי אישי של מנהל המרכז והקניית מיומנויות ניהול העמקת ההיכרות עם תוכנית הלימוד הבית ספרית הקניית מיומנויות ניהול צוות ושיתוף פעולה"},"development":{"scope":"30 שעות פיתוח מקצועי חובה למנהלים חדשים (שנה ראשונה שנייה) ורשות למנהלים ותיקים","days":"גמיש, לפי סילבוס","audience":"מנהלי מרכזי הלמידה","detail":"מיומנויות ניהול, ניהול צוות, היכרות עם תוכנית הלימודים, הוראה פרסונאלית, חדשנות החינוך, ניהול שותפויות, היכרות עם תוכנית הלימודים במתמטיקה ואנגלית ומתן כלים להגברת המצויינות"},"community":{"scope":"10 שעות, 3 מפגשים על פני השנה","days":"על פני השבוע","audience":"מנהלי מרכזי הלמידה","detail":"3 מפגשים על פני השנה (חובה). המפגשים הם אזוריים ויתקיימו באחד מכפרי הנוער. מטרת המפגשים הם: הוועצות, למידת עמיתיחם, העמקרה בסוגיות ליבה פדגוגיות"},"unique":{"detail":"כנס ארצי חובה לכלל מנהלי מרכזי הלמידה"}}}]}]},"5":{"name":"טיפול בהון האנושי","short":"הון אנושי","subtitle":"3 תחומי דעת · 6 אתגרים","domainsCount":3,"challengesCount":6,"domains":[{"name":"זכויות המורים בפיתוח המקצועי","description":"","challenges":[{"num":"01","title":"הנגשת את נהלי האגף לפיתוח מקצועי בנושא החזרי שכר לימוד","desc":"כך שכל צוותי ההוראה יבינו בבהירות את זכאותם, היכרות עם מפת הדרכים לביצוע ההחזרים, ולקחית אחריות עצמאית על תהליך הגשת הבקשה כל זאת ללא יצירת עומס…","impacts":["שימוש יעיל בפורטל עובדי הוראה לפי הצורך הספציפי של המורה להחזר שכר לימוד","הפחתת הצורך בפניה להסבר למנהלי כ״א בבית הספר"],"responses":{"training":{"scope":"","days":"","audience":"","detail":"מצגת ממוקדת המרכזת את עיקרי הנהלים, נותנת מענה לצרכים הספציפיים של צוותי ההוראה ומכוונת למיקום הרלוונטי בפורטל."},"unique":{"detail":"שימוש במצגת מסכמת הנותנת מענה לצרכים הספציפים והכוונה למיקום הרלוונטי בפורטל"}}}]},{"name":"קליטת מורים מיטבית","description":"","challenges":[{"num":"01","title":"בנייה ופיתוח תשתית למנגנון קליטת מורים מתמחים וחדשים סדור, מקצועי ויעיל","desc":"בחמש השנים הראשונות לעבודתם, פורשים מורים מתמחים וחדשים בקצב הולך וגובר. מטרת ההדרכה לסייע לביה״ס לפתח ולטפח מנגנון סדור לקליטה ושימור של מורים אלו.","impacts":["בניית גאנט בית ספרי שנתי לקליטת מורים לאורך השנה","הרחבת מעגל המורים החונכים בבית-הספר וטיפוחם כבעלי תפקיד במסלול קריירה"],"responses":{"training":{"scope":"2 ביקורי הדרכה בבית הספר ע״י מדריכת כניסה להוראה, תקשורת שוטפת עם מובילי הקליטה, וייעוץ נוסף במידת הצורך.","days":"ימי א', ג' ו-ה' בתיאום עם המדריכה","audience":"מנהל/ת ביה\"ס, מוביל/ת קליטת מורים חדשים ושותפים נוספים לקליטת המורים","detail":"ליווי של מדריכ/ת כניסה להוראה מטעם המינהל, לטיוב תהליכי הקליטה והשימור בביה\"ס. קשר שוטף בין המנהל/ת ומוביל/ת קליטת מורים למדריכ/ה בנושאים מנהלתיים הקשורים בקליטה."},"development":{"scope":"30 ש\"ש לחונכי/ות מורים ומובילי/ות קליטה (10 מפגשים) ; 60 ש\"ש למתמחים (במסגרת סדנאות/חממות הסטאז')","days":"ימי א' אחה\"צ לחונכי מורים. ליתר ייקבע בהמשך.","audience":"חונכי/ות מורים, מובילי/ות קליטה, מתמחים/ות","detail":"פיתוח מקצועי ייעודי לחונכי/ות מורים בדגש על מיומנויות מנטורינג. הכשרה למובילי/ות קליטה לפיתוח והובלה של מערך קליטת המורים בבית-הספר, על כל היבטיו."},"unique":{"detail":"מעטפת רחבה למתמחים, וסגלי קליטה בביה\"ס: חממות סטאז' (60 ש\"א) ימי עיון לחונכים 3 וובינרים ייעודיים להערכה (למנהלים, מובילי קליטה ומתמחים) כנס מחוזי בנובמבר 26' קבוצות וואטסאפ לליווי שוטף של כלל האוכלוסיות."}}},{"num":"02","title":"העמקת הידע והיישום של תהליכים מנהלתיים בקליטת מתמחים/ות","desc":"לצורך קליטה מוצלחת של מורים ומורות בשנת ההתמחות על הצוות האחראי על קליטת המורים לפעול בהתאם לנהלי משרד החינוך, תוך הבנה מערכתית של שלבי ההתמחות.","impacts":["התמקצעות בטיפול המנהלתי במורים בראשית דרכם","ייעול משך הזמן המושקע בעניינים המנהלתיים של המתמחים"],"responses":{"training":{"scope":"במסגרת ביקורי המדריכ/ה בביה\"ס ולפי צורך","days":"ימי א', ג' ו-ה' בתיאום עם המדריכה","audience":"מנהל/ת בי\"ס, חט\"ב ו-6 שנתי, רכז/ת פדגוגית, מוביל/ת קליטה, רכז/ת כ\"א.","detail":"קשר שוטף של מנהל/ת ביה״ס ומוביל/ת קליטת מורים ורכזי כ״א בבתי הספר עם המדריכ/ה בנושאים מנהלתיים הקשורים בקליטה, בהתאם ללוח הזמנים של שנת ההתמחות."},"development":{"scope":"3 מפגשי וובינר על התחום המנהלתי של ההתמחות, בהלימה ללוח הזמנים של שנת ההתמחות.","days":"","audience":"רכזי/ות כ\"א בביה\"ס, מובילי/ות קליטה ומנהלים/ות חדשים/ות","detail":"מפגשי וובינר ובהם דגשים להתנהלות המנהלתית בשנת ההתמחות."},"unique":{"detail":"מפגשי הדרכה מחוזיים בתחום המנהלתי למנהלים/ות חדשים, לרכזי/ות כ\"א, מובילי/ות הון אנושי ובעלי עניין נוספים בביה\"ס. הוובינרים יתקיימו בסמוך למועד המתאים בתהליך ההתמחות בשנה. הפקת והפצת מידעון כניסה להוראה."}}},{"num":"03","title":"פיתוח עתודת חונכי מורים מקצועיים לליווי מתמחים ומורים חדשים","desc":"בתי הספר נדרשים להכשיר ולבסס חונכי מורים בעלי מיומנויות מנטורינג ואנדרגוגיה, כחלק מחיזוק איכות הליווי ושימור המורים החדשים לאורך זמן.","impacts":["העלאת המקצועיות של חונכי המורים/ות","הרחבת אופק התפתחות למורים מנוסים בביה\"ס"],"responses":{"training":{"scope":"במסגרת ביקורי המדריכ/ה בביה\"ס ולפי צורך","days":"ימי א', ג' ו-ה' בתיאום עם המדריכה","audience":"חונכי מורים/ות ומובילי/ות קליטה בביה\"ס","detail":"במהלך הביקורים בביה\"ס מפגשי הדרכה יתקיימו גם עם מובילי הקליטה וחונכי/ות המורים."},"development":{"scope":"תהליך דו-שנתי, 30 ש'א בשנה, בזום","days":"ימי א' אחה\"צ","audience":"חונכי מורים/ות שטרם עברו הכשרה","detail":"לימודי תעודה מטעם סמינר הקיבוצים הכוללים כישורי הדרכה ומנטורינג, הכרת האתגרים של המורה המתמחה ושלבי ההתמחות בזיקה לגאנט השנתי. היוועצות ותמיכה לחונכים, גיבוש זהות עצמית כחונך מוביל קליטת מורים בביה\"ס"},"community":{"scope":"30 ש\"ש פיתוח מקצועי, 10 מפגשים","days":"יימסר לקראת תשפ\"ז","audience":"חונכי/ות מורים ותיקים/ות","detail":"פתיחת קהילת למידה והתפתחות למורים/ות חונכים/ות בדגש על חקר פרקטיקות מתחום האנדרוגוגיה הוראת מבוגרים."},"unique":{"detail":"בכוונתנו לפתוח הכשרה למובילי קליטה בית ספריים. פרטים יינתנו בהמשך."}}}]},{"name":"תומכי הוראה","description":"","challenges":[{"num":"01","title":"היכרות עם מערך תומכי ההוראה להרחבת מעגל ההון האנושי","desc":"מערך תומכי ההוראה מורכב מ-3 מקורות ראשיים; משרתים, מתנדבים ומילגאים. על המנהל להכיר את האפיקים השונים דרכם ניתן לבחון גיוס הרחב של תומכי הוראה,…","impacts":["בחינה מחודשת של מיצוי פוטנציאל גיוס תומכי ההוראה במוסד.","עיבוי מערך תומכי ההוראה המוסד מכלל האפיקים הפוטנציאליים"],"responses":{"training":{"scope":"הדרכה מחוזית מתכללת","days":"שלישי","audience":"מנהלים ורכזי קליטה בית-ספריים","detail":"ידע מקצועי לחשיפת כלל המענים העומדים לרשות המוסד. מיקוד בית-ספרי - מפגש לבחינת המענים הפוטנציאליים לכל מוסד בהתאם לאופיו וחבירה לגורמים הרשמיים השונים סיוע בשיבוץ כלל התומכים במערכת המקוונת לניהול תומכי ההוראה"},"unique":{"detail":"מפגש חשיפה והתנעה במסגרת פורום מפקח ומנהליו. רשות במיקוד - יצירת שולחן עגול רשותי לבחינת המשאבים העומדים לרשות המוסדות בתחום תומכי ההוראה"}}},{"num":"02","title":"גיבוש תפיסה לשילוב מיטבי של כלל תומכי ההוראה במישורי העשייה החינוכית השונים","desc":"על בית הספר לגבש תפיסה חינוכית הרואה בחשיבות שילוב תומכי הוראה בכלל העשייה החינוכית וכפועל יוצא ישיר על בית הספר למנות רכז גיוס, מיון ושילוב התומכים…","impacts":["מינוי רכזי קליטה ושילוב ויצירת מסגרת להכשרה מקצועית.","יצירת מנגנוני הערכה, מדידה ובקרה לכלל תומכי ההוראה."],"responses":{"training":{"scope":"הדרכה מחוזית מתכללת / הדרכה פרטנית למוסדות נבחרים","days":"שלישי","audience":"מנהלים ורכזי קליטה בית-ספריים","detail":"בחינת מודלים שונים לשילוב ראוי של מערך התומכים. התאמת המודל הראוי לאופי המוסד. איתור מועמד לאיוש תפקיד רכז קליטה בשילוב הדרכה והכוונה אישית."},"unique":{"detail":"רשות במיקוד - יצירת שולחן עגול רשותי לבחינת המשאבים העומדים לרשות המוסדות בתחום תומכי ההוראה הדרכה אישית לכלל רכזי הקליטה מהרשות הנבחרת ויצירת ממשקי עבודה ישירים אל מול הגורמים השונים. בניית מנגנוני הערכה ומדידה לבחינת…"}}}]}]},"6":{"name":"פרט, חברה וחוסן חברתי-רגשי","short":"חוסן","subtitle":"4 תחומי דעת · 13 אתגרים","domainsCount":4,"challengesCount":13,"domains":[{"name":"חינוך חברתי קהילתי ערכי - מנהל חברה ונוער","description":"","challenges":[{"num":"01","title":"הטמעת החינוך החברתי כחלק מהשפה והפדגוגיה הבית־ספרית","desc":"נדרשת הטמעת החינוך החברתי בשגרות בית הספר וחיזוק אחריות כלל הצוות להובלת תהליכים ערכיים וחברתיים.","impacts":["עלייה בתחושת מסוגלות של התלמידים ושל הצוותים","• עלייה במעורבות תלמידים בתהליכי למידה וחינוך חברתי"],"responses":{"training":{"scope":"רבע יום הדרכה, כ-9 מפגשים בשנה","days":"גמיש","audience":"צוות החינוך החברתי, מנהלי בתי הספר ומנהיגות הביניים","detail":"הטמעת החינוך החברתי בתחומי הדעת, בניית תוכנית עבודה וליווי צוותים בהובלת תהליכים ערכיים."},"development":{"scope":"30 ש\"א","days":"שלישי","audience":"צוותי החינוך החברתי, מחנכים, מורים מקצועיים","detail":"פיתוח ידע ומיומנויות בפדגוגיה חברתית, SEL, שותפות, תקשורת ויזמות חינוכית ממוקדת חדשנות"},"community":{"scope":"30 ש\"א","days":"שלישי","audience":"צוותי החינוך החברתי","detail":"5 מפגשים אזוריים ללמידת עמיתים בתחום למידה רב־תחומית ו-2 כנסים מחוזיים"},"unique":{"detail":"סוג המענה: כנס פתיחת שנה וכנס סיכום שנה התקופה בשנה: תחילת וסיום שנה נושא: כנסים מחוזיים לשיתוף ידע ותהליכים בתחום החינוך החברתי"}}},{"num":"02","title":"חיזוק תחושת השייכות לקהילת בית הספר ולקהילה המקומית","desc":"תלמידים מתמודדים עם בדידות ולחצים חברתיים, ונדרש חיזוק אקלים קהילתי התומך בשייכות, חוסן ומעורבות.","impacts":["• עלייה בתחושת השייכות והקהילתיות בקרב תלמידים וצוות","• עלייה במגוון ובעושר יוזמות ותוכניות חינוכיות בעלות זיקה מקומית"],"responses":{"training":{"scope":"רבע יום הדרכה, כ-9 מפגשים בשנה","days":"גמיש","audience":"צוות החינוך החברתי, מנהלי בתי הספר ומנהיגות הביניים","detail":"בניית תכנית עבודה שנתית ליווי והנחייה הצוות במודלים שונים של טיפוח שייכות וקהילתיות הטמעה ויישום תכנית לחיזוק הרכיבים הקהילתיים של ביה\"ס הנחייה בתוכנית שח\"ק ירוק לטיפוח שותפויות"},"development":{"scope":"30 ש\"א","days":"שלישי","audience":"צוותי החינוך החברתי, מחנכים, מורים מקצועיים","detail":"הכשרה בבניית קהילה, עבודה עם הורים, בניית שותפויות, ליווי בהקמה של מרחבי למידה חוץ כיתתיים בקהילה"},"community":{"scope":"30 ש\"א","days":"שלישי","audience":"צוותי החינוך החברתי, רכזי שח\"ק ירוק","detail":"5 מפגשי למידת עמיתים בתחום קהילתיות ושייכות + 2 כנסים מחוזיים"},"unique":{"detail":"סוג המענה: כנס פתיחת שנה וכנס סיכום שנה התקופה בשנה: תחילת וסיום שנה נושא: כנסים מחוזיים לחיזוק קהילתיות ושותפויות"}}},{"num":"03","title":"הרחבת שותפות ומעורבות תלמידים בחיי בית הספר","desc":"נדרשת הגברת מעורבות תלמידים בקבלת החלטות וביוזמות בית־ספריות לחיזוק מסוגלות, חוסן ומנהיגות.","impacts":["עלייה במספר בתי הספר בהם פועלות קבוצות מנהיגות השותפות לאורח החיים בבית…","עלייה בתחושת מסוגלות וחוסן של התלמידים"],"responses":{"training":{"scope":"רבע יום הדרכה, כ-9 מפגשים בשנה","days":"גמיש","audience":"צוות החינוך החברתי, מנהלי בתי הספר ומנהיגות הביניים.","detail":"ליווי והנחיית הצוות במודלים שונים של שותפות ומנהיגות תלמידים פיתוח ויישום של שותפות תלמידים הקניית כלים לטיפוח תרבות יזמית בית ספרית ויישומם פיתוח מנהיגות תלמידים"},"development":{"scope":"30 ש\"א","days":"שלישי","audience":"צוותי החינוך החברתי, מחנכים, מורים מקצועיים","detail":"הכשרה בהובלת קבוצות מנהיגות ובהטמעת שותפות תלמידים בתחומי החיים הבית־ספריים"},"community":{"scope":"30 ש\"א","days":"שלישי","audience":"צוותי החינוך החברתי","detail":"5 מפגשי למידת עמיתים בתחום שותפות תלמידים + 2 כנסים מחוזיים"},"unique":{"detail":"סוג המענה: כנס פתיחת שנה וכנס סיכום שנה התקופה בשנה: תחילת וסיום שנה נושא: כנסים מחוזיים בתחום מנהיגות ושותפות תלמידים"}}},{"num":"04","title":"פיתוח מחנכי כיתות כמנהיגים חינוכיים מובילי אקלים וערכים","desc":"מחנכי כיתות נדרשים להרחיב מיומנויות בניהול כיתה, עבודה עם הורים והובלת תהליכים רגשיים וערכיים.","impacts":["• שיפור באקלים הכיתתי לפי דיווחי תלמידים","• עלייה בתחושת המשמעות של מחנכים בתפקידם"],"responses":{"training":{"scope":"רבע יום הדרכה, כ-9 מפגשים בשנה","days":"גמיש","audience":"צוות החינוך החברתי, מנהלי בתי הספר ומנהיגות הביניים.","detail":"ליווי והנחייה בפיתוח מיומנויות מחנך בתחומי ניהול כיתה, הובלת תהליכים ערכיים ויוזמות ועבודה עם הורים"},"development":{"scope":"30 ש\"א","days":"שלישי","audience":"מחנכי כיתות","detail":"הכשרה בתהליכי חינוך כיתה, גיבוש קבוצה והובלת אקלים כיתתי מיטבי"},"community":{"scope":"30 ש\"א","days":"שלישי","audience":"מחנכים","detail":"5 מפגשי למידת עמיתים אזוריים בתחום שותפות תלמידים + 2 כנסים מחוזיים"},"unique":{"detail":"סוג המענה: כנס פתיחת שנה וכנס סיכום שנה התקופה בשנה: תחילת וסיום שנה נושא: כנסים מחוזיים לפיתוח תפקיד המחנך"}}}]},{"name":"חינוך ילדים ונוער בסיכון","description":"","challenges":[{"num":"01","title":"בתי הספר הפועלים עם תלמידים ונוער בקצה רצף הסיכון מתמודדים עם מורכבות…","desc":"נשירה גלויה וסמויה המתבטאת בהיעדרויות, שוטטות, ניתוק רגשי וירידה בהתמדה הלימודית. פערים לימודיים משמעותיים, בדגש על אוריינות שפתית, המקשים על…","impacts":[],"responses":{"training":{"scope":"7 שעות הדרכה משתנה בהתאם לצורך","days":"שלישי קבוע והשאר משתנה","audience":"צוות בי\"ס: הנהלה, צוות ביניים, מחנכים ומורים מקצועיים, שותפי תפקיד","detail":"מענה ההדרכה בתכנית מבוסס על ליווי שוטף, מותאם הקשר, המתקיים בתוך בית הספר ומהווה נדבך מרכזי בהטמעת הידע הנרכש בפיתוח המקצועי. ההדרכה כוללת תצפיות בכיתה, משוב פדגוגי, השתתפות בצוותים בין־מקצועיים וליווי פרטני וקבוצתי לצוותים…"},"development":{"scope":"30 שעות","days":"נקבע בתיאום","audience":"צוות בית הספר","detail":"התכנית מציעה מענה כולל ומשולב המשלב בין פיתוח מקצועי מעמיק לבין ליווי יישומי בשטח, במטרה לחזק את המסוגלות של הצוותים החינוכיים בהתמודדות עם תלמידים ונוער בסיכון. המענה מתמקד בהקניית כלים פרקטיים בתחומי הפדגוגיה הטיפולית,…"},"community":{"scope":"30","days":"משתנה","audience":"רכזי שחר, מחנכים ומורים מקצועיים, קב\"סי פנימיות","detail":"במסגרת התכנית מוקמות קהילות מקצועיות לומדות (PLC) הפועלות כמרחב קבוע להתפתחות מקצועית, שיתוף ידע ולמידת עמיתים. הקהילות מאגדות בעלי תפקידים משותפים (רכזים, מחנכים, מורים מקצועיים) ומתכנסות באופן סדיר סביב סוגיות מהשטח, תוך…"},"unique":{"detail":"ימי עיון, הכשרת מחנכים בקיץ (30 שעות במשך 3 ימים)"}}}]},{"name":"חינוך מיוחד","description":"","challenges":[{"num":"01","title":"העמקת מומחיות דיסציפלינרית בהוראה מותאמת","desc":".מורי החינוך המיוחד נדרשים לשלב הוראה מותאמת עם הוראת תחומי דעת לבגרות, לצד פער בהכשרה הדיסציפלינרית.","impacts":["הגדלת אחוז המורים שידווחו על ביטחון גבוה בהתמודדות עם אתגרים לימודיים"],"responses":{"training":{"scope":"יקבע על פי צורכי בית הספר בדיסציפלינות השונות, בין 5 ל10 מפגשים בשנה","days":"ד'-הדרכה בעברית. ג'- הדרכה בתקשוב, מתמטיקה- יקבע עם המדריכה, ב'- הדרכה באנגלית","audience":"מורים המלמדים תחומי דעת בבתי הספר לחינוך מיוחד","detail":"הדרכה ב\"שני כובעים\": 1.ליווי מורים המשלב מומחיות בתחום הדעת ופדגוגיה של חינוך מיוחד במודל שכולל הדרכה פרטנית שיתוף פעולה בין מדריכי החינוך המיוחד למדריכי תחומי הדעת"},"development":{"scope":"מסלולים מגוונים של פיתוח מקצועי בהיקף של 30 שעות- בדגש על תחומי דעת וחינוך מיוחד","days":"","audience":"מורים לחינוך מיוחד המלמדים בבתי הספר לחינוך מיוחד","detail":"השתלבות המורים בפיתוח המקצועי של תחומי הדעת קיום מפגשים ייעודיים למורי החינוך המיוחד במהלך השנה בהובלת מדריכי תחום הדעת"},"community":{"scope":"10 שעות מפגשי למידה \"קהילה לומדת\", ימי עיון - כנס החינוך המיוחד, יום האוטיזם, כ-3 מפגשים למורים מתמטיקה, כ-3 מפגשים יעודיים למורי אנגלית, כ-3 מפגשים למורים היסטוריה","days":"ימי שלישי","audience":"כלל צוותי החינוך והטיפול בבתי הספר לחינוך מיוחד, מורים על פי הדיסציפלינות","detail":"מיפוי וזיהוי צורך בית הספר בהוראת מקצועות בתחומי דעת שונים. קהילות דיסציפלינאריות באנגלית, מתמטיקה, תקשוב, היסטוריה, ספרות"},"unique":{"detail":"מפגשי למידה עם חוקרים, אנשי מקצוע, אקטיביסטים חברתיים בתחום המוגבלויות. ימי עיון וכנס שנתי. מפגשים ייעודים בהובלת מדריכי התחום. קבוצות ווצאפ להנגשת חומרים ומידע. מפת ההדרכה הבית ספרית עם נתוני ההתקשרות עם מדריכי התחום."}}},{"num":"02","title":"פיתוח שדרת הנהגה וזהות בית ספרית","desc":"בתי הספר לחינוך מיוחד נדרשים לבסס שדרת הנהגה מקצועית ולגבש זהות ארגונית במציאות של צמיחה ושיתופי קמפוס.","impacts":["השתתפות רחבה של מורים ובעלי תפקידים בפיתוח מקצועי ובקהילות"],"responses":{"training":{"scope":"כ- 4 שעות בחודש עבור בית הספר","days":"ימי ג' וד'","audience":"בתי ספר לחינוך מיוחד לבעלי תפקידים: מנהלת, סגנית מנהלת, רכזת פדגוגית, יועצת, רכזת חברתית","detail":"הדרכה דיפרנציאלית רכזות פדגוגיות, סגני מנהלים, יועצות ורכזות חברתיות תוך התייחסות לצרכים הייחודיים של כל בעל תפקיד, דיוק הגדרת התפקיד וחיזוק הממשקים בין בעלי התפקידים"},"development":{"scope":"3 השתלמויות- מפקחת ומנהליה עבור מנהלים, פורום רכזותפדגוגית, פורום סגני מנהלים","days":"מפקחת ומנהליה וסגנים ימי ד', רכזות פדגוגיות ימי ג'","audience":"שדרה ניהולית בבית הספר","detail":"פיתוח שדרת מנהיגות: הובלת פורומים מקצועיים של מפקחת ומנהליה, פורום לסגני מנהלים, פורום לרכזות פדגוגיות, פורום ליועצות"},"community":{"scope":"30שעות","days":"ג' וד'","audience":"בעלי תפקידים בבתי הספר לחינוך מיוחד- רכזות פדגוגיות, סגני מנהלים, יועצות","detail":"מפגשים קבועים אחת לחודש ללמידת עמיתים, שולחן היוועצות ויצירת קהילה מקצועית תומכת"},"unique":{"detail":"מידעון חודשי לבעלי התפקידים המרכז בתוכו את כל המשימות החודשיות, כנסים, מפגשי למידה ועוד."}}},{"num":"03","title":"התאמת ההוראה לכיתה הטרוגנית בתיכון הרגיל","desc":"ריבוי תלמידים הזכאים לשירותי חינוך מיוחדים מחייב את כלל צוותי ההוראה בהתמקצעות במתן מענים מותאמים.","impacts":["הרחבת כתיבת תל\"א דינמית ומעקב שוטף אחר תלמידים"],"responses":{"training":{"scope":"ליווי הדרכה מומחיות תחום המתי\"א - הגעה סדורה לבתי הספר כאחת לשבועיים.","days":"ליווי יקבע בתחילת השנה בפגישה עם מנהל בית הספר.","audience":"למורי החינוך המיוחד, מחנכים וכלל המורים במחוז ההתיישבותי","detail":"ליווי פרטני לבי\"ס של צוות ההדרכה וצוות המתי\"א על פי מטרות וצורכי בית הספר. ביסוס תהליכי עבודה עם תל\"א. הנגשת מידע פדגוגי ומנהלי לבתי הספר בתחום החינוך המיוחד. מתן מענים הדרכתיים לצוותי הטיפול."},"development":{"scope":"מסלולי פיתוח מקצועי בהיקף של 30 ש'","days":"במהלך כל השבוע","audience":"מורים לחינוך מיוחד וכלל המורים במחוז ההתיישבותי","detail":"מגוון רחב של תהליכי פיתוח מקצועי- יפורסמו בתחילת שנת תשפ\"ז לצוותים."},"community":{"scope":"כ 30 שעות","days":"יום א'","audience":"מובילות חינוך מיוחד בעל יסודי","detail":"יצירת קהילה מקצועית להובלת שפה וקידום שירותי החינוך המיוחד בבית הספר"},"unique":{"detail":"כנס החינוך המיוחד בחנוכה יום האוטיזם הבינלאומי. הכנת לוח גאנט לכל המשימות במהלך השנה"}}},{"num":"04","title":"דיוק המענים הפדגוגיים והרגשיים בכיתות חינוך מיוחד","desc":"צוותי החינוך המיוחד נדרשים למומחיות במאפייני האוכלוסייה, בפדגוגיה מותאמת ובמתן מענים להתנהגויות לא מותאמות.","impacts":["הרחבת חומרי הלימוד המונגשים בכיתות","שיפור בהישגים וברווחת התלמידים לצד ירידה בהתנהגויות לא מותאמות"],"responses":{"training":{"scope":"מענה מותאם אישית","days":"שלישי- חמישי","audience":"צוותי החינוך המיוחד בבתי הספר המלמדים בכיתות חינוך מיוחד, ליווי מנהלים שיש להם כיתות חינוך מיוחד","detail":"בניית תוכנית הדרכה בית ספרית בשותפות צוות ההדרכה וצוות המתי\"א על פי מטרות וצרכים הדרכת מחנכות בכתיבה והובלת תל\"א הדרכת מורים מקצועיים בהוראה בכיתות חנ\"מ הדרכה בתוכנית להוראת כישורי חיים. הדרכה של מומחיות תחום."},"development":{"scope":"מסלולי פיתוח מקצועי בתחומים שונים של 30 שעות במהלך השנה, יפורסמו בתחילת השנה.","days":"במהלך השבוע","audience":"מורים לחינוך מיוחד בבתי הספר","detail":"הקבוצה החברתית כמרחב מקדם מיומנויות חברתיות סיפור הנפש היבטים בקידום תלמידי ASD שלב א' ושלב ב' כישורי חיים- תוכנית הכנה לחיים פיתוח מקצועי ייעודי לפרא רפואי"},"community":{"scope":"30 שעות","days":"א'","audience":"מובילות חינוך מיוחד בעל יסודי","detail":"מפגש למובילות החינוך המיוחד. המפגשים כוללים למידת עמיתות, ליווי על פי לוח גאנט וידע מקצועי."},"unique":{"detail":"ליווי בית ספרי על פי תוכנית בית ספרית כנס חינוך מיוחד בחנוכה \"קהילה לומדת\"- 4 מפגשים במהלך השנה סה\"כ 10 ש' מפגשים עם חוקרים, אנשי מקצוע ואקטיביזם בנושא של מוגבלויות מפגשים ייעודיים למנהלים וצוותים - כיתות תקשורת"}}}]},{"name":"ייעוץ חינוכי","description":"","challenges":[{"num":"01","title":"חיזוק חוסן נפשי והתמודדות מערכתית עם טראומה מתמשכת בסביבה חינוכית","desc":"צוותים ותלמידים פועלים תחת עומס רגשי המשפיע על נוכחות, ריכוז ורציפות תפקודית בשל חיים ועבודה במציאות מתמשכת של לחץ, אי-ודאות ואובדן.","impacts":["עלייה בפניות ללמידה בקרב תלמדים","ירידה בשחיקת צוות ועלייה בתחושת מסוגלות"],"responses":{"training":{"scope":"על פי צורך , 2-4 מפגשים בשנה","days":"לרוב בימי ד","audience":"צוות אקלים בית ספרי , יועצים/ות חינוכיים/ות, צוותי מורים","detail":"הדרכת שפ\"י בגישה מערכתית לחיזוק חוסן, שייכות והתמודדות עם מצבי סיכון, משבר וחירום, כולל מיפוי אקלים ומניעת אובדנות. הדרכה בגפ\"ן- שפ\"י https://drive.google.com/file/d/1VjT55991lv0fNZO8RJLVJB7dCiQVtPCO/view?usp=drivesdk"},"development":{"scope":"30 שעות , 8-10 מפגשים","days":"ד' בצהריים 13-15.30","audience":"יועצים/ות חינוכיים/ות","detail":"הכשרות ליועצים/ות: חוסן ושלומות צוות, CBT, DBT, מיינדפולנס, \"מקום לעצמך\", מטראומה לחוסן, ו\"בוחרים בחיים\" – להתמודדות עם משבר, דיכאון ומצוקה. שילוב בין ליווי ארוך טווח לכלים פרקטיים להעברה בכיתות."},"community":{"scope":"אחת לחודש","days":"ד'","audience":"יועצים/ות חינוכיים/ות משנה ג' ואילך בחלוקה אזורית","detail":"מפגשי הדרכה קבוצתיים ללמידת עמיתים-מניפה-בהנחיית יועצת וותיקה."},"unique":{"detail":"הרצאות יזומות ע\"י שפ\"י, כנס מחוזי וכנסים אזוריים ליועצים/ות חינוכיים/ות, הרצאות ממוקדות נושא/תחום על פי צרכים משתנים."}}},{"num":"02","title":"ביסוס אקלים חינוכי מבוסס אמון, שייכות ומערכות יחסים מיטביות","desc":"מערכות היחסים בבית הספר משפיעות על תחושת השייכות והאמון, ודורשות חיזוק יכולת הצוות לייצר מרחב מוגן ולנהל קונפליקטים באופן מקדם.","impacts":["עלייה בהובלה פרואקטיבית של היועצת של תהליכים לקידום אקלים חינוכי מיטבי","עלייה בתחושת שייכות של תלמידים, וירידה באירועי אלימות."],"responses":{"training":{"scope":"על פי צורך 2-4 מפגשים בשנה","days":"ימי ד","audience":"צוות אקלים בית ספרי, יועצים/ות חינוכיים/ות, צוותי מורים","detail":"הדרכת שפ\"י לחיזוק אקלים מיטבי, שייכות, מערכות יחסים ומניעת אלימות באמצעות מיפוי אקלים והתערבויות מערכתיות. הדרכת שפ\"י בגפ''ן- https://drive.google.com/file/d/1VjT55991lv0fNZO8RJLVJB7dCiQVtPCO/view"},"development":{"scope":"30 שעות 8-10 מפגשים","days":"ד בצהריים","audience":"","detail":"מניעת דחייה חברתית ופיתוח אקלים כיתתי מיטבי, מודל לב שלם כמארגן את העבודה בתחום החברתי בביה\"ס ויצירת תחושת שייכות ושיתוף פעולה בצוות, התמודדות עם ציניות או מנהיגות שלילית בכיתה, טיפוח מנהיגות חברתית ושגרות חברתיות בביה”ס"},"community":{"scope":"אחת לחודש","days":"ד","audience":"יועצים/ות חינוכיים/ות משנה ג' ואילך בחלוקה אזורית","detail":"מפגשי הדרכה קבוצתיים ללמידת עמיתים -מניפה- בהנחיית יועצת וותיקה."},"unique":{"detail":"הרצאות יזומות ע\"י שפ\"י, כנס מחוזי וכנסים אזוריים ליועצים/ות חינוכיים/ות, הרצאות ממוקדות נושא/תחום על פי צרכים משתנים בשטח."}}},{"num":"03","title":"ליווי תהליכי התבגרות וניהול מצבי סיכון בשותפות חינוכית עם הורים","desc":"תהליכי התבגרות במציאות מורכבת מחייבים שותפות עם הורים, חיזוק סמכות חינוכית והובלת מניעה והתמודדות עם מצבי סיכון.","impacts":["עליה בתחושת המסוגלות של היועץ.ת לשיח בנושאים מורכבים ובכלי להקשבה אמפטית","פחות התנהגויות סיכון ויותר בחירות מיטיבות בתהליך ההתבגרות."],"responses":{"training":{"scope":"על פי צורך, 2-4 מפגשים בשנה","days":"ימי ד","audience":"יועצים/ות חינוכיים/ות, מבס\"ים (מוביל בית ספרי), צוותים חינוכיים","detail":"הדרכת שפ'י - מיניות ומוגנות, הורות ומשפחה, מניעת התמכרויות, אוריינות דיגיטלית בתחום ומוגנות דיגיטלית לצד ליווי התערבויות במצבי סיכון. הדרכת שפ\"י בגפ'ן- https://drive.google.com/file/d/1VjT55991lv0fNZO8RJLVJB7dCiQVtPCO/view"},"development":{"scope":"30 שעות","days":"ד'- ג' בצהריים","audience":"יועצים/ות חינוכיים/ות, מבס\"ים","detail":"הכשרות להעברה בכיתות של התכניות: \"יועצים מובילים שינוי\", מיניות ומניעת פגיעה, התבגרות בעידן הדיגיטלי ו\"בוחרים בחיים\" לצד ליווי מקצועי והדרכה למב\"סים."},"community":{"scope":"אחת לחודש","days":"ד","audience":"יועצים/ות חינוכיים/ות משנה ג' ואילך בחלוקה אזורית","detail":"מפגשי הדרכה קבוצתיים ללמידת עמיתים -מניפה-בהנחיית יועצת וותיקה ."},"unique":{"detail":"הרצאות יזומות ע\"י שפ\"י , כנס מחוזי וכנסים אזוריים ליועצים/ות חינוכיים/ות, הרצאות ממוקדות נושא/תחום על פי צרכים משתנים בשטח."}}},{"num":"04","title":"פיתוח כשירות ייעוצית והובלת הייעוץ החינוכי לקידום שלומות","desc":"הייעוץ החינוכי נדרש לחזק כשירות מקצועית ולהוביל מענה מערכתי למציאות משתנה תוך ביסוס תפקידו כמקדם שלומות לצוותים ולתלמידים.","impacts":["עלייה ביכולת ומסוגלות של רכזות הייעוץ להוביל תהליכים בצוות ובקרב המורים","חיזוק הידע המקצועי והמסוגלות להתערבות פרואקטיבית וראקטיבית מותאמת."],"responses":{"training":{"scope":"אחת ל- 3 שבועות, כ-12 מפגשים בשנה","days":"על פי תכנון ותאום מקדים בין המפקחות למדריכות סופרויז'ן","audience":"יועצות בשנה א-ב בלבד","detail":"הדרכת סופרויז'ן מהווה \"מרחב בטוח\" לעיבוד רגשי ומקצועי של חוויות השדה בתחילת הדרך. מטרותיה המרכזיות הן: גיבוש זהות מקצועית, רפלקציה וניתוח מקרה, קבלת כלים להתמודדות עם דילמות אתיות ומצבי קצה, מניעת שחיקה ופיתוח מיומנויות."},"development":{"scope":"30 שעות , 60 שעות","days":"ד'","audience":"יועצים/ות חינוכיים/ות","detail":"הכשרות בנושאים הבאים: קורס רכזות ייעוץ (מינוי מנהל), בין פרשנות דיאגנוסטית להבנה פסיכופדגוגית, קורסי התמחות בייעוץ (לשלוש השנים הראשונות) וקורס חוסן ושלומות צוות לצוותי חינוך."},"community":{"scope":"אחת לחודש","days":"ד'","audience":"יועצים/ות חינוכיים/ות משנה ג' ואילך בחלוקה אזורית","detail":"מפגשי הדרכה קבוצתיים ללמידת עמיתים -מניפה-בהנחיית יועצת וותיקה."},"unique":{"detail":"הרצאות יזומות ע\"י שפ\"י , כנס מחוזי וכנסים אזוריים ליועצים/ות חינוכיים/ות, הרצאות ממוקדות נושא/תחום על פי צרכים משתנים בשטח . סופרוויז׳ן קבוצתי ליועצות בשנים א-ב לעבודתן"}}}]}]},"7":{"name":"מנהלים","short":"מנהלים","subtitle":"2 תחומי דעת · 7 אתגרים","domainsCount":2,"challengesCount":7,"domains":[{"name":"ניהול ההון האנושי","description":"","challenges":[{"num":"01","title":"פיתוח כשירויות ניהול מתקדמות לשדרת מנהיגות הביניים","desc":"הפיתוח המקצועי החיצוני מייצר עבור בעלי התפקידים בבית הספר קידום רוחבי (אופקי). הוא נותן להם אופק התפתחותי, מעמד, משמעות ומקצועיות בתוך בית הספר.…","impacts":["שימור בעלי תפקידים איכותיים במערכת"],"responses":{"community":{"scope":"30 שעות פיתוח מקצועי היברידי","days":"ימי שני/שלישי/רביעי","audience":"בעלי תפקידים בפועל (מעל שנתיים בתפקיד)-רכזים פדגוגיים, סגני מנהלים, רכזי שכבות, רכזי מקצוע, רכזי מיומנויות, רכזות ייעוץ, מחנכים, מובילת הון אנושי","detail":"פיתוח מקצועי היברידי המשלב בין 2-3 מפגשים פנים אל פנים ללמידה מרחוק בקהילות אזוריות על פי התפקידים- סגני מנהלים- ימי שלישי 13:00-17:00 ובזום 16:00-17:30 רכזים פדגוגיים ימי שלישי 13:00-17:00 ובזום 16:00-17:30 רכזי שכבות ,ימי…"},"unique":{"detail":"ימי עיון ייחודיים פעמיים בשנה פנים אל פנים 2-3 וובינרים מקצועיים לאור צרכים שעולים"}}},{"num":"02","title":"הכשרה בכניסה לתפקיד בשדרת מנהיגות הביניים","desc":"שינוי DNA: מ\"מורה עמית\" ל\"מנהל ביניים\" לבעלי תפקידים בשנים הראשונות לתפקיד . הקושי הגדול ביותר של רכזים חדשים הוא המעבר מתפקיד של חבר בחדר המורים…","impacts":["יציבות ומקצועיות של שדרת מנהיגות הבינים, וחיזוק החוסן הבית ספר"],"responses":{"development":{"scope":"30 שעות פיתוח מקצועי להכשרה לכניסה לתפקיד בהתאם לתפקיד","days":"מפורט בהמשך","audience":"בעלי תפקידים במנהיגות הביניים בתחילת דרכם- רכזים פדגוגיים, סגני מנהלים, רכזי שכבות, מחנכים, רכזי מיומנויות","detail":"תהליכי פיתוח מקצועי היברידיים המשלבים בין 2-3 מפגשים פנים אל פנים, למידה מרחוק, במידת האפשר, וכתלות במספר הנרשמים יפתחו תהליכים אזוריים. מפגשים פנים אל פנים יתקיימו בין 13:00-17:30, מפגשים בזום יתקיימו אחה\"צ. סגני מנהלים…"}}},{"num":"03","title":"ניהול ההון האנושי כאסטרטגיה לצוות הניהול","desc":"מעבדת מחקר ופיתוח לניהול ההון האנושי העוסקת בתשע זירות ארגוניות מרכזיות. המעבדה כוללת זיהוי אתגרי ליבה מערכתיים, מפגשי למידה עם מנהלות הון האנושי…","impacts":["גאנט בית ספרי תומך ניהול הון אנושי","שיפור במדדי שייכות ארגונית"],"responses":{"development":{"scope":"30 שעות, 6 מפגשים, היברידי (זום ופנים אל פנים)","days":"שלישי/רביעי/חמישי. ייפתח במחצית א' תשפ\"ז.","audience":"מנהל/ת שש/ארבע שנתי וצוות נבחר","detail":"תהליך למידה ממוקד של חודשיים וחצי הכולל: 3 חצאי ימי למידה 2 מפגשי ייעוץ לכל בית ספר מפגש סיכום בזום"},"unique":{"detail":"אפשרות למסלול המשך להכשרת מובילת הון אנושי בצוות הניהול (ייפתח במחצית ב' תשפ\"ז)."}}}]},{"name":"פיתוח מקצועי- מנהלים","description":"","challenges":[{"num":"01","title":"חיבור מנהלות ומנהלי בתי הספר ללמידה משותפת ייעודית למנהלי בית הספר","desc":"","impacts":["למידה ופיתוח תוכניות בית ספריות","למידת עמיתים"],"responses":{"development":{"scope":"60 ש״ש","days":"יפורסמו בגאנט השנתי","audience":"מנהלי ומנהלות בתי הספר חט״ב ושש שנתיים","detail":"פיתוח מקצועי למנהלי בתי הספר במסגרת “מפקח ומנהליו”, הכולל 10 מפגשים ללמידה ניהולית משותפת עם המפקח/ת לאורך השנה."},"unique":{"detail":"סמינר מנהלים מרוכז עם לינה: סמינר נפרד למנהלות ומנהלי 6+4 שנתיים ומנהלות ומנהלי חט״ן תוכניות ייחודיות של אבני ראשה וובינרים לפי נושאים העולים במהלך השנה"}}},{"num":"02","title":"התאקלמות מנהלים חדשים בתפקיד","desc":"תוכניות הכשרה למנהלים בראשית דרכם","impacts":["התמקמות מיטבית בתפקיד","הגברת תחושת המסוגלות הניהולית"],"responses":{"training":{"scope":"","days":"","audience":"מנהלים חדשים בשנתם הראשונה והשניה","detail":"מדריך/ה מלווה אישי לכל מנהל/ת חדש"},"development":{"scope":"שנה א׳ 198 ש״א שנה ב׳ 60 ש״א","days":"ימי שני לסירוגין, במשך השנה 09:00-17:00","audience":"מנהלים ומנהלות בשנה הראשונה והשניה לתפקידם","detail":"הכשרה במכללת לוינסקי"},"unique":{"detail":"ביקורים בבתי ספר מפגשים עם בעלי תפקידים במינהל וובינרים לפי נושאים העולים במהלך השנה"}}},{"num":"03","title":"התמודדות עם סוגיות ייחודיות לניהול חט״ע","desc":"","impacts":["למידת עמיתים","התמקצעות בניהול חטיבה עליונה"],"responses":{"development":{"scope":"30 ש״ש","days":"","audience":"מנהלות ומנהלי חט״ן","detail":"פיתוח מקצועי ייעודי למנהלות ולמנהלי חט״ע, הממוקד בסוגיות ניהוליות העולות מעבודתם השוטפת ומותאם לאופי התפקיד."},"unique":{"detail":"סמינר דו-יומי"}}},{"num":"04","title":"עתודה ניהולית","desc":"פיתוח מנהיגות ניהולית, היכרות עם עולם הניהול והמיומנויות הנדרשות לניהול בי״ס. המועמדים יגיעו לנהול לאחר הכרת עולם הניהול ומבינים מה המשמעות של ניהול…","impacts":[],"responses":{"development":{"scope":"100 ש״א","days":"","audience":"אנשי ונשות חינוך המעוניינים להתפתח לניהול","detail":"חשיפה להיבטי תפקיד המנהל; פיתוח מנהיגות ניהולית; היכרות עם עולם הניהול והמיומנויות הנדרשות לניהול בית ספר תנאי קבלה: מועמדים בהמלצת מנהל/ת"},"unique":{"detail":"סמינרים דו יומיים במהלך ההכשרה. ביקורים וסיורים בבתי ספר של המינהל."}}}]}]}};
+
+const channelTypes = { training: 'הדרכה', development: 'פיתוח מקצועי', community: 'קהילות למידה' };
+
+let state = {
+  cluster: null,
+  domain: 0,
+  challenge: 0,
+  query: '',
+  cameFrom: null,
+  serendipityResults: []
+};
+
+// ===================================================
+// NAVIGATION
+// ===================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function enterApp() {
+  showScreen('home');
+}
+
+// ===================================================
+// BROWSE DROPDOWN
+// ===================================================
+function toggleBrowseDropdown() {
+  const card = document.getElementById('browse-method-card');
+  const isOpen = card.classList.toggle('is-open');
+  const toggleText = document.getElementById('browse-toggle-text');
+  toggleText.textContent = isOpen ? 'הסתירו את האשכולות' : 'הציגו את האשכולות';
+}
+
+// ===================================================
+// SERENDIPITY
+// ===================================================
+function openSerendipity() {
+  // Sync UI with state — if user has already rolled before, show those cards
+  if (state.serendipityResults && state.serendipityResults.length > 0) {
+    document.getElementById('serendip-btn-text').textContent = 'סבב תגליות נוסף';
+    renderSerendipityCards();
+  } else {
+    document.getElementById('serendip-btn-text').textContent = 'גלו 5 אתגרים אקראיים';
+    document.getElementById('serendip-results').innerHTML = '';
+  }
+  showScreen('serendipity');
+}
+
+function generateSerendipityResults() {
+  const clusterIds = Object.keys(clusters);
+  // shuffle copy via Fisher-Yates
+  const shuffled = clusterIds.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  // Take 5 distinct clusters (we have 7, so always works)
+  const picked = shuffled.slice(0, 5);
+  return picked.map(cid => {
+    const cluster = clusters[cid];
+    const dIdx = Math.floor(Math.random() * cluster.domains.length);
+    const domain = cluster.domains[dIdx];
+    const chIdx = Math.floor(Math.random() * domain.challenges.length);
+    return {
+      clusterId: parseInt(cid),
+      domainIdx: dIdx,
+      challengeIdx: chIdx,
+      clusterName: cluster.name,
+      domainName: domain.name,
+      challenge: domain.challenges[chIdx]
+    };
+  });
+}
+
+function rollSerendipity() {
+  state.serendipityResults = generateSerendipityResults();
+  renderSerendipityCards();
+  // Update button text after first roll
+  document.getElementById('serendip-btn-text').textContent = 'סבב תגליות נוסף';
+}
+
+function renderSerendipityCards() {
+  const container = document.getElementById('serendip-results');
+  if (!state.serendipityResults || state.serendipityResults.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+  const html = state.serendipityResults.map(r => {
+    const ch = r.challenge;
+    const desc = ch.desc ? (ch.desc.length > 170 ? ch.desc.slice(0, 170) + '…' : ch.desc) : '';
+    const clusterNum = String(r.clusterId).padStart(2, '0');
+    return `<div class="serendip-card" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openChallenge(${r.clusterId}, ${r.domainIdx}, ${r.challengeIdx}, 'serendipity')">
+      <div class="serendip-card-body">
+        <div class="serendip-card-tags">
+          <span class="serendip-tag"><span class="dot"></span>אשכול ${clusterNum}: ${escapeHtml(r.clusterName)}</span>
+          <span class="serendip-tag domain-tag">תחום: ${escapeHtml(r.domainName)}</span>
+        </div>
+        <div class="serendip-card-title">${escapeHtml(ch.title)}</div>
+        ${desc ? `<div class="serendip-card-desc">${escapeHtml(desc)}</div>` : ''}
+      </div>
+      <div class="serendip-card-arrow">›</div>
+    </div>`;
+  }).join('');
+  // Reset content to retrigger CSS animations
+  container.innerHTML = '';
+  // Force reflow so animation restarts on re-roll
+  void container.offsetWidth;
+  container.innerHTML = html;
+}
+
+function goHome() {
+  state.query = '';
+  state.cameFrom = null;
+  document.getElementById('home-search').value = '';
+  document.getElementById('results-search').value = '';
+  document.getElementById('home-search-pill').classList.remove('has-text');
+  showScreen('home');
+}
+
+function goBackToCluster() {
+  if (state.cameFrom === 'search') {
+    showScreen('search-results');
+    // Restore query field in case it was cleared
+    if (state.query) {
+      document.getElementById('results-search').value = state.query;
+      document.getElementById('home-search').value = state.query;
+    }
+  } else if (state.cameFrom === 'serendipity') {
+    showScreen('serendipity');
+  } else if (state.cluster) {
+    showScreen('cluster');
+  } else {
+    goHome();
+  }
+}
+
+function goBackFromCluster() {
+  if (state.cameFrom === 'search') {
+    showScreen('search-results');
+    if (state.query) {
+      document.getElementById('results-search').value = state.query;
+      document.getElementById('home-search').value = state.query;
+    }
+  } else {
+    goHome();
+  }
+}
+
+// ===================================================
+// SEARCH MECHANISM
+// ===================================================
+function escapeHtml(text) {
+  return String(text || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeRegex(str) {
+  return str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
+function highlight(text, query) {
+  if (!query || !text) return escapeHtml(text);
+  const esc = escapeHtml(text);
+  const regex = new RegExp('(' + escapeRegex(query) + ')', 'gi');
+  return esc.replace(regex, '<mark>$1</mark>');
+}
+
+function findSnippet(text, query, maxLen = 100) {
+  if (!text || !query) return '';
+  const lowerText = text.toLowerCase();
+  const lowerQuery = query.toLowerCase();
+  const idx = lowerText.indexOf(lowerQuery);
+  if (idx === -1) return text.slice(0, maxLen) + (text.length > maxLen ? '…' : '');
+  
+  const start = Math.max(0, idx - 40);
+  const end = Math.min(text.length, idx + query.length + 60);
+  let snippet = text.slice(start, end);
+  if (start > 0) snippet = '…' + snippet;
+  if (end < text.length) snippet = snippet + '…';
+  return snippet;
+}
+
+function performSearch(query) {
+  const q = query.toLowerCase().trim();
+  if (!q) return null;
+  
+  const results = {
+    clusters: [],
+    domains: [],
+    challenges: [],
+    responses: []
+  };
+  
+  Object.entries(clusters).forEach(([cid, cluster]) => {
+    const clusterId = parseInt(cid);
+    
+    // Search cluster name
+    if (cluster.name.toLowerCase().includes(q)) {
+      results.clusters.push({ type: 'cluster', clusterId, name: cluster.name, matchedField: 'name' });
+    }
+    
+    cluster.domains.forEach((domain, dIdx) => {
+      // Search domain name
+      if (domain.name.toLowerCase().includes(q) || (domain.description || '').toLowerCase().includes(q)) {
+        const matchedField = domain.name.toLowerCase().includes(q) ? 'name' : 'description';
+        results.domains.push({
+          type: 'domain',
+          clusterId,
+          domainIdx: dIdx,
+          name: domain.name,
+          description: domain.description,
+          clusterName: cluster.name,
+          matchedField
+        });
+      }
+      
+      domain.challenges.forEach((ch, chIdx) => {
+        const fields = {
+          title: ch.title || '',
+          desc: ch.desc || '',
+        };
+        
+        // Add impacts
+        if (ch.impacts) {
+          fields.impacts = ch.impacts.join(' ');
+        }
+        
+        // Search challenge
+        const challengeHay = [fields.title, fields.desc, fields.impacts || ''].join(' ').toLowerCase();
+        if (challengeHay.includes(q)) {
+          let snippet = '';
+          if (fields.desc.toLowerCase().includes(q)) snippet = fields.desc;
+          else if (fields.impacts && fields.impacts.toLowerCase().includes(q)) snippet = fields.impacts;
+          else snippet = fields.desc;
+          
+          results.challenges.push({
+            type: 'challenge',
+            clusterId,
+            domainIdx: dIdx,
+            challengeIdx: chIdx,
+            num: ch.num,
+            title: ch.title,
+            snippet: snippet.slice(0, 140),
+            domainName: domain.name,
+            clusterName: cluster.name
+          });
+        }
+        
+        // Search responses
+        const responseTexts = [];
+        ['training', 'development', 'community'].forEach(type => {
+          const r = ch.responses && ch.responses[type];
+          if (r) {
+            const rHay = [r.scope, r.days, r.audience, r.detail].filter(Boolean).join(' ').toLowerCase();
+            if (rHay.includes(q) && !challengeHay.includes(q)) {
+              responseTexts.push({
+                type: 'response',
+                responseType: channelTypes[type],
+                clusterId,
+                domainIdx: dIdx,
+                challengeIdx: chIdx,
+                num: ch.num,
+                title: ch.title,
+                detail: r.detail || '',
+                audience: r.audience || '',
+                domainName: domain.name,
+                clusterName: cluster.name
+              });
+            }
+          }
+        });
+        
+        const u = ch.responses && ch.responses.unique;
+        if (u && u.detail && u.detail.toLowerCase().includes(q) && !challengeHay.includes(q)) {
+          responseTexts.push({
+            type: 'response',
+            responseType: 'מענה ייחודי',
+            clusterId,
+            domainIdx: dIdx,
+            challengeIdx: chIdx,
+            num: ch.num,
+            title: ch.title,
+            detail: u.detail,
+            audience: '',
+            domainName: domain.name,
+            clusterName: cluster.name
+          });
+        }
+        
+        results.responses.push(...responseTexts);
+      });
+    });
+  });
+  
+  return results;
+}
+
+function renderSearchResults(query) {
+  state.query = query;
+  const results = performSearch(query);
+  
+  if (!results) {
+    showScreen('home');
+    return;
+  }
+  
+  // Check if we're already in results screen
+  const isAlreadyInResults = document.getElementById('search-results').classList.contains('active');
+  
+  // Update compact search bar (only if we're transitioning)
+  if (!isAlreadyInResults) {
+    document.getElementById('results-search').value = query;
+  }
+  
+  const total = results.clusters.length + results.domains.length + results.challenges.length + results.responses.length;
+  
+  // Summary
+  document.getElementById('results-summary').innerHTML = total > 0 
+    ? `<strong>${total}</strong> תוצאות עבור "<strong>${escapeHtml(query)}</strong>"`
+    : `אין תוצאות עבור "<strong>${escapeHtml(query)}</strong>"`;
+  
+  // Body
+  if (total === 0) {
+    document.getElementById('results-body').innerHTML = `
+      <div class="no-results">
+        <div class="no-results-title">לא נמצאו תוצאות</div>
+        <div class="no-results-hint">נסו מילת חיפוש אחרת או דפדפו בקטלוג לפי אשכולות</div>
+      </div>
+    `;
+    if (!isAlreadyInResults) {
+      showScreen('search-results');
+      // Transfer focus to results search input
+      const resultsInput = document.getElementById('results-search');
+      resultsInput.focus();
+      // Move cursor to end
+      const len = resultsInput.value.length;
+      resultsInput.setSelectionRange(len, len);
+    }
+    return;
+  }
+  
+  let html = '';
+  
+  if (results.clusters.length > 0) {
+    html += `<div class="results-group">
+      <div class="results-group-title">אשכולות <span class="count">${results.clusters.length}</span></div>`;
+    results.clusters.forEach(r => {
+      html += `<div class="result-item" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openCluster(${r.clusterId}, 'search')">
+        <div class="result-title">${highlight(r.name, query)}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+  
+  if (results.domains.length > 0) {
+    html += `<div class="results-group">
+      <div class="results-group-title">תחומים <span class="count">${results.domains.length}</span></div>`;
+    results.domains.forEach(r => {
+      html += `<div class="result-item" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openDomain(${r.clusterId}, ${r.domainIdx}, 'search')">
+        <div class="result-title">${highlight(r.name, query)}</div>
+        <div class="result-path"><span class="dot"></span>${escapeHtml(r.clusterName)}</div>
+        ${r.matchedField === 'description' ? `<div class="result-snippet">${highlight(findSnippet(r.description, query), query)}</div>` : ''}
+      </div>`;
+    });
+    html += `</div>`;
+  }
+  
+  if (results.challenges.length > 0) {
+    html += `<div class="results-group">
+      <div class="results-group-title">אתגרים <span class="count">${results.challenges.length}</span></div>`;
+    results.challenges.forEach(r => {
+      html += `<div class="result-item" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openChallenge(${r.clusterId}, ${r.domainIdx}, ${r.challengeIdx}, 'search')">
+        <div class="result-title">${highlight(r.title, query)}</div>
+        <div class="result-path"><span class="dot"></span>${escapeHtml(r.clusterName)} › ${escapeHtml(r.domainName)}</div>
+        <div class="result-snippet">${highlight(findSnippet(r.snippet, query), query)}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+  
+  if (results.responses.length > 0) {
+    html += `<div class="results-group">
+      <div class="results-group-title">מענים <span class="count">${results.responses.length}</span></div>`;
+    results.responses.forEach(r => {
+      html += `<div class="result-item" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openChallenge(${r.clusterId}, ${r.domainIdx}, ${r.challengeIdx}, 'search')">
+        <div class="result-title">${highlight(r.title, query)}</div>
+        <div class="result-path"><span class="dot"></span>${escapeHtml(r.clusterName)} › ${escapeHtml(r.domainName)} · ${escapeHtml(r.responseType)}</div>
+        <div class="result-snippet">${highlight(findSnippet(r.detail, query), query)}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+  
+  document.getElementById('results-body').innerHTML = html;
+  
+  if (!isAlreadyInResults) {
+    showScreen('search-results');
+    // Transfer focus to results search input
+    const resultsInput = document.getElementById('results-search');
+    resultsInput.focus();
+    // Move cursor to end
+    const len = resultsInput.value.length;
+    resultsInput.setSelectionRange(len, len);
+  }
+}
+
+function clearSearch() {
+  document.getElementById('home-search').value = '';
+  document.getElementById('home-search-pill').classList.remove('has-text');
+  if (document.getElementById('home').classList.contains('active')) {
+    document.getElementById('home-search').focus();
+  } else {
+    goHome();
+  }
+}
+
+// ===================================================
+// CLUSTER & CHALLENGE NAVIGATION
+// ===================================================
+function openCluster(id, source) {
+  state.cluster = id;
+  // Only update cameFrom if explicitly passed (don't overwrite when called from openDomain)
+  if (source !== undefined) {
+    state.cameFrom = source;
+  } else if (arguments.length === 1) {
+    // direct call from home cluster card or pill switcher — clear cameFrom
+    state.cameFrom = null;
+  }
+  const c = clusters[id];
+  
+  const switcher = document.getElementById('cluster-switcher');
+  switcher.innerHTML = Object.keys(clusters).map(cid => {
+    const active = parseInt(cid) === id ? 'active' : '';
+    const fullName = clusters[cid].name;
+    return `<button class="cluster-pill ${active}" style="--cluster-color: var(--cluster-${cid})" onclick="openCluster(${cid})">
+      <span class="dot"></span>
+      <span>${String(cid).padStart(2, '0')} · ${fullName}</span>
+    </button>`;
+  }).join('');
+  
+  setTimeout(() => {
+    const active = switcher.querySelector('.active');
+    if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }, 100);
+  
+  document.getElementById('cluster-num').textContent = String(id).padStart(2, '0');
+  document.getElementById('cluster-num').style.color = `var(--cluster-${id})`;
+  document.getElementById('cluster-title').textContent = c.name;
+  document.getElementById('cluster-subtitle').textContent = c.subtitle;
+  
+  const domainsHtml = c.domains.map((domain, dIdx) => {
+    const challengesHtml = domain.challenges.map((ch, chIdx) => `
+      <div class="challenge-item" onclick="openChallenge(${id}, ${dIdx}, ${chIdx})">
+        <div class="challenge-num">${ch.num}</div>
+        <div class="challenge-body">
+          <div class="challenge-title">${ch.title}</div>
+          <div class="challenge-desc">${ch.desc.slice(0, 80)}${ch.desc.length > 80 ? '…' : ''}</div>
+        </div>
+        <div class="challenge-arrow">›</div>
+      </div>`).join('');
+    return `<div class="domain-block" style="--cluster-color: var(--cluster-${id})" data-idx="${dIdx}">
+      <div class="domain-header" onclick="toggleDomain(this)">
+        <div class="domain-name">${domain.name}</div>
+        <div class="domain-meta">${domain.challenges.length}</div>
+        <div class="domain-toggle">+</div>
+      </div>
+      <div class="domain-desc">${domain.description}</div>
+      <div class="domain-challenges">${challengesHtml}</div>
+    </div>`;
+  }).join('');
+  
+  document.getElementById('domains-list').innerHTML = domainsHtml;
+  
+  // All accordions start CLOSED — user chooses what to open
+  
+  showScreen('cluster');
+}
+
+function openDomain(clusterId, domainIdx, source) {
+  // Open cluster first, then expand specific domain
+  openCluster(clusterId);
+  state.cameFrom = source || null;
+  setTimeout(() => {
+    document.querySelectorAll('.domain-block').forEach(b => b.classList.remove('expanded'));
+    const block = document.querySelector(`.domain-block[data-idx="${domainIdx}"]`);
+    if (block) {
+      block.classList.add('expanded');
+      block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 100);
+}
+
+function toggleDomain(headerEl) {
+  headerEl.parentElement.classList.toggle('expanded');
+}
+
+function openChallenge(clusterId, domainIdx, challengeIdx, source) {
+  state = { ...state, cluster: clusterId, domain: domainIdx, challenge: challengeIdx, cameFrom: source || null };
+  renderChallenge();
+  showScreen('challenge');
+}
+
+function renderChallenge() {
+  const { cluster: clusterId, domain: domainIdx, challenge: challengeIdx } = state;
+  const c = clusters[clusterId];
+  const domain = c.domains[domainIdx];
+  const ch = domain.challenges[challengeIdx];
+  
+  document.getElementById('challenge-counter').textContent = `${challengeIdx + 1} / ${domain.challenges.length}`;
+  
+  const hasPrev = challengeIdx > 0;
+  const hasNext = challengeIdx < domain.challenges.length - 1;
+  const prevTitle = hasPrev ? domain.challenges[challengeIdx - 1].title : '';
+  const nextTitle = hasNext ? domain.challenges[challengeIdx + 1].title : '';
+  
+  let html = `<div class="challenge-breadcrumb" style="--cluster-color: var(--cluster-${clusterId})">
+    <span class="cluster-tag"><span class="dot"></span><span>אשכול ${String(clusterId).padStart(2, '0')}: ${c.name}</span></span>
+    <span class="arrow">›</span><span class="domain">תחום: ${domain.name}</span>
+    <span class="arrow">›</span><span class="num">אתגר ${ch.num}</span>
+  </div>
+  <h2 class="challenge-title-main">${ch.title}</h2>
+  <div class="challenge-description">${ch.desc}</div>`;
+  
+  if (ch.impacts && ch.impacts.length > 0) {
+    html += `<div class="impact-section" style="--cluster-color: var(--cluster-${clusterId})">
+      <div class="impact-title">אימפקט צפוי</div>
+      ${ch.impacts.map(imp => `<div class="impact-item">${imp}</div>`).join('')}
+    </div>`;
+  }
+  
+  html += `<div class="responses-title" style="--cluster-color: var(--cluster-${clusterId})">מענים</div>`;
+  
+  ['training', 'development', 'community'].forEach(type => {
+    const r = ch.responses && ch.responses[type];
+    if (!r) return;
+    html += `<div class="response" style="--cluster-color: var(--cluster-${clusterId})">
+      <div class="response-type">${channelTypes[type]}</div>
+      <div class="response-meta">
+        <span class="meta-item"><strong>היקף:</strong>${r.scope}</span>
+        <span class="meta-sep"></span>
+        <span class="meta-item"><strong>ימים:</strong>${r.days}</span>
+        <span class="meta-sep"></span>
+        <span class="meta-item"><strong>קהל:</strong>${r.audience}</span>
+      </div>
+      <div class="response-detail">${r.detail}</div>
+    </div>`;
+  });
+  
+  if (ch.responses && ch.responses.unique) {
+    html += `<div class="response" style="--cluster-color: var(--cluster-${clusterId})">
+      <div class="response-type">מענה ייחודי</div>
+      <div class="response-detail">${ch.responses.unique.detail}</div>
+    </div>`;
+  }
+  
+  html += `<div class="challenge-nav-bar" style="--cluster-color: var(--cluster-${clusterId})">
+    <button class="nav-btn" ${!hasPrev ? 'disabled' : ''} onclick="${hasPrev ? 'goToChallenge(' + (challengeIdx - 1) + ')' : ''}">
+      <span class="arrow">›</span>
+      <div class="nav-content">
+        <div class="label">קודם</div>
+        <div class="title">${prevTitle || '—'}</div>
+      </div>
+    </button>
+    <button class="nav-btn next" ${!hasNext ? 'disabled' : ''} onclick="${hasNext ? 'goToChallenge(' + (challengeIdx + 1) + ')' : ''}">
+      <div class="nav-content">
+        <div class="label">הבא</div>
+        <div class="title">${nextTitle || '—'}</div>
+      </div>
+      <span class="arrow">‹</span>
+    </button>
+  </div>`;
+  
+  document.getElementById('challenge-content').innerHTML = html;
+}
+
+function goToChallenge(newIdx) {
+  state.challenge = newIdx;
+  renderChallenge();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===================================================
+// EVENT LISTENERS
+// ===================================================
+const homeSearch = document.getElementById('home-search');
+const homeSearchPill = document.getElementById('home-search-pill');
+const resultsSearch = document.getElementById('results-search');
+
+homeSearch.addEventListener('input', (e) => {
+  const value = e.target.value;
+  if (value.trim().length > 0) {
+    homeSearchPill.classList.add('has-text');
+  } else {
+    homeSearchPill.classList.remove('has-text');
+  }
+  
+  // Sync the value to results search
+  resultsSearch.value = value;
+  
+  // Live search: navigate to results screen if user types something
+  if (value.trim().length >= 1) {
+    renderSearchResults(value);
+  }
+});
+
+homeSearch.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (e.target.value.trim()) {
+      renderSearchResults(e.target.value);
+    }
+  }
+});
+
+resultsSearch.addEventListener('input', (e) => {
+  const value = e.target.value;
+  // Sync value to home search input
+  homeSearch.value = value;
+  if (value.trim().length > 0) {
+    homeSearchPill.classList.add('has-text');
+  } else {
+    homeSearchPill.classList.remove('has-text');
+  }
+  
+  if (value.trim().length >= 1) {
+    renderSearchResults(value);
+  } else {
+    goHome();
+  }
+});
+
+resultsSearch.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') goHome();
+});
+</script>
+
+</body>
+</html>
