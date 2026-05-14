@@ -480,37 +480,6 @@ body {
   min-width: 0;
 }
 
-.serendip-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin-bottom: 8px;
-}
-
-.serendip-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--ink-muted);
-  line-height: 1.3;
-}
-
-.serendip-tag .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--cluster-color, var(--serendip));
-  flex-shrink: 0;
-}
-
-.serendip-tag.domain-tag {
-  color: var(--ink-muted);
-}
-
 .serendip-card-title {
   font-family: var(--font-serif);
   font-weight: 700;
@@ -1164,22 +1133,64 @@ body {
   margin-bottom: 4px;
 }
 
-.result-path {
-  font-size: 11.5px;
-  color: var(--ink-muted);
+/* ===================================================
+   UNIFIED PATH TAGS (used in: search results, serendipity cards, challenge breadcrumb)
+   Standard: ● אשכול XX: שם  ● תחום: שם  ● מענה: סוג / אתגר XX
+   - Colored dot before each prefix
+   - Prefix ("אשכול XX:" / "תחום:" / "מענה:" / "אתגר XX") in cluster color
+   - Content (cluster name, domain name, response type) in black
+   =================================================== */
+.path-tags {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
+  gap: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--ink);
   margin-bottom: 4px;
 }
 
-.result-path .dot {
+.path-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.path-tag .dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--cluster-color);
-  display: inline-block;
   flex-shrink: 0;
+}
+
+.path-tag-prefix {
+  color: var(--cluster-color);
+  font-weight: 700;
+}
+
+.path-tag-value {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* When path-tags wraps to a second line, allow the value to wrap too */
+.path-tag.wrap-value {
+  white-space: normal;
+}
+
+/* Scoped tweaks per context */
+.serendip-card .path-tags {
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.challenge-breadcrumb .path-tags {
+  margin-bottom: 0;
+  font-size: 12px;
 }
 
 .result-snippet {
@@ -1462,38 +1473,8 @@ mark {
 }
 
 .challenge-breadcrumb {
-  font-size: 11px;
-  color: var(--ink-muted);
   padding: 16px 16px 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
 }
-
-.challenge-breadcrumb .cluster-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 8px;
-  background: white;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  font-weight: 700;
-  color: var(--ink-soft);
-  font-size: 10.5px;
-}
-
-.challenge-breadcrumb .cluster-tag .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--cluster-color);
-}
-
-.challenge-breadcrumb .arrow { color: var(--ink-faint); }
-.challenge-breadcrumb .domain { color: var(--cluster-color); font-weight: 600; }
-.challenge-breadcrumb .num { color: var(--ink-faint); font-weight: 600; }
 
 .challenge-title-main {
   font-family: var(--font-serif);
@@ -2152,13 +2133,9 @@ function renderSerendipityCards() {
   const html = state.serendipityResults.map(r => {
     const ch = r.challenge;
     const desc = ch.desc ? (ch.desc.length > 170 ? ch.desc.slice(0, 170) + '…' : ch.desc) : '';
-    const clusterNum = String(r.clusterId).padStart(2, '0');
     return `<div class="serendip-card" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openChallenge(${r.clusterId}, ${r.domainIdx}, ${r.challengeIdx}, 'serendipity')">
       <div class="serendip-card-body">
-        <div class="serendip-card-tags">
-          <span class="serendip-tag"><span class="dot"></span>אשכול ${clusterNum}: ${escapeHtml(r.clusterName)}</span>
-          <span class="serendip-tag domain-tag">תחום: ${escapeHtml(r.domainName)}</span>
-        </div>
+        ${buildPathTags({ clusterId: r.clusterId, clusterName: r.clusterName, domainName: r.domainName, challengeNum: ch.num })}
         <div class="serendip-card-title">${escapeHtml(ch.title)}</div>
         ${desc ? `<div class="serendip-card-desc">${escapeHtml(desc)}</div>` : ''}
       </div>
@@ -2246,6 +2223,41 @@ function findSnippet(text, query, maxLen = 100) {
   if (start > 0) snippet = '…' + snippet;
   if (end < text.length) snippet = snippet + '…';
   return snippet;
+}
+
+/**
+ * Build unified path-tags HTML.
+ * Format: ● אשכול XX: שם  ● תחום: שם  ● מענה: סוג / אתגר XX
+ *
+ * @param {Object} opts
+ * @param {number} opts.clusterId - 1-7
+ * @param {string} opts.clusterName - full cluster name
+ * @param {string} [opts.domainName] - domain name (optional)
+ * @param {string} [opts.responseType] - response type (optional, e.g. "הדרכה")
+ * @param {string} [opts.challengeNum] - challenge number string e.g. "01" (optional)
+ * @returns {string} HTML string
+ */
+function buildPathTags(opts) {
+  const { clusterId, clusterName, domainName, responseType, challengeNum } = opts;
+  const cidPadded = String(clusterId).padStart(2, '0');
+  const tags = [];
+
+  // Cluster (always present)
+  tags.push(`<span class="path-tag wrap-value"><span class="dot"></span><span class="path-tag-prefix">אשכול ${cidPadded}:</span><span class="path-tag-value">${escapeHtml(clusterName)}</span></span>`);
+
+  // Domain (if provided)
+  if (domainName) {
+    tags.push(`<span class="path-tag wrap-value"><span class="dot"></span><span class="path-tag-prefix">תחום:</span><span class="path-tag-value">${escapeHtml(domainName)}</span></span>`);
+  }
+
+  // Response type OR challenge number (mutually exclusive, only if provided)
+  if (responseType) {
+    tags.push(`<span class="path-tag"><span class="dot"></span><span class="path-tag-prefix">מענה:</span><span class="path-tag-value">${escapeHtml(responseType)}</span></span>`);
+  } else if (challengeNum) {
+    tags.push(`<span class="path-tag"><span class="dot"></span><span class="path-tag-prefix">אתגר ${escapeHtml(challengeNum)}</span></span>`);
+  }
+
+  return `<div class="path-tags" style="--cluster-color: var(--cluster-${clusterId})">${tags.join('')}</div>`;
 }
 
 function performSearch(query) {
@@ -2426,7 +2438,7 @@ function renderSearchResults(query) {
     results.domains.forEach(r => {
       html += `<div class="result-item" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openDomain(${r.clusterId}, ${r.domainIdx}, 'search')">
         <div class="result-title">${highlight(r.name, query)}</div>
-        <div class="result-path"><span class="dot"></span>${escapeHtml(r.clusterName)}</div>
+        ${buildPathTags({ clusterId: r.clusterId, clusterName: r.clusterName })}
         ${r.matchedField === 'description' ? `<div class="result-snippet">${highlight(findSnippet(r.description, query), query)}</div>` : ''}
       </div>`;
     });
@@ -2439,7 +2451,7 @@ function renderSearchResults(query) {
     results.challenges.forEach(r => {
       html += `<div class="result-item" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openChallenge(${r.clusterId}, ${r.domainIdx}, ${r.challengeIdx}, 'search')">
         <div class="result-title">${highlight(r.title, query)}</div>
-        <div class="result-path"><span class="dot"></span>${escapeHtml(r.clusterName)} › ${escapeHtml(r.domainName)}</div>
+        ${buildPathTags({ clusterId: r.clusterId, clusterName: r.clusterName, domainName: r.domainName })}
         <div class="result-snippet">${highlight(findSnippet(r.snippet, query), query)}</div>
       </div>`;
     });
@@ -2452,7 +2464,7 @@ function renderSearchResults(query) {
     results.responses.forEach(r => {
       html += `<div class="result-item" style="--cluster-color: var(--cluster-${r.clusterId})" onclick="openChallenge(${r.clusterId}, ${r.domainIdx}, ${r.challengeIdx}, 'search')">
         <div class="result-title">${highlight(r.title, query)}</div>
-        <div class="result-path"><span class="dot"></span>${escapeHtml(r.clusterName)} › ${escapeHtml(r.domainName)} · ${escapeHtml(r.responseType)}</div>
+        ${buildPathTags({ clusterId: r.clusterId, clusterName: r.clusterName, domainName: r.domainName, responseType: r.responseType })}
         <div class="result-snippet">${highlight(findSnippet(r.detail, query), query)}</div>
       </div>`;
     });
@@ -2581,10 +2593,8 @@ function renderChallenge() {
   const prevTitle = hasPrev ? domain.challenges[challengeIdx - 1].title : '';
   const nextTitle = hasNext ? domain.challenges[challengeIdx + 1].title : '';
   
-  let html = `<div class="challenge-breadcrumb" style="--cluster-color: var(--cluster-${clusterId})">
-    <span class="cluster-tag"><span class="dot"></span><span>אשכול ${String(clusterId).padStart(2, '0')}: ${c.name}</span></span>
-    <span class="arrow">›</span><span class="domain">תחום: ${domain.name}</span>
-    <span class="arrow">›</span><span class="num">אתגר ${ch.num}</span>
+  let html = `<div class="challenge-breadcrumb">
+    ${buildPathTags({ clusterId, clusterName: c.name, domainName: domain.name, challengeNum: ch.num })}
   </div>
   <h2 class="challenge-title-main">${ch.title}</h2>
   <div class="challenge-description">${ch.desc}</div>`;
